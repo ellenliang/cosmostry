@@ -1,0 +1,50 @@
+Alabama	Birmingham;Montgomery;Mobile;Huntsville;Tuscaloosa 
+Alaska	Anchorage;Juneau;Fairbanks;Sitka;Ketchikan
+Arizona	Phoenix;Tucson;Mesa;Chandler;Glendale
+Arkansas	Little Rock;Fort Smith;Fayetteville;Springdale;Jonesboro
+California	Los Angeles;San Diego;San Jose;San Francisco;Fresno
+Colorado	Denver;Colorado Springs;Aurora;Fort Collins;Lakewood
+Connecticut	Bridgeport;New Haven;Stamford;Hartford;Waterbury
+Delaware	Wilmington;Dover;Newark;Middletown;Smyrna
+Florida	Jacksonville;Miami;Tampa;St. Petersburg;Orlando
+Georgia	Atlanta;Augusta;Columbus;Savannah;Athens
+Hawaii	Honolulu;Hilo;Kailua;Kapolei;Kaneohe
+Idaho	Boise;Nampa;Meridian;Idaho Falls;Pocatello
+Illinois	Chicago;Aurora;Rockford;Joliet;Naperville
+Indiana	Indianapolis;Fort Wayne;Evansville;South Bend;Carmel
+Iowa	Des Moines;Cedar Rapids;Davenport;Sioux City;Waterloo
+Kansas	Wichita;Overland Park;Kansas City;Topeka;Olathe
+Kentucky	Louisville;Lexington;Bowling Green;Owensboro;Covington
+Louisiana	New Orleans;Baton Rouge;Shreveport;Lafayette;Lake Charles
+Maine	Portland;Lewiston;Bangor;South Portland;Auburn
+Maryland	Baltimore;Columbia;Germantown;Silver Spring;Waldorf
+Massachusetts	Boston;Worcester;Springfield;Lowell;Cambridge
+Michigan	Detroit;Grand Rapids;Warren;Sterling Heights;Ann Arbor
+Minnesota	Minneapolis;Saint Paul;Rochester;Duluth;Bloomington
+Mississippi	Jackson;Gulfport;Hattiesburg;Southaven;Biloxi
+Missouri	Kansas City;Saint Louis;Springfield;Independence;Columbia
+Montana	Billings;Missoula;Great Falls;Bozeman;Butte
+Nebraska	Omaha;Lincoln;Bellevue;Grand Island;Kearney
+Nevada	Las Vegas;Henderson;North Las Vegas;Reno;Sparks
+New Hampshire	Manchester;Nashua;Concord;Derry;Rochester
+New Jersey	Newark;Jersey City;Paterson;Elizabeth;Edison
+New Mexico	Albuquerque;Las Cruces;Rio Rancho;Santa Fe;Roswell
+New York	New York;Buffalo;Rochester;Yonkers;Syracuse
+North Carolina	Charlotte;Raleigh;Greensboro;Durham;Winston-Salem
+North Dakota	Fargo;Bismarck;Grand Forks;Minot;West Fargo
+Ohio	Columbus;Cleveland;Cincinnati;Toledo;Akron
+Oklahoma	Oklahoma City;Tulsa;Norman;Broken Arrow;Lawton
+Oregon	Portland;Eugene;Salem;Gresham;Hillsboro
+Pennsylvania	Philadelphia;Pittsburgh;Allentown;Erie;Reading
+Rhode Island	Providence;Warwick;Cranston;Pawtucket;East Providence
+South Carolina	Columbia;Charleston;North Charleston/Greenville;Mount Pleasant;Rock Hill
+South Dakota	Sioux Falls;Rapid City;Aberdeen;Brookings;Watertown
+Tennessee	Memphis;Nashville;Knoxville;Chattanooga;Clarksville
+Texas	Houston;San Antonio;Dallas;Austin;Fort Worth
+Utah	Salt Lake City;West Valley City;Provo;West Jordan;Orem
+Vermont	Burlington;Essex;South Burlington;Colchester;Rutland
+Virginia	Virginia Beach;Norfolk;Chesapeake;Richmond;Newport News
+Washington	Seattle;Spokane;Tacoma;Vancouver;Bellevue
+West Virginia	Charleston;Huntington;Parkersburg;Morgantown;Wheeling
+Wisconsin	Milwaukee;Madison;Green Bay;Kenosha;Racine
+Wyoming	Cheyenne;Casper;Laramie;Gillette;Rock Springs

@@ -1,0 +1,28 @@
+﻿RESOURCE @"langmap.txt";
+
+searchlog = 
+    EXTRACT IId:int, 
+            UId:int, 
+            Start:DateTime, 
+            Market:string, 
+            Query:string, 
+            DwellTime:int, 
+            Results:string, 
+            ClickedUrls:string
+    FROM  @"my/Scope.Tutorial/Inputs/SearchLog.txt"
+    USING DefaultTextExtractor();
+
+result = PROCESS searchlog 
+          PRODUCE IId, 
+                  UId, 
+                  Start, 
+                  Market, 
+                  Query, 
+                  DwellTime, 
+                  Results, 
+                  ClickedUrls,
+                  MarketLanguage
+                  
+          USING MyProcessor( source: "Market", dest: "MarketLanguage");
+
+OUTPUT result TO @"/my/Scope.Tutorial/Outputs/SearchLog.txt";

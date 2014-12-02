@@ -1,0 +1,4 @@
+﻿//Schema of AdInventory data
+AdID
+Advertiser
+RevenuePerClick

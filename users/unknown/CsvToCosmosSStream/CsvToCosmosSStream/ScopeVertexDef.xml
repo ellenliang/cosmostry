@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScopeVertices helperAssembly="CsvToCosmosSStream.exe">
+  <ScopeVertex id="SV1_Extract_Split">
+    <operator id="Extract_0" assemblyName="ScopeRuntime.exe" className="ScopeRuntime.DefaultTextExtractor">
+      <input id="Extract_0" schema="f1:string,f2:string" inputIndex="0" numberOfInputs="ALL" />
+      <output id="Extract_0_Data0" schema="f1:string,f2:string" />
+    </operator>
+    <operator id="SStreamOutput_1" assemblyName="CsvToCosmosSStream.exe" className="ScopeSStreamOutput1" args="-noPartition">
+      <input id="Extract_0_Data0" schema="f1:string,f2:string" />
+      <output id="SV1_Extract_Split_out0" schema="f1:string,f2:string" outputIndex="0" numberOfOutputs="1" />
+      <output id="SV1_Extract_Split_out1" schema="f1:string,f2:string" outputIndex="1" numberOfOutputs="1" />
+    </operator>
+  </ScopeVertex>
+  <ScopeVertex id="SV2_Aggregate">
+    <operator id="MetadataAggregate_2" assemblyName="ScopeRuntime.exe" className="ScopeRuntime.PartitionMetadataAggregator" args="-noPartition">
+      <input id="SV1_Extract_Split_out1" schema="f1:string,f2:string" inputIndex="0" numberOfInputs="ALL" />
+      <output id="MetadataAggregate_2_Data0" schema="f1:string,f2:string" />
+    </operator>
+    <operator id="SStreamMetadataOutput_3" assemblyName="ScopeRuntime.exe" className="ScopeRuntime.SStreamMetadataOutputter" args="-noPartition">
+      <input id="MetadataAggregate_2_Data0" schema="f1:string,f2:string" />
+      <output id="SV2_Aggregate_out0" schema="f1:string,f2:string" outputIndex="0" numberOfOutputs="1" />
+    </operator>
+  </ScopeVertex>
+  <ScopeVertex id="SV1_Dataset">
+    <operator id="Concatenate_5">
+      <input id="SV1_Extract_Split_out0" schema="f1:string,f2:string" inputIndex="0" numberOfInputs="1" />
+      <input id="SV2_Aggregate_out0" schema="f1:string,f2:string" inputIndex="1" numberOfInputs="1" />
+    </operator>
+  </ScopeVertex>
+</ScopeVertices>

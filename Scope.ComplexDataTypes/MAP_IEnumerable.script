@@ -1,0 +1,11 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+data1=
+    SELECT *
+    FROM projectmembers 
+    WHERE Employees.Any(kv => kv.Key.Contains("a"));
+
+OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";
+

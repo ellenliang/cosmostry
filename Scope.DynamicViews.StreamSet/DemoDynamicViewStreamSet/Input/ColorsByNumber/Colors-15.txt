@@ -1,0 +1,8 @@
+Tan	#FAA76C	"(250, 167, 108)"	1949		
+Teal Blue	#18A7B5	"(24, 167, 181)"	1990	2003	
+Thistle	#EBC7DF	"(235, 199, 223)"	1949	2000	
+Tickle Me Pink	#FC89AC	"(252, 137, 172)"	1993		
+Timberwolf	#DBD7D2	"(219, 215, 210)"	1993		
+Tropical Rain Forest	#17806D	"(23, 128, 109)"	1993		
+Tumbleweed	#DEAA88	"(222, 170, 136)"	1993		
+Turquoise Blue	#77DDE7	"(119, 221, 231)"	1949		

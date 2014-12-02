@@ -1,0 +1,15 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+data = SampleData.Cities();
+
+
+data1 = 
+    SELECT State
+         , new ARRAY<string>( 
+             Cities.Where( c => c.StartsWith( "W" ) )
+           ) AS Cities 
+        FROM data
+        HAVING Cities.Count > 0;
+
+OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";
+

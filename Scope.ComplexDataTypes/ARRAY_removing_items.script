@@ -1,0 +1,19 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+data = SampleData.Cities();
+
+
+data1= SELECT State, City
+       FROM data
+            CROSS APPLY Cities AS City;
+
+data2= SELECT *
+       FROM data1
+       WHERE City.StartsWith("W");
+
+data3= SELECT State
+            , ARRAY_AGG( City ) AS Cities
+       FROM data2
+       GROUP BY State;
+
+OUTPUT data3 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";

@@ -1,0 +1,16 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+
+data = 
+    SELECT Project, 
+      new MAP<string,string> () AS Employees
+    FROM projectmembers;
+
+data = 
+    SELECT Project, 
+      new MAP<string,string> {} AS Employees
+    FROM projectmembers;
+
+OUTPUT data TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";

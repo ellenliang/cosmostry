@@ -1,0 +1,15 @@
+MODULE @"../SampleData/SampleData.module";
+
+querylog = SampleData.QueryLog();
+
+
+data =
+   SELECT 
+       *,
+       PERCENTILE_CONT(0.5) 
+           WITHIN GROUP (ORDER BY Latency) 
+           OVER ( PARTITION BY Vertical ) AS Percentile50 
+    FROM querylog;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/PERCENTILE_CONT.ss";

@@ -1,0 +1,37 @@
+REFERENCE @"BondBinaries/Microsoft.Bond.dll";
+REFERENCE @"BondBinaries/Microsoft.Bond.Interfaces.dll";
+REFERENCE @"Geometry/bin/Debug/Geometry.dll";
+
+data =  SSTREAM @"Output/AllShapes_BondedT.ss";
+
+data2 = SELECT data.Kind , MyHelper.BondedShapeToString(data.Kind, data.Coordinate) AS Shape 
+FROM data;
+
+OUTPUT data2 TO @"Output/AllShapes_BondedT_Output2.txt";
+
+
+#CS
+
+public class MyHelper
+{
+    public static string BondedShapeToString(string kind, Microsoft.Bond.Bonded<Geometry.Shape> shape)
+    {
+	if (kind=="Rect")
+	{
+		var v = shape.Cast<Geometry.Rectangle>().Value;
+		return string.Format( "{0},{1},{2},{3}", v.x, v.y, v.width, v.height );
+	}
+	else if (kind=="Circle")
+	{
+		var v = shape.Cast<Geometry.Circle>().Value;
+		return string.Format( "{0},{1},{2}", v.x, v.y, v.radius );
+	}	
+	else
+	{
+		var v = shape.Value;
+		return string.Format( "{0},{1}", v.x, v.y );	
+	}
+    }
+}
+
+#ENDCS

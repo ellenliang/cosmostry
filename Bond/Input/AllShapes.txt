@@ -1,0 +1,12 @@
+Shape	0,0
+Shape	10,10
+Shape	50,50
+Shape	100,100
+Rect	30,50,7,7
+Rect	40,60,7,14
+Rect	80,100,14,7
+Rect	130,150,14,14
+Circle	30,0,5
+Circle	40,10,10
+Circle	80,50,25
+Circle	130,100,50

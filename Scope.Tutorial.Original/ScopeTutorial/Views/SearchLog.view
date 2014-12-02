@@ -1,0 +1,22 @@
+﻿CREATE VIEW SearchLog SCHEMA ( 
+	IId:int, 
+	UId:int, 
+	TimeStamp:DateTime, 
+	Market:string, 
+	Query:string, 
+	DwellTime:int, 
+	Results:string, 
+	ClickedUrls:string 
+)
+AS BEGIN
+
+    #IF (LOCAL)
+        #DECLARE SearchLogPath string = @"../my/ScopeTutorial/SampleInputs/SearchLog.txt";
+    #ELSE
+        #DECLARE SearchLogPath string = @"/my/ScopeTutorial/SampleInputs/SearchLog.txt";
+    #ENDIF
+
+	EXTRACT IId:int, UId:int, TimeStamp:DateTime, Market:string, Query:string, DwellTime:int, Results:string, ClickedUrls:string
+	FROM @SearchLogPath
+	USING DefaultTextExtractor();
+END;

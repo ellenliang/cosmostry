@@ -1,0 +1,7 @@
+CREATE VIEW SearchLog 
+SCHEMA ( Id:int, Name:string )
+AS BEGIN
+    a = EXTRACT Id:int, Name:string
+    FROM @"/my/CosmosSamples/CosmosUniversity/Input/SetOps_B.tsv"
+    USING DefaultTextExtractor();
+END;

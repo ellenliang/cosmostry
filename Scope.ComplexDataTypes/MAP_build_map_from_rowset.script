@@ -1,0 +1,11 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembersRaw();
+
+data = 
+    SELECT 
+        Project, 
+         MAP_AGG( Employee, Role ) AS Employees
+    FROM projectmembers GROUP BY Project ;
+
+OUTPUT data TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";

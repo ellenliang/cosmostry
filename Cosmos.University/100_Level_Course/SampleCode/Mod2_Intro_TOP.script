@@ -1,0 +1,14 @@
+﻿athletes = VIEW @"OlympicAthletes.view";
+
+data1 = 
+    SELECT Athlete, SUM(TotalMedals) AS TotalMedals
+    FROM athletes
+    GROUP BY Athlete;
+
+data2 = 
+   SELECT TOP 5 *
+   FROM data1;
+
+OUTPUT data2
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();

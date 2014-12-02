@@ -1,0 +1,7 @@
+﻿// Ex1_Copy_States.script
+
+cities = VIEW @"Cities.view";
+
+OUTPUT cities
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();

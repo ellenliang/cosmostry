@@ -1,0 +1,10 @@
+﻿athletes = VIEW @"OlympicAthletes.view";
+
+data = 
+    SELECT Athlete
+    FROM athletes
+    WHERE Athlete!=null && Athlete.StartsWith("M");
+
+OUTPUT data
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();

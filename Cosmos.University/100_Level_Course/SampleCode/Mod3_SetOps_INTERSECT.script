@@ -1,0 +1,21 @@
+﻿a = VIEW @"SetOps_DataSetA.view";
+b = VIEW @"SetOps_DataSetB.view";
+
+intersect_distinct =
+    SELECT * FROM a
+    INTERSECT DISTINCT
+    SELECT * FROM b;  
+
+intersect_all =
+    SELECT * FROM a
+    INTERSECT ALL
+    SELECT * FROM b;  
+
+
+OUTPUT intersect_distinct
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output_intersect_distinct.tsv"
+    USING DefaultTextOutputter();
+
+OUTPUT intersect_all
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output_intersect_all.tsv"
+    USING DefaultTextOutputter();

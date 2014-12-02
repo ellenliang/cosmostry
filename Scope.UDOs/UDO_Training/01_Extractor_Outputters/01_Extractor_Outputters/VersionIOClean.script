@@ -1,0 +1,108 @@
+﻿
+VersionTable =
+    EXTRACT Name : string,
+            _Version : MyVersion,
+            ReleaseDate : string
+    FROM @"/my/ScopeTutorial/SampleInputs/Versions.txt"
+    USING VersionExtractor();
+
+
+VersionMins =
+    SELECT Name,
+           MyMin(_Version) AS MinVersion,
+           System.DateTime.Parse(ReleaseDate).Year AS Year
+    FROM VersionTable;
+
+OUTPUT VersionMins
+TO @"/my/ScopeTutorial/SampleOutputs/VersionMins.tsv"
+USING VersionOutputter();
+
+#CS
+
+public class VersionExtractor : Extractor
+{
+    public override Schema Produces(string[] requested_columns, string[] args)
+    {
+        return new Schema(requested_columns);
+    }
+    public override IEnumerable<Row> Extract(StreamReader reader, Row output_row, string[] args)
+    {
+        char delimiter = '\t';
+        string line;
+        while ((line = reader.ReadLine()) != null)
+        {
+            var tokens = line.Split(delimiter);
+            output_row[0].UnsafeSet(tokens[0]);
+            output_row[1].UnsafeSet(new MyVersion(tokens[1]));
+            output_row[2].UnsafeSet(tokens[2]);
+            yield return output_row;
+        }
+    }
+}
+
+
+public class MyVersion
+{
+    private Version _version;
+    public string VString
+    {
+        get { return _version.ToString(); }
+    }
+
+    public int CompareTo(MyVersion versionIn)
+    {
+        return this._version.CompareTo(versionIn._version);
+    }
+
+    public MyVersion(string vString)
+    {
+        _version = new Version(vString);
+    }
+
+    public void Serialize(StreamWriter writer)
+    {
+        writer.Write(_version.ToString());
+    }
+}
+public class MyMin____Scope_Generated_Classes____MyVersion : Aggregate1<MyVersion, MyVersion>
+{
+    private MyVersion minVersion;
+    private bool isFirstVersion = true;
+    public override void Initialize()
+    {
+    }
+    public override void Add(MyVersion version)
+    {
+        if (isFirstVersion||minVersion.CompareTo(version) > 0)
+        {
+            minVersion = version;
+            isFirstVersion = false;
+        }
+
+    }
+    public override MyVersion Finalize()
+    {
+        return minVersion;
+    }
+}
+
+public class VersionOutputter : Outputter
+{
+    public override void Output(RowSet input, StreamWriter writer, string[] args)
+    {
+        foreach (Row row in input.Rows)
+        {
+            ColumnData col0 = row[0];
+            col0.Serialize(writer);
+            writer.Write('\t');
+            ColumnData col1 = row[1];
+            ((MyVersion)col1.Value).Serialize(writer);
+            writer.Write('\t');
+            ColumnData col2 = row[2];
+            col2.Serialize(writer);
+            writer.WriteLine();
+            writer.Flush();
+        }
+    }
+}
+#ENDCS

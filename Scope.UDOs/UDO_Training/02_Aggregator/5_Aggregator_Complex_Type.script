@@ -1,0 +1,18 @@
+﻿MODULE @"../my/CosmosSampleData/CosmosSampleData.module";
+data = CosmosSampleData.SearchLogRaw();
+
+//create an array of values for each market
+rs1 =
+    SELECT Market,
+           ARRAY_AGG(Duration) AS Durations
+    FROM data
+    GROUP BY Market;
+
+rs2 =
+    SELECT Market,
+           MySum3(Durations) AS TotalDuration
+    FROM rs1;
+      //GROUP BY Market;
+
+OUTPUT rs2
+TO @"/my/ScopeTutorial/SampleOutputs/searchlog3.txt";

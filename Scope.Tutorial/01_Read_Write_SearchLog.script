@@ -1,0 +1,13 @@
+﻿searchlog = 
+    EXTRACT IId:int, 
+            UId:int, 
+            Start:DateTime, 
+            Market:string, 
+            Query:string, 
+            DwellTime:int, 
+            Results:string, 
+            ClickedUrls:string
+    FROM  @"my/ScopeTutorial/SampleInputs/SearchLog.txt"
+    USING DefaultTextExtractor();
+
+OUTPUT searchlog TO @"/my/ScopeTutorial/SampleOutputs/SearchLog.txt";

@@ -1,0 +1,20 @@
+﻿MODULE @"MyModule.module" AS M;
+
+colors1 = 
+    EXTRACT Color:string, 
+            HexCode:string, 
+            RGB:string, 
+            Issued:String, 
+            Retired:string, 
+            Notes:string
+    FROM @"/my/Colors.txt" 
+    USING DefaultTextExtractor();
+
+colors2 = M.DoNothingFunc( input=colors1 );
+
+OUTPUT colors2
+TO @"/my/outcolors2.txt" 
+USING DefaultTextOutputter();
+
+
+

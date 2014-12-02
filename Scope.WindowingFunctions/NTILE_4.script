@@ -1,0 +1,13 @@
+MODULE @"../CosmosSampleData/CosmosSampleData.module";
+querylog = CosmosSampleData.QueryLog();
+
+
+data =
+   SELECT 
+       *,
+       NTILE(4) OVER(PARTITION BY Vertical ORDER BY Latency) AS Quartile   
+FROM 
+   querylog;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/NTILE_4.ss"; 

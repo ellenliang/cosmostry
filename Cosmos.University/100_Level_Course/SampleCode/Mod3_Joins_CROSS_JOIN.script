@@ -1,0 +1,13 @@
+﻿departments = VIEW @"Departments.view";
+employees = VIEW @"Employees.view";
+
+cross_join = 
+    SELECT 
+        employees.*, 
+        departments.* 
+    FROM employees 
+        CROSS JOIN departments;
+
+OUTPUT cross_join
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/cross_join.tsv"
+    USING DefaultTextOutputter();

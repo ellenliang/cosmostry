@@ -1,0 +1,14 @@
+MODULE @"../SampleData/SampleData.module";
+
+querylog = SampleData.QueryLog();
+
+
+data =
+   SELECT 
+       *,
+       DENSE_RANK() OVER (PARTITION BY Vertical ORDER BY Latency) AS DenseRank
+   FROM querylog
+   HAVING DenseRank <= 3;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/TOP_N_DENSE_RANK.ss"; 

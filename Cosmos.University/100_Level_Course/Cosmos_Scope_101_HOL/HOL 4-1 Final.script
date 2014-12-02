@@ -1,0 +1,41 @@
+﻿// COSMOS SCOPE 101 HOL :: HOL 4-1 Final.script
+
+
+searchlog = 
+    VIEW @"Views/SearchLog.view" 
+        PARAMS (start="02-01-2012", end="02-29-2012");
+
+searchlog = 
+    SELECT iid, uid, timestamp, market, query, dwelltime, results, clickedurls
+    FROM searchlog;
+
+/*
+//get query and position of first click
+results = 
+    SELECT  query, 
+            results, 
+            clickedurls, 
+            Helpers.GetFirstClickedResultPosition(results, clickedurls) AS firstClickResultPosition
+    FROM searchlog;
+*/
+
+//for each query, show position in results of 1st, 2nd, and 3rd clicks, total number of results, 
+//and total number of clicks
+results = 
+    SELECT  query, 
+            new PageViewActivityData(results, clickedurls) AS Activity
+    FROM searchlog;
+
+results = 
+    SELECT  query, 
+            Activity.GetResultPositionofClick(1) AS firstClickPosition,
+            Activity.GetResultPositionofClick(2) AS secondClickPosition,
+            Activity.GetResultPositionofClick(3) AS thirdClickPosition,
+            Activity.Results.Count AS numResults,
+            Activity.Clicks.Count AS numClicks
+    FROM results;
+
+
+OUTPUT results
+    TO @"outputs/searchlogout.txt"
+    USING DefaultTextOutputter();

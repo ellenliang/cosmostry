@@ -1,0 +1,11 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+data = SampleData.ProjectMembers();
+
+
+data1=
+    SELECT *
+    FROM data
+    WHERE Employees.Keys.Contains( "Mallory" );
+
+OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";

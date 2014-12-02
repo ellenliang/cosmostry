@@ -1,0 +1,10 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+data = SampleData.Cities();
+
+
+data1= SELECT State, City
+       FROM data
+            CROSS APPLY Cities AS City;
+
+OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";

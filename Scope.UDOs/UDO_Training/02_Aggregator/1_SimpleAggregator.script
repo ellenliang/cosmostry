@@ -1,0 +1,10 @@
+﻿MODULE @"../my/CosmosSampleData/CosmosSampleData.module";
+data = CosmosSampleData.SearchLogRaw();
+
+rs1 = SELECT Market,
+             MySum(Duration) AS TotalDuration
+      FROM data
+      GROUP BY Market;
+
+OUTPUT rs1
+TO @"/my/ScopeTutorial/SampleOutputs/searchlog.txt";

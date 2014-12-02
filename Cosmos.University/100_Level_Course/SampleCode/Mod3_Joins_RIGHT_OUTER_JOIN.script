@@ -1,0 +1,14 @@
+﻿departments = VIEW @"Departments.view";
+employees = VIEW @"Employees.view";
+
+right_outer_join = 
+    SELECT 
+        employees.*, 
+        departments.* 
+    FROM employees 
+         RIGHT OUTER JOIN departments 
+             ON employees.EmpDepartmentID == departments.DepDepartmentID;
+
+OUTPUT right_outer_join 
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/right_outer_join.tsv"
+    USING DefaultTextOutputter();

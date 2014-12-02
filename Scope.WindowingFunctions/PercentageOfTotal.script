@@ -1,0 +1,21 @@
+MODULE @"../SampleData/SampleData.module";
+
+employees = SampleData.Employees();
+
+// Calculate the total
+a = 
+   SELECT TOP 1
+      SUM(Salary) OVER( ) AS SalaryAllDepts
+   FROM employees;
+
+b =  
+    SELECT DeptName, SUM(Salary) AS SalaryByDept
+    FROM employees
+    GROUP BY DeptName;
+
+c = SELECT DeptName, SalaryByDept, SalaryAllDepts, (SalaryByDept/SalaryAllDepts) AS Percentage
+    FROM a CROSS JOIN b;
+
+OUTPUT c
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/c.ss";
+

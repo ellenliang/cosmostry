@@ -1,0 +1,14 @@
+﻿departments = VIEW @"Departments.view";
+employees = VIEW @"Employees.view";
+
+full_outer_join = 
+    SELECT 
+        employees.*, 
+        departments.* 
+    FROM employees 
+         FULL OUTER JOIN departments 
+             ON employees.EmpDepartmentID == departments.DepDepartmentID;
+
+OUTPUT full_outer_join
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/full_outer_join.tsv"
+    USING DefaultTextOutputter();

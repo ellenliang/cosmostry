@@ -1,0 +1,13 @@
+﻿// COSMOS SCOPE 101 HOL :: HOL 2-1 Begin.script
+
+searchlog = 
+    VIEW @"Views/SearchLog.view" 
+        PARAMS (start="02-01-2012", end="02-29-2012");
+
+searchlog = 
+    SELECT iid, uid, timestamp, market, query, dwelltime, results, clickedurls
+    FROM searchlog;
+
+OUTPUT searchlog
+TO SSTREAM @"outputs/searchlogout.ss";
+

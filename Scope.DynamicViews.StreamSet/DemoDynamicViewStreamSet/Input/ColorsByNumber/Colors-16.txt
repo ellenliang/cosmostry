@@ -1,0 +1,5 @@
+White	#FFFFFF	"(255, 255, 255)"	1949		
+Wild Blue Yonder	#A2ADD0	"(162, 173, 208)"	2003		
+Wild Strawberry	#FF43A4	"(255, 67, 164)"	1990		
+Wild Watermelon	#FC6C85	"(252, 108, 133)"	1972		"Renamed from ""Ultra Red"" in 1990."
+Wisteria	#CDA4DE	"(205, 164, 222)"	1993		

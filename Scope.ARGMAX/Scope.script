@@ -1,0 +1,27 @@
+﻿
+rs0 = EXTRACT FirstName,LastName,Tenure:int,Title,Department
+     FROM @"/my/Demo/ARGMAX/employees.csv"
+     USING DefaultTextExtractor();
+
+rs1 = 
+    SELECT ARGMAX( Tenure, LastName ) AS MostTentured
+    FROM rs0;
+
+rs2 = 
+    SELECT Department, ARGMAX( Tenure, LastName ) AS MostTentured
+    GROUP BY Department
+    FROM rs0;
+
+rs3 = 
+    SELECT Department, ARGMAX( Tenure, LastName ) AS MostTenured,  ARGMAX( Tenure, Tenure ) AS Tenure
+    GROUP BY Department
+    FROM rs0;
+
+OUTPUT rs0 TO @"/my/Demo/ARGMAX/employees_out.csv";
+
+OUTPUT rs1 TO @"/my/Demo/ARGMAX/most_tenured.csv" ;
+
+OUTPUT rs2 TO @"/my/Demo/ARGMAX/most_tenured_by_dep.csv";
+
+OUTPUT rs3 TO @"/my/Demo/ARGMAX/most_tenured_by_dep2.csv";
+    

@@ -1,0 +1,6 @@
+﻿employees = VIEW @"Employees.view";
+
+
+OUTPUT employees
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output_employees.tsv"
+    USING DefaultTextOutputter();

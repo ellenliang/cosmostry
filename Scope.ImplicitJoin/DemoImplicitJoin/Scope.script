@@ -1,0 +1,42 @@
+﻿employees = EXTRACT 
+    EmpName:string, DepID:string
+    FROM @"my/Demo/ImplicitJoin/Employees.txt"
+    USING DefaultTextExtractor;
+
+departments = EXTRACT 
+    DepID:string, DepName:string 
+    FROM @"my/Demo/ImplicitJoin/Departments.txt"
+    USING DefaultTextExtractor;
+
+// CROSS JOIN
+rs_cross_join = 
+    SELECT employees.DepID AS EmpDepId, departments.DepID , employees.EmpName, departments.DepName
+    FROM employees 
+        CROSS JOIN departments;
+
+// INNER JOIN
+rs_inner = 
+    SELECT employees.DepID AS EmpDepId, 
+           departments.DepID, 
+           employees.EmpName, 
+           departments.DepName
+    FROM employees 
+    INNER JOIN departments 
+    ON employees.DepID == departments.DepID;
+
+// IMPLICIT (NO WHERE CLAUSE)
+rs_implicit_join = 
+    SELECT employees.DepID AS EmpDepId, 
+        departments.DepID, 
+        employees.EmpName, 
+        departments.DepName
+        FROM employees,departments;
+
+OUTPUT rs_cross_join 
+TO @"my/My/Demo/ImplicitJoin/Output/cross_join.txt";
+
+OUTPUT rs_inner
+TO @"my/My/Demo/ImplicitJoin/Output/inner_join.txt";
+
+
+

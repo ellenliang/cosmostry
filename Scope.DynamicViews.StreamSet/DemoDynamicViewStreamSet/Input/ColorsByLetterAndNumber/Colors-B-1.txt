@@ -1,0 +1,10 @@
+Cadet Blue	#B0B7C6	"(176, 183, 198)"	1958		
+Canary	#FFFF99	"(255, 255, 153)"	1998		
+Caribbean Green	#1CD3A2	"(28, 211, 162)"	1998		
+Carnation Pink	#FFAACC	"(255, 170, 204)"	1949		
+Cerise	#DD4492	"(221, 68, 146)"	1993		
+Cerulean	#1DACD6	"(29, 172, 214)"	1990		
+Chestnut	#BC5D58	"(188, 93, 88)"	1958		"Renamed from ""Indian Red"" in 1999."
+Copper	#DD9475	"(221, 148, 117)"	1958		
+Cornflower	#9ACEEB	"(154, 206, 235)"	1949		
+Cotton Candy	#FFBCD9	"(255, 188, 217)"	1998		

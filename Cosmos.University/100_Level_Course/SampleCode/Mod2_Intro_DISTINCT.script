@@ -1,0 +1,11 @@
+﻿athletes = VIEW @"OlympicAthletes.view";
+
+data = 
+    SELECT Country, COUNT() AS NumRecords
+    FROM athletes
+    GROUP BY Country;
+
+
+OUTPUT data
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();

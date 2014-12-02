@@ -1,0 +1,3 @@
+Laser Lemon	#FEFE22	"(254, 254, 34)"	1972		"Renamed from ""Chartreuse"" in 1990."
+Lavender	#FCB4D5	"(252, 180, 213)"	1958		
+Lemon Yellow	#FFF44F	"(255, 244, 79)"	1949	1990	

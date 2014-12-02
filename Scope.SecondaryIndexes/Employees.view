@@ -1,0 +1,8 @@
+// Employees.view
+CREATE VIEW Employees
+SCHEMA (EmpID:string, EmpName:string, DeptName:string, DeptID:string, Salary:double)
+AS
+BEGIN
+    MODULE "EmployeesIndexes.module";
+    employees = SSTREAM @"/my/CosmosSamples/SecondaryIndexes/Output/employees_base.ss";
+END;

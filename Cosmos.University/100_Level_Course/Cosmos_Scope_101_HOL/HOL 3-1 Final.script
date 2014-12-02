@@ -1,0 +1,82 @@
+﻿// COSMOS SCOPE 101 HOL :: HOL 3-1 Final.script
+
+searchlog = 
+    VIEW @"Views/SearchLog.view" 
+        PARAMS (start="02-01-2012", end="02-29-2012");
+
+searchlog = 
+    SELECT iid, uid, timestamp, market, query, dwelltime, results, clickedurls
+    FROM searchlog;
+
+/*
+//Count of queries by market
+searchlog = 
+    SELECT market, COUNT(market) AS Count_Market
+    FROM searchlog
+    GROUP BY market
+*/
+
+/*
+//Count of queries by market, descending ordering on count
+
+searchlog = 
+    SELECT market, COUNT(market) AS Count_Market
+    FROM searchlog
+    GROUP BY market
+    ORDER BY Count_Market DESC;
+*/
+
+/*
+//Count of queries and average dwell time per market
+
+searchlog = 
+    SELECT market, COUNT(market) AS Count_Market, AVG(dwelltime) AS Avg_Dwelltime
+    FROM searchlog
+    GROUP BY market
+    ORDER BY Count_Market DESC;
+*/
+
+/*
+//Count of queries and average dwell time per market, filtering out markets with only one query
+
+searchlog = 
+    SELECT market, COUNT(market) AS Count_Market, AVG(dwelltime) AS Avg_Dwelltime
+    FROM searchlog
+    GROUP BY market
+    ORDER BY Count_Market DESC
+    HAVING Count_Market > 1;
+*/
+
+/*
+//Count of queries, average dwell time per market, and average number of clicks, 
+//filtering out markets with only one query
+
+searchlog = 
+    SELECT market, 
+        COUNT(market) AS Count_Market, 
+        AVG(dwelltime) AS Avg_Dwelltime, 
+        AVG(IF(clickedurls == "NULL", 0, clickedurls.Split(';').Length)) AS Avg_Clicks
+    FROM searchlog
+    GROUP BY market
+    ORDER BY Count_Market DESC
+    HAVING Count_Market > 1;
+*/
+
+//calculate percentage of queries from each market
+querycount = 
+    SELECT COUNT(*) AS count
+    FROM searchlog;
+
+searchlog = 
+    SELECT market, COUNT(*) AS marketCount
+    FROM searchlog 
+    GROUP BY market;
+
+searchlog = 
+    SELECT market, (float) marketCount / (float) count * 100.0 AS percentage
+    FROM searchlog 
+      CROSS JOIN querycount;
+
+OUTPUT searchlog
+    TO @"outputs/searchlogout.txt"
+    USING DefaultTextOutputter();

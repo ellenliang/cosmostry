@@ -1,0 +1,12 @@
+MODULE @"../SampleData/SampleData.module";
+
+employees = SampleData.Employees();
+
+
+data =
+   SELECT *, 
+       COUNT(Salary/12) OVER( ) AS Count
+   FROM employees;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/Reporting_Count_Expression.ss";

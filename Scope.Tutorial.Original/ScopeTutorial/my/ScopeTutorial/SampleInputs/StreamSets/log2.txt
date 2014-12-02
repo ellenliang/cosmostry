@@ -1,0 +1,52 @@
+﻿rick Red	#CB4154	"(203, 65, 84)"	1949		
+Brown	#B4674D	"(180, 103, 77)"	1903		
+Burnt Orange	#FF7F49	"(255, 127, 73)"	1958		
+Burnt Sienna	#EA7E5D	"(234, 126, 93)"	1949		
+Cadet Blue	#B0B7C6	"(176, 183, 198)"	1958		
+Canary	#FFFF99	"(255, 255, 153)"	1998		
+Caribbean Green	#1CD3A2	"(28, 211, 162)"	1998		
+Carnation Pink	#FFAACC	"(255, 170, 204)"	1949		
+Cerise	#DD4492	"(221, 68, 146)"	1993		
+Cerulean	#1DACD6	"(29, 172, 214)"	1990		
+Chestnut	#BC5D58	"(188, 93, 88)"	1958		"Renamed from ""Indian Red"" in 1999."
+Copper	#DD9475	"(221, 148, 117)"	1958		
+Cornflower	#9ACEEB	"(154, 206, 235)"	1949		
+Cotton Candy	#FFBCD9	"(255, 188, 217)"	1998		
+Dandelion	#FDDB6D	"(253, 219, 109)"	1990		
+Denim	#2B6CC4	"(43, 108, 196)"	1993		
+Desert Sand	#EFCDB8	"(239, 205, 184)"	1998		
+Eggplant	#6E5160	"(110, 81, 96)"	1998		
+Electric Lime	#CEFF1D	"(206, 255, 29)"	1990		
+Fern	#71BC78	"(113, 188, 120)"	1998		
+Forest Green	#6DAE81	"(109, 174, 129)"	1958		
+Fuchsia	#C364C5	"(195, 100, 197)"	1990		
+Fuzzy Wuzzy	#CC6666	"(204, 102, 102)"	1998		
+Gold	#E7C697	"(231, 198, 151)"	1949		
+Goldenrod	#FCD975	"(252, 217, 117)"	1958		
+Granny Smith Apple	#A8E4A0	"(168, 228, 160)"	1993		
+Gray	#95918C	"(149, 145, 140)"	1949		
+Green	#1CAC78	"(28, 172, 120)"	1903		
+Green Blue	#1164B4	"(17, 100, 180)"	1949	1990	
+Green Yellow	#F0E891	"(240, 232, 145)"	1949		
+Hot Magenta	#FF1DCE	"(255, 29, 206)"	1990		
+Inchworm	#B2EC5D	"(178, 236, 93)"	2003		
+Indigo	#5D76CB	"(93, 118, 203)"	2000		
+Jazzberry Jam	#CA3767	"(202, 55, 103)"	2003		
+Jungle Green	#3BB08F	"(59, 176, 143)"	1990		
+Laser Lemon	#FEFE22	"(254, 254, 34)"	1972		"Renamed from ""Chartreuse"" in 1990."
+Lavender	#FCB4D5	"(252, 180, 213)"	1958		
+Lemon Yellow	#FFF44F	"(255, 244, 79)"	1949	1990	
+Macaroni and Cheese	#FFBD88	"(255, 189, 136)"	1993		
+Magenta	#F664AF	"(246, 100, 175)"	1949		
+Magic Mint	#AAF0D1	"(170, 240, 209)"	1990	2003	
+Mahogany	#CD4A4C	"(205, 74, 76)"	1949		
+Maize	#EDD19C	"(237, 209, 156)"	1949	1990	
+Manatee	#979AAA	"(151, 154, 170)"	1998		
+Mango Tango	#FF8243	"(255, 130, 67)"	2003		
+Maroon	#C8385A	"(200, 56, 90)"	1949		
+Mauvelous	#EF98AA	"(239, 152, 170)"	1993		
+Melon	#FDBCB4	"(253, 188, 180)"	1949		
+Midnight Blue	#1A4876	"(26, 72, 118)"	1949		"Renamed from ""Prussian Blue"" in 1958."
+Mountain Meadow	#30BA8F	"(48, 186, 143)"	1998		
+Mulberry	#C54B8C	"(197, 75, 140)"	1958	2003	
+Navy Blue	#1974D2	"(25, 116, 210)"	1958		

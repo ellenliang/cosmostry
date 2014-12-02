@@ -1,0 +1,5 @@
+﻿departments = VIEW @"Departments.view";
+
+OUTPUT departments
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output_departments.tsv"
+    USING DefaultTextOutputter();

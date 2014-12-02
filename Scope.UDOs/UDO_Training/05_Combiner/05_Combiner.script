@@ -1,0 +1,20 @@
+﻿
+MODULE @"../my/CosmosSampleData/CosmosSampleData.module";
+employees = CosmosSampleData.EmployeesRaw();
+departments = CosmosSampleData.DepartmentsRaw();
+
+
+//CROSS JOIN Example
+rs0 =
+    COMBINE employees WITH departments
+    USING MyCrossJoinCombiner();
+
+//JOIN Example
+/*
+rs0 =
+    COMBINE employees WITH departments
+    ON employees.DepID == departments.DepID
+    USING MyCrossJoinCombiner();
+*/
+OUTPUT rs0
+TO @"/my/ScopeTutorial/SampleOutputs/CrossJoinCombiner.tsv";

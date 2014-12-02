@@ -1,0 +1,14 @@
+MODULE @"../SampleData/SampleData.module";
+
+querylog = SampleData.QueryLog();
+
+
+data =
+   SELECT 
+       *,
+       RANK() OVER (PARTITION BY Vertical ORDER BY Latency) AS Rank
+   FROM querylog
+   HAVING Rank <= 3;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/TOP_N_RANK.ss"; 

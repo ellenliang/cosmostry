@@ -1,0 +1,113 @@
+﻿MODULE @"../CosmosSampleData/CosmosSampleData.module";
+//data = CosmosSampleData.BitsRaw();
+
+VersionTable =
+    EXTRACT Name : string,
+            Version : string,
+            ReleaseDate : string
+    FROM @"../CosmosSampleData/DotNetVersions.txt"
+    USING DefaultTextExtractor();
+
+data0 =
+  SELECT
+    Name,
+    Version.Replace("?","0") AS Version,
+    System.DateTime.Parse(ReleaseDate) AS ReleaseDate
+  FROM VersionTable
+  WHERE Version.Length>0;
+
+data1 =
+  SELECT Name, new MyVersion(Version) AS Version, ReleaseDate.Year AS Year
+  FROM data0;
+
+data2 =
+  SELECT MyMin(Version) AS MinVersion, Year
+  FROM data1
+  GROUP BY Year;
+
+result =
+  SELECT MinVersion.VString AS Version, Year
+  FROM data2;
+
+OUTPUT result TO
+  @"/my/Output/Output.tsv"
+  USING DefaultTextOutputter();
+
+#CS
+
+
+public class MyVersion
+{
+    private Version _version;
+    public string VString
+    {
+      get { return _version.ToString(); }
+    }
+
+    public int CompareTo(MyVersion versionIn)
+    {
+        return this._version.CompareTo(versionIn._version);
+    }
+
+    public MyVersion(string vString)
+    {
+        _version = new Version(vString);
+    }
+
+    public void Serialize(StreamWriter writer)
+    {
+        writer.Write(_version.ToString());
+    }
+}
+
+
+
+public class Accumulate_System_Int32__ : Aggregate1<int[], int[]>
+{
+    int[] acc;
+
+    public override void Initialize()
+    {
+    }
+
+    public override void Add(int[] y)
+    {
+        if (this.acc ==null)
+	{
+		this.acc = new int[ y.Length ];
+	}
+	for (int i=0; i<y.Length; i++)
+        {
+		this.acc[i] += y[i];
+        }
+    }
+
+    public override int[] Finalize()
+    {
+        return this.acc;
+    }
+}
+
+public class MyMin____Scope_Generated_Classes____MyVersion : Aggregate1<MyVersion, MyVersion>
+{
+    MyVersion minVersion = new MyVersion("0.0.0.0");
+    public override void Initialize()
+    {
+    }
+    public override void Add(MyVersion version)
+    {
+
+        if (minVersion.CompareTo(version) < 0)
+        {
+            minVersion = version;
+        }
+
+    }
+    public override MyVersion Finalize()
+    {
+        return minVersion;
+    }
+}
+
+
+#ENDCS

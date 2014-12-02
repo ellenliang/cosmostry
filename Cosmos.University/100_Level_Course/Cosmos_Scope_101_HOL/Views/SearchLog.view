@@ -1,0 +1,28 @@
+﻿// COSMOS SCOPE 101 HOL :: SearchLog.view
+
+
+//This view exposes the search logs.
+CREATE VIEW SearchLog SCHEMA ( 
+	iid:int, 
+	uid:int, 
+	timestamp:DateTime, 
+	market:string, 
+	query:string, 
+	dwelltime:int, 
+	results:string, 
+	clickedurls:string 
+)
+PARAMS (
+	// use this parameter to specify start date/time for reading from the logs. The data returned is inclusive of this value.
+	start string,
+	// use this parameter to specify end date/time for reading from the logs. The data returned is inclusive of this value.
+	end string
+)
+AS BEGIN
+
+	EXTRACT iid:int, uid:int, timestamp:DateTime, market:string, query:string, dwelltime:int, results:string, clickedurls:string
+	FROM @"../SampleInputs/SearchLog.txt"
+	USING DefaultTextExtractor()
+	HAVING timestamp >= DateTime.Parse(@start) AND timestamp <= DateTime.Parse(@end);
+
+END;

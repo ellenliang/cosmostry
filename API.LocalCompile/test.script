@@ -1,0 +1,10 @@
+
+rs0 = EXTRACT a:string, b:int, c:int
+    FROM "input.tsv"
+    USING DefaultTextExtractor();
+
+OUTPUT rs0
+    TO "output.tsv"
+    USING DefaultTextOutputter();
+
+

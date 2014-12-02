@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputType>File</OutputType>
+    <AssemblyName>Algebra.xml</AssemblyName>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <Name>UDO_Training</Name>
+    <RootNamespace>UDO_Training</RootNamespace>
+    <VCSelectionInProjectProperty>&lt;Use Current VC in VC Selector&gt;</VCSelectionInProjectProperty>
+    <CosmosRuntimeVersion>Default</CosmosRuntimeVersion>
+    <ScopePath>%24(SCRIPT_DIR);%24(CLUSTER_ROOT);%24(SCOPE_DIR)</ScopePath>
+    <InputStreamSearchPath>%24(SCRIPT_DIR);%24(CLUSTER_ROOT);%24(PROJECT_DIR)</InputStreamSearchPath>
+    <OutputStreamPath>%24(PROJECT_DIR)</OutputStreamPath>
+    <VertexDebugSolution>false</VertexDebugSolution>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Script Include="01_Extractor_Outputters\2_Extractor_Outputter_Params.script" />
+    <Script Include="01_Extractor_Outputters\1_Simple_Extractor_Outputter.script" />
+    <Script Include="01_Extractor_Outputters\3_Extractor_Outputter_UDT.script" />
+    <Script Include="02_Aggregator\3_AggregatorScopeIntArray.script" />
+    <Script Include="02_Aggregator\1_SimpleAggregator.script" />
+    <Script Include="02_Aggregator\2_Aggregator_2_Values.script" />
+    <Script Include="02_Aggregator\5_Aggregator_Complex_Type.script" />
+    <Script Include="02_Aggregator\4_AggregatorUDT.script" />
+    <Script Include="03_Processor\3_Processor.script" />
+    <Script Include="04_Reducer\04_Reducer.script" />
+    <Script Include="05_Combiner\05_Combiner.script" />
+    <ScriptCode Include="01_Extractor_Outputters\2_Extractor_Outputter_Params.script.cs">
+      <DependentUpon>01_Extractor_Outputters\2_Extractor_Outputter_Params.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="01_Extractor_Outputters\1_Simple_Extractor_Outputter.script.cs">
+      <DependentUpon>01_Extractor_Outputters\1_Simple_Extractor_Outputter.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="01_Extractor_Outputters\3_Extractor_Outputter_UDT.script.cs">
+      <DependentUpon>01_Extractor_Outputters\3_Extractor_Outputter_UDT.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="02_Aggregator\3_AggregatorScopeIntArray.script.cs">
+      <DependentUpon>02_Aggregator\3_AggregatorScopeIntArray.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="02_Aggregator\1_SimpleAggregator.script.cs">
+      <DependentUpon>02_Aggregator\1_SimpleAggregator.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="02_Aggregator\2_Aggregator_2_Values.script.cs">
+      <DependentUpon>02_Aggregator\2_Aggregator_2_Values.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="02_Aggregator\5_Aggregator_Complex_Type.script.cs">
+      <DependentUpon>02_Aggregator\5_Aggregator_Complex_Type.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="02_Aggregator\4_AggregatorUDT.script.cs">
+      <DependentUpon>02_Aggregator\4_AggregatorUDT.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="03_Processor\3_Processor.script.cs">
+      <DependentUpon>03_Processor\3_Processor.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="04_Reducer\04_Reducer.script.cs">
+      <DependentUpon>04_Reducer\04_Reducer.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="05_Combiner\05_Combiner.script.cs">
+      <DependentUpon>05_Combiner\05_Combiner.script</DependentUpon>
+    </ScriptCode>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="02_Aggregator\" />
+    <Folder Include="03_Processor\" />
+    <Folder Include="01_Extractor_Outputters" />
+    <Folder Include="my" />
+    <Folder Include="my\CosmosSampleData" />
+    <Folder Include="04_Reducer" />
+    <Folder Include="05_Combiner" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="my\CosmosSampleData\Bits.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\CosmosSampleData\CosmosSampleData.module">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\CosmosSampleData\SearchLog.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\CosmosSampleData\StateTax.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\CosmosSampleData\Versions.txt">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(AppData)\Microsoft\ScopeStudio\MsBuild\1.0\Scope.targets" />
+  <PropertyGroup>
+    <ProjectGuid>517db06e-01ae-451b-a909-61526dd8c95f</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+</Project>

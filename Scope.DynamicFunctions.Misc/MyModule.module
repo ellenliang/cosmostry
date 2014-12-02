@@ -1,0 +1,12 @@
+﻿DEFINE MODULE Module
+BEGIN
+    FUNC DoNothingFunc;  
+    FUNC ReverseFunc;  
+    FUNC AggregateColumns ;
+  
+END MODULE
+                  
+FUNC DoNothingFunc USING DoNothingFunctionResolver();
+FUNC ReverseFunc USING ReverseSchemaFunctionResolver();
+FUNC AggregateColumns USING AggregateColumnsFunctionResolver();
+

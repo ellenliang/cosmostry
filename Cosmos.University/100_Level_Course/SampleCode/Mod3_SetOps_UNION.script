@@ -1,0 +1,19 @@
+﻿a = VIEW @"SetOps_DataSetA.view";
+b = VIEW @"SetOps_DataSetB.view";
+
+union_distinct =    SELECT * FROM a
+                        UNION DISTINCT
+                    SELECT * FROM b;  
+
+union_all =         SELECT * FROM a
+                        UNION ALL
+                    SELECT * FROM b;  
+
+
+OUTPUT union_distinct
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output_union_distinct.tsv"
+    USING DefaultTextOutputter();
+
+OUTPUT union_all
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output_union_all.tsv"
+    USING DefaultTextOutputter();

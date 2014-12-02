@@ -1,0 +1,10 @@
+Radical Red	#FF496C	"(255, 73, 108)"	1990		
+Raw Sienna	#D68A59	"(214, 138, 89)"	1958		
+Raw Umber	#714B23	"(113, 75, 35)"	1958	1990	
+Razzle Dazzle Rose	#FF48D0	"(255, 72, 208)"	1990		
+Razzmatazz	#E3256B	"(227, 37, 107)"	1993		
+Red	#EE204D	"(238, 32, 77)"	1903		
+Red Orange	#FF5349	"(255, 83, 73)"	1949		
+Red Violet	#C0448F	"(192, 68, 143)"	1949		
+Robin Egg Blue	#1FCECB	"(31, 206, 203)"	1993		
+Royal Purple	#7851A9	"(120, 81, 169)"	1990		

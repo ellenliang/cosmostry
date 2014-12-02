@@ -1,0 +1,96 @@
+﻿// COSMOS SCOPE 101 HOL :: HOL 2-1 Begin.script
+
+
+searchlog = VIEW @"Views/SearchLog.view" 
+    PARAMS (start="02-01-2012", end="02-29-2012");
+
+//searchlog = SSTREAM @"outputs/searchlogout.ss";
+
+/*
+searchlog = 
+    SELECT iid, uid, timestamp, market, query, dwelltime, results, clickedurls
+    FROM searchlog;
+*/
+
+/*
+searchlog = 
+    SELECT market, query, results
+    FROM searchlog
+    WHERE market == "en-us";
+*/
+
+/*
+searchlog = 
+    SELECT query, results
+    FROM searchlog
+    HAVING market == "en-us";
+*/
+
+/*
+searchlog = 
+    SELECT query, results
+    FROM searchlog
+    WHERE market == "en-us" AND dwelltime > 500;
+*/
+
+/*
+searchlog = SELECT query, results
+    FROM searchlog
+    WHERE market == "en-us" AND dwelltime > 500;
+*/
+
+/*
+searchlog = SELECT query, results
+    FROM searchlog
+    WHERE market == "en-us" AND dwelltime > 500 AND REGEX(@"(?:^|;)d-card:").IsMatch(results);
+*/
+
+/*
+searchlog = 
+    SELECT query, results, clickedurls.Split(';').Length AS ClickCount
+    FROM searchlog
+    WHERE market == "en-us" AND dwelltime > 500 AND REGEX(@"(?:^|;)d-card:").IsMatch(results);
+*/
+
+/*
+searchlog = 
+    SELECT query, results, clickedurls, clickedurls.Split(';').Length AS ClickCount
+    FROM searchlog
+    WHERE market == "en-us" AND dwelltime > 500 AND REGEX(@"(?:^|;)d-card:").IsMatch(results);
+*/
+
+/*
+searchlog = 
+    SELECT query, results, clickedurls, IF(clickedurls != "NULL", clickedurls.Split(';').Length, 0) AS ClickCount
+    FROM searchlog
+    WHERE market == "en-us" AND dwelltime > 500 AND REGEX(@"(?:^|;)d-card:").IsMatch(results);
+*/
+
+/*
+searchlog = 
+    SELECT query, results, IF(clickedurls != "NULL", clickedurls.Split(';').Length, 0) AS ClickCount
+    FROM searchlog
+    WHERE market == "en-us" AND dwelltime > 500 AND REGEX(@"(?:^|;)d-card:").IsMatch(results);
+*/
+
+/*
+searchlog = 
+    SELECT query, results, IF(clickedurls != "NULL", clickedurls.Split(';').Length, 0) AS ClickCount
+    FROM searchlog
+    WHERE market == "en-us" AND dwelltime > 500 AND REGEX(@"(?:^|;)d-card:").IsMatch(results) AND ClickCount >= 1;
+*/
+
+searchlog = 
+    SELECT query, results, IF(clickedurls != "NULL", clickedurls.Split(';').Length, 0) AS ClickCount
+    FROM searchlog
+    WHERE market == "en-us" AND dwelltime > 500 AND REGEX(@"(?:^|;)d-card:").IsMatch(results)
+    HAVING ClickCount >= 1;
+
+/*
+OUTPUT searchlog
+    TO @"outputs/searchlogout.txt"
+    USING DefaultTextOutputter();
+*/
+
+OUTPUT searchlog
+    TO SSTREAM @"outputs/searchlogout.ss";

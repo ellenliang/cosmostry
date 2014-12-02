@@ -1,0 +1,12 @@
+CREATE VIEW SearchLog 
+SCHEMA ( 
+    State:string, 
+    Cities:string
+  )
+AS BEGIN
+     rawdata = 
+        EXTRACT State:string, 
+                Cities:string
+        FROM @"/my/CosmosSamples/CosmosUniversity/Input/Cities.tsv"
+        USING DefaultTextExtractor();
+END;

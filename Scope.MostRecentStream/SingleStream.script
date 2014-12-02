@@ -1,0 +1,13 @@
+﻿#DECLARE path string = "my/DemoMostRecentStream/";
+#DECLARE istream string = @path + "Input1.txt";
+#DECLARE ostream string = @path + "Output.ss";
+
+rs0 = 
+    EXTRACT Name:string, 
+            Score:int
+    FROM @istream
+    USING DefaultTextExtractor();
+
+OUTPUT rs0 TO SSTREAM @ostream;
+
+

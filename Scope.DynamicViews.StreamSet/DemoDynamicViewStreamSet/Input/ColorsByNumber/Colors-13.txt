@@ -1,0 +1,2 @@
+Jazzberry Jam	#CA3767	"(202, 55, 103)"	2003		
+Jungle Green	#3BB08F	"(59, 176, 143)"	1990		

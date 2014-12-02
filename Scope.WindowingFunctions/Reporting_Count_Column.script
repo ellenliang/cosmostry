@@ -1,0 +1,12 @@
+MODULE @"../SampleData/SampleData.module";
+
+employees = SampleData.Employees();
+
+
+data =
+   SELECT *, 
+       COUNT(DISTINCT Salary) OVER( PARTITION BY DeptID) AS CountByDept 
+   FROM employees;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/Reporting_Count_Star.ss";

@@ -1,0 +1,9 @@
+300	Image
+300	Image
+500	Image
+100	Web
+200	Web
+200	Web
+300	Web
+400	Web
+500	Web

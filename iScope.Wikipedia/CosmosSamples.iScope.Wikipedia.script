@@ -1,0 +1,7 @@
+wiki = SSTREAM @"/shares/cosmosAdmin/iScopeCosting/WikipediaWordCount.ss"; 
+
+rs = SELECT TOP 100 * 
+ 	FROM wiki 
+	WHERE keyword == "bing"; 
+
+OUTPUT rs TO CONSOLE; 

@@ -1,0 +1,139 @@
+﻿#DECLARE Start string = "2014-08-24";
+#DECLARE End string = "2014-08-29";
+#DECLARE ClusterName string = "cosmos08";
+
+#DECLARE utcTimeSuffix string = "T00:00:00.000Z";
+#DECLARE StartDateUTCParam string = @Start + @utcTimeSuffix;
+#DECLARE EndDateUTCParam string = @End + @utcTimeSuffix;
+
+#DECLARE WindowStartParam DateTime = DateTime.Parse(@StartDateUTCParam).ToUniversalTime();
+#DECLARE WindowEndParam DateTime = DateTime.Parse(@EndDateUTCParam).AddDays(1).ToUniversalTime();
+
+
+MODULE "Cosmos.module";
+
+jobs = Cosmos.JobRepository(Start=@Start, End=@End);
+vcmetadata = Cosmos.VCMetadata(Start = @Start, End = @End);
+
+RowSet0 = 
+    SELECT        
+        "Cosmos08" AS Cluster,
+        JobVirtualCluster AS VC, 
+        EndTime.Value AS JobEnd,
+        StartTime.Value AS JobStart,
+        @WindowStartParam AS  WindowStart, 
+        @WindowEndParam AS WindowEnd, 
+        MaxDateTime(StartTime.Value, @WindowStartParam) AS TagStart, MinDateTime(EndTime.Value,@WindowEndParam) AS TagEnd
+    FROM jobs
+    WHERE ( StartTime.HasValue AND EndTime.HasValue )
+    HAVING NOT ( JobStart > WindowEnd OR JobEnd < WindowStart);
+
+RowSet3 = 
+    SELECT * , CreateArray(TagStart,TagEnd,WindowStart, WindowEnd) AS TimeArray
+    FROM RowSet0;
+
+RowSet4 = 
+    SELECT Cluster, VC, Accumulate(TimeArray) AS TimeArray
+    FROM RowSet3
+    GROUP BY Cluster, VC;
+
+stats = 
+    SELECT Cluster, VC, TimeArray.Average() AS AvgQPS, TimeArray.Max() AS MaxQPS
+    FROM RowSet4;
+
+OUTPUT stats TO SSTREAM @"/my/QueryPerSecondStats.ss"
+    CLUSTERED BY Cluster, VC; 
+
+#CS
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using ScopeRuntime;
+using System;
+
+public static DateTime MaxDateTime(System.DateTime first, System.DateTime second) 
+{
+    if(first>=second) return first;
+    else return second;
+}
+
+public static DateTime MinDateTime(System.DateTime first, System.DateTime second) 
+{
+    if(first<=second) return first;
+    else return second;
+}
+
+public static int[] CreateArray(DateTime tagStart, DateTime tagEnd, DateTime windowStart, DateTime windowEnd)
+{
+
+    int windowSize = (int)(windowEnd - windowStart).TotalSeconds;
+    int[] timeArray = new int[windowSize];
+    int startSecond = (int)(tagStart - windowStart).TotalSeconds;
+    int tagSize = (int)(tagEnd - tagStart).TotalSeconds;
+
+    for(int i=0;i<tagSize;i++)
+    {
+        timeArray[i+startSecond]=1;
+    }
+
+    return timeArray;
+}
+
+public class Accumulate_System_Int32__ : RecursiveAggregate<int[]>
+{
+    int[] acc;
+
+    public override void Initialize()
+    {
+    }
+
+    public override void Add(int[] y)
+    {
+        if (this.acc ==null)
+       {
+              this.acc = new int[ y.Length ];
+       }
+       for (int i=0; i<y.Length; i++)
+        {     
+              this.acc[i] += y[i];
+        }
+    }
+
+    public override int[] Finalize()
+    {
+        return this.acc;
+    }
+}
+
+public class NRAccumulate_System_Int32__ : Aggregate1<int[], int[]>
+{
+    int[] acc;
+
+    public override void Initialize()
+    {
+    }
+
+    public override void Add(int[] y)
+    {
+        if (this.acc ==null)
+       {
+              this.acc = new int[ y.Length ];
+       }
+       for (int i=0; i<y.Length; i++)
+        {     
+              this.acc[i] += y[i];
+        }
+    }
+
+    public override int[] Finalize()
+    {
+        return this.acc;
+    }
+}
+
+
+#ENDCS
+
+
+
+

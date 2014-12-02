@@ -1,0 +1,14 @@
+﻿MODULE @"../my/CosmosSampleData/CosmosSampleData.module";
+data = CosmosSampleData.SearchLogRaw();
+
+rs1 = SELECT Market
+      FROM data;
+
+rs2 =
+    PROCESS rs1
+    PRODUCE Market,
+            Market2
+    USING CopyProcessor;
+
+OUTPUT rs2
+TO @"/my/ScopeTutorial/SampleOutputs/searchlog.txt";

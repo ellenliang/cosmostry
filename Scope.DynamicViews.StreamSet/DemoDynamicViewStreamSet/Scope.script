@@ -1,0 +1,70 @@
+﻿//Script GUID:59ede78d-cbec-4a6d-9335-89cb8acc1dc9
+//Used for tracking history
+
+
+/*
+
+WORKITEMS: 
+- VirtualColumns should use actual type
+- parameter values should identigy the kind of string
+- Error checking should give #ERRORS
+
+*/
+
+colors0 =  
+    VIEW @"DynamicStreamSet.view" 
+    PARAMS
+    ( 
+      Schema = @"Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string",
+      Template = "Input/ColorsByLetter/Colors-<FirstLetter>.txt",
+      FirstLetter = "enum:A;B",
+      VirtualColumns = true 
+    );
+
+
+OUTPUT colors0 
+TO SSTREAM @"colors0.ss";
+
+
+
+colors1 =  VIEW @"DynamicStreamSet.view" PARAMS( 
+    Schema= @"Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string",
+    Template = "Input/ColorsByNumber/Colors-<Number>.txt",
+    Number="intrange:1...3",
+    VirtualColumns=true 
+   );
+
+OUTPUT colors1 
+TO SSTREAM @"colors1.ss";
+
+
+
+
+colors2 =  
+    VIEW @"DynamicStreamSet.view" 
+    PARAMS
+    ( Schema = @"Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string",
+      Template = "Input/ColorsByLetterAndNumber/Colors-<FirstLetter>-<Number>.txt",
+      Number = "intrange:0...2",
+      FirstLetter = "enum:A;B",
+      VirtualColumns = true 
+    );
+
+OUTPUT colors2 
+TO SSTREAM @"colors2.ss";
+
+
+
+colors3 =  
+    VIEW @"DynamicStreamSet.view" 
+    PARAMS
+    ( Schema = @"Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string",
+      Template = "Input/ColorsByDate/Colors-<Date.Year>-<Date.Month>-<Date.Day>.txt",
+      Date = "daterange:2013-03-29...2013-03-31",
+      VirtualColumns = true 
+    );
+
+OUTPUT colors3
+TO SSTREAM @"colors3.ss";
+
+

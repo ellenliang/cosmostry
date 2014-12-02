@@ -1,0 +1,6 @@
+Almond	#EFDECD	"(239, 222, 205)"	1998		
+Antique Brass	#CD9575	"(205, 149, 117)"	1998		
+Apricot	#FDD9B5	"(253, 217, 181)"	1949		
+Aquamarine	#78DBE2	"(120, 219, 226)"	1958		
+Asparagus	#87A96B	"(135, 169, 107)"	1993		
+Atomic Tangerine	#FFA474	"(255, 164, 116)"	1972		"Renamed from ""Ultra Yellow"" in 1990."

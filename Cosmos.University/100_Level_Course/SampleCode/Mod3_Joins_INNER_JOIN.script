@@ -1,0 +1,14 @@
+﻿departments = VIEW @"Departments.view";
+employees = VIEW @"Employees.view";
+
+inner_join = 
+    SELECT 
+        employees.*, 
+        departments.* 
+    FROM employees 
+         INNER JOIN departments 
+             ON employees.EmpDepartmentID == departments.DepDepartmentID;
+
+OUTPUT inner_join 
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/inner_join.tsv"
+    USING DefaultTextOutputter();

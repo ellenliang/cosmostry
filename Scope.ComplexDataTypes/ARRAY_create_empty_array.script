@@ -1,0 +1,15 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+data = SampleData.Cities();
+
+
+data1 = 
+    SELECT new ARRAY<string> {} AS Numbers
+    FROM data;
+
+data2= 
+    SELECT new ARRAY<string> () AS Numbers
+    FROM data;
+
+OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output1.ss";
+OUTPUT data2 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output2.ss";

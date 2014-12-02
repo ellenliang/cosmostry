@@ -1,0 +1,13 @@
+Salmon	#FF9BAA	"(255, 155, 170)"	1949		
+Scarlet	#FC2847	"(252, 40, 71)"	1998		"Renamed from ""Torch Red"" in 2000."
+Screamin' Green	#76FF7A	"(118, 255, 122)"	1972		"Renamed from ""Ultra Green"" in 1990."
+Sea Green	#9FE2BF	"(159, 226, 191)"	1949		
+Sepia	#A5694F	"(165, 105, 79)"	1958		
+Shadow	#8A795D	"(138, 121, 93)"	1998		
+Shamrock	#45CEA2	"(69, 206, 162)"	1993		
+Shocking Pink	#FB7EFD	"(251, 126, 253)"	1972		"Renamed from ""Ultra Pink"" in 1990."
+Silver	#CDC5C2	"(205, 197, 194)"	1949		
+Sky Blue	#80DAEB	"(128, 218, 235)"	1958		
+Spring Green	#ECEABE	"(236, 234, 190)"	1949		
+Sunglow	#FFCF48	"(255, 207, 72)"	1990		
+Sunset Orange	#FD5E53	"(253, 94, 83)"	1998		

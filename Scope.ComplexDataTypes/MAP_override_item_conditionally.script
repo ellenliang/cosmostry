@@ -1,0 +1,16 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+
+
+data1= 
+    SELECT Project
+         , ( Employees.ContainsKey( "Mallory" ) 
+           ? new MAP<string,string>(Employees) 
+                 { {"Mallory", "UX"} } 
+           : Employees ) AS Employees
+    FROM projectmembers ;
+
+OUTPUT data1 TO SSTREAM
+    @"/my/Demo/ComplexDataTypes/Output/Output.ss";

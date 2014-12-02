@@ -1,0 +1,9 @@
+﻿athletes = VIEW @"OlympicAthletes.view";
+
+data = 
+    SELECT Athlete, Year, TotalMedals
+    FROM athletes;
+
+OUTPUT data
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter( delimiter : ',');

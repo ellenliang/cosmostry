@@ -1,0 +1,18 @@
+﻿Timberwolf	#DBD7D2	"(219, 215, 210)"	1993		
+Tropical Rain Forest	#17806D	"(23, 128, 109)"	1993		
+Tumbleweed	#DEAA88	"(222, 170, 136)"	1993		
+Turquoise Blue	#77DDE7	"(119, 221, 231)"	1949		
+Unmellow Yellow	#FFFF66	"(255, 255, 102)"	1990		
+Violet (Purple)	#926EAE	"(146, 110, 174)"	1903		
+Violet Blue	#324AB2	"(50, 74, 178)"	1949	1990	
+Violet Red	#F75394	"(247, 83, 148)"	1949		
+Vivid Tangerine	#FFA089	"(255, 160, 137)"	1990		
+Vivid Violet	#8F509D	"(143, 80, 157)"	1998		
+White	#FFFFFF	"(255, 255, 255)"	1949		
+Wild Blue Yonder	#A2ADD0	"(162, 173, 208)"	2003		
+Wild Strawberry	#FF43A4	"(255, 67, 164)"	1990		
+Wild Watermelon	#FC6C85	"(252, 108, 133)"	1972		"Renamed from ""Ultra Red"" in 1990."
+Wisteria	#CDA4DE	"(205, 164, 222)"	1993		
+Yellow	#FCE883	"(252, 232, 131)"	1903		
+Yellow Green	#C5E384	"(197, 227, 132)"	1949		
+Yellow Orange	#FFAE42	"(255, 174, 66)"	1949		

@@ -1,0 +1,10 @@
+﻿// COSMOS SCOPE 101 HOL :: HOL 1-1.script
+
+searchlog = 
+    EXTRACT 
+        iid:int, uid:int, start:DateTime, market:string, query:string, dwelltime:int, results:string, clickedurls:string
+    FROM @"SampleInputs/searchLog.txt"
+    USING DefaultTextExtractor( );
+
+OUTPUT searchlog TO @"outputs/output-searchlog.txt";
+

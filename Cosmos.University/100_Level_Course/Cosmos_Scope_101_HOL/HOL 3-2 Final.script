@@ -1,0 +1,72 @@
+﻿// COSMOS SCOPE 101 HOL :: HOL 3-2 Final.script
+
+searchlog = 
+    VIEW @"Views/SearchLog.view" 
+        PARAMS (start="02-01-2012", end="02-29-2012");
+
+searchlog = 
+    SELECT iid, uid, timestamp, market, query, dwelltime, results, clickedurls
+    FROM searchlog;
+
+//read in the ads log
+adslog = 
+    EXTRACT adImpressionId:int, adId:int, searchImpressionId:int, wasClicked:byte
+    FROM @"/SampleInputs/AdsLog.txt"
+    USING DefaultTextExtractor();
+
+/*
+//output the ads log for testing
+OUTPUT adslog
+    TO @"outputs\adslogout.txt"
+    USING DefaultTextOutputter();
+*/
+
+//Question 1: Find all queries with ad clicks
+
+/*
+//tells us all the queries which had ad clicks
+
+results = 
+    SELECT searchlog.query
+    FROM searchlog INNER JOIN adslog
+        ON searchlog.iid == adslog.searchImpressionId
+    WHERE adslog.wasClicked == 1;
+
+//group by/count to show each query only once, and also show the number of clicks received
+
+results = 
+    SELECT query, COUNT(query) AS queryCount
+    FROM results
+    GROUP BY query;
+*/
+
+/*
+//in one query, get all queries with ad clicks and number of ad clicks received
+
+results = 
+    SELECT searchlog.query, COUNT(searchlog.query) AS queryCount
+    FROM searchlog INNER JOIN adslog
+        ON searchlog.iid == adslog.searchImpressionId
+    GROUP BY query
+    WHERE adslog.wasClicked == 1;
+*/
+
+//Question 2: advertisers that had ads which were shown but not clicked
+
+//first, input the AdInventory data
+adinventory = 
+    EXTRACT adId:int, advertiser:string, revenuePerClick:float
+    FROM @"/SampleInputs/AdInventory.txt"
+    USING DefaultTextExtractor();
+
+results =
+    SELECT adinventory.advertiser,
+           adId,
+           adslog.wasClicked
+    FROM adinventory
+    LEFT OUTER JOIN adslog
+    ON adinventory.adId == adslog.adId HAVING  wasClicked== null;
+
+OUTPUT results
+    TO @"outputs/searchlogout.txt"
+    USING DefaultTextOutputter();

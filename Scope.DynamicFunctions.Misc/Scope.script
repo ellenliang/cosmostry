@@ -1,0 +1,167 @@
+﻿MODULE @"MyModule.module" AS M;
+
+colors = 
+    EXTRACT Color:string, 
+            HexCode:string, 
+            RGB:string, 
+            Issued:String, 
+            Retired:string, 
+            Notes:string
+    FROM @"/my/Colors.txt" 
+    USING DefaultTextExtractor();
+
+colors2 = M.DoNothingFunc( input=colors );
+
+colors3 = M.ReverseFunc( input=colors );
+
+OUTPUT colors 
+TO @"/my/outcolors.txt" 
+USING DefaultTextOutputter();
+
+OUTPUT colors2
+TO @"/my/outcolors2.txt" 
+USING DefaultTextOutputter();
+
+OUTPUT colors3
+TO @"/my/outcolors3.txt" 
+USING DefaultTextOutputter();
+
+
+
+
+numdata1 = 
+    EXTRACT Val1:int, 
+            Val2:int, 
+            Val3:int, 
+            Val4:int, 
+            Val5:int
+    FROM @"/my/NumericData1.txt" 
+    USING DefaultTextExtractor();
+
+numdata1_sum = M.AggregateColumns( input=numdata1 );
+
+OUTPUT numdata1_sum
+TO @"/my/outnumdatasum.txt" 
+USING DefaultTextOutputter();
+
+
+#CS
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using ScopeRuntime;
+
+
+public class DoNothingFunctionResolver : ScopeRuntime.FunctionResolver
+{
+    /// <summary />
+    public override string Resolve(string name, IEnumerable<Parameter> parameters, string[] args)
+    {
+        var rowsets = parameters.OfType<RowSetParameter>().ToDictionary(p=> p.Name);
+        var scalars = parameters.OfType<ScalarParameter>().ToDictionary(p => p.Name);
+
+        var input_rowset = rowsets["input"];
+        string input_schema_str = input_rowset.Schema.ToString();
+        string output_schema_str = input_rowset.Schema.ToString();
+        string select_clause = "*";
+
+        //Generate
+        var sb_def = new StringBuilder();
+        sb_def.AppendFormat("FUNC {0}\n", name);
+        sb_def.AppendFormat(" RETURN ROWSET({0})\n", output_schema_str);
+        sb_def.AppendFormat(" PARAMS({0} ROWSET( {1}) )\n", input_rowset.Name, input_schema_str );
+        sb_def.AppendFormat("BEGIN\n" );
+        sb_def.AppendFormat(" rs1=SELECT {0} FROM {1};\n", select_clause, input_rowset.Name);
+        sb_def.AppendFormat("END FUNC\n");
+
+        string def = sb_def.ToString();
+        return def;
+    }
+}
+
+
+
+public class ReverseSchemaFunctionResolver : ScopeRuntime.FunctionResolver
+{
+    /// <summary />
+    public override string Resolve(string name, IEnumerable<Parameter> parameters, string[] args)
+    {
+        var rowsets = parameters.OfType<RowSetParameter>().ToDictionary(p=> p.Name);
+        var scalars = parameters.OfType<ScalarParameter>().ToDictionary(p => p.Name);
+
+        var input_rowset = rowsets["input"];
+        var input_schema = input_rowset.Schema;
+        var output_cols = input_schema.Columns.Reverse().ToList();
+        var output_schema = new Schema();
+        output_schema.AddRange(output_cols);
+
+        string input_schema_str = input_rowset.Schema.ToString();
+        string output_schema_str = output_schema.ToString();
+
+        string select_clause = string.Join(",", output_cols.Select(c => c.Name));
+
+        //Generate
+        var sb_def = new StringBuilder();
+        sb_def.AppendFormat("FUNC {0}\n", name);
+        sb_def.AppendFormat(" RETURN ROWSET({0})\n", output_schema_str);
+        sb_def.AppendFormat(" PARAMS({0} ROWSET( {1}) )\n", input_rowset.Name, input_schema_str );
+        sb_def.AppendFormat("BEGIN\n" );
+        sb_def.AppendFormat(" rs1=SELECT {0} FROM {1};\n", select_clause, input_rowset.Name);
+        sb_def.AppendFormat("END FUNC\n");
+
+    
+        string def = sb_def.ToString();
+
+        return def;
+    }
+}
+
+
+public class AggregateColumnsFunctionResolver : ScopeRuntime.FunctionResolver
+{
+    public string get_agg_datatype(string agg, string srcdt)
+    {
+        if (agg=="SUM")
+        {
+            if (srcdt=="int") { return "long"; }
+        }
+        return "NOTIMPLEMENTED";
+    }
+
+
+
+    public override string Resolve(string name, IEnumerable<Parameter> parameters, string[] args)
+    {
+        var rowsets = parameters.OfType<RowSetParameter>().ToDictionary(p=> p.Name);
+        var scalars = parameters.OfType<ScalarParameter>().ToDictionary(p => p.Name);
+
+        string aggop = "SUM";
+        var input_rowset = rowsets["input"];
+        string input_schema_str = input_rowset.Schema.ToString();
+        var output_schema = new Schema();
+        foreach (var col in input_rowset.Schema.Columns)
+        {
+            string new_dt = get_agg_datatype("SUM", col.CLRType );
+            var newcol = new ColumnInfo( col.Name, new_dt );
+            output_schema.Add( newcol );        
+        }
+        string output_schema_str = output_schema.ToString();
+
+        string select_clause = string.Join(" , ",output_schema.Columns.Select( c => string.Format("{0}({1}) AS {2}",aggop,c.Name, c.Name ) ) ); 
+
+        //Generate
+        var sb_def = new StringBuilder();
+        sb_def.AppendFormat("FUNC {0}\n", name);
+        sb_def.AppendFormat(" RETURN ROWSET({0})\n", output_schema_str);
+        sb_def.AppendFormat(" PARAMS({0} ROWSET( {1} ) )\n", input_rowset.Name, input_schema_str );
+        sb_def.AppendFormat("BEGIN\n" );
+        sb_def.AppendFormat(" rs1=SELECT {0} FROM {1};\n", select_clause, input_rowset.Name);
+        sb_def.AppendFormat("END FUNC\n");
+
+        string def = sb_def.ToString();
+        return def;
+    }
+}
+
+#ENDCS

@@ -1,0 +1,8 @@
+wiki = SSTREAM @"/shares/cosmosAdmin/iScopeCosting/WikipediaWordCount.ss"; 
+
+rows = 
+ SELECT TOP 100 * 
+ FROM wiki
+ WHERE keyword == "katyperry"; 
+
+OUTPUT rows TO CONSOLE; 

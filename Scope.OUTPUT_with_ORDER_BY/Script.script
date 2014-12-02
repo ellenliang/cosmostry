@@ -1,0 +1,14 @@
+employees = 
+        EXTRACT 
+            EmpID:string, 
+            EmpName:string, 
+            DeptName:string, 
+            DeptID:string, 
+            Salary:double
+        FROM @"/my/CosmosSamples/Data/Input/Employees.tsv"
+        USING DefaultTextExtractor();
+
+OUTPUT employees 
+    TO @"/my/CosmosSamples/Data/Output/employees_base.tsv"
+    ORDER BY Salary    
+    USING DefaultTextOutputter();

@@ -1,0 +1,17 @@
+﻿//Script GUID:a94543f9-a31f-48e8-ae34-e3b72b91d8b9
+//Used for tracking history
+
+
+Debuglines = EXTRACT *
+FROM "my/Demo/DebugStream/Outputs/debug.txt"
+USING DefaultDebugStreamExtractor();
+
+lines = 
+    SELECT Content
+    FROM Debuglines;
+
+OUTPUT lines 
+TO "my/Demo/DebugStream/Outputs/debuglines.txt"
+USING DefaultTextOutputter();
+
+

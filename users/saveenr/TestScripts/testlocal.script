@@ -1,0 +1,5 @@
+data = EXTRACT a:string, b:string
+        FROM @"d:\testlocal_input.tsv"
+        USING DefaultTextExtractor();
+
+OUTPUT data TO SSTREAM @"d:\testlocal_output.ss"; 

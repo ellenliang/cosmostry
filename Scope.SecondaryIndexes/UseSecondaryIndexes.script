@@ -1,0 +1,19 @@
+employees = VIEW @"Employees.view";
+
+a = SELECT DeptName, SUM( Salary ) AS TotalSalary
+    FROM employees
+    GROUP BY DeptName;
+
+b = SELECT EmpName, SUM( Salary ) AS TotalSalary
+    FROM employees
+    GROUP BY EmpName;
+
+OUTPUT a 
+    TO "/my/CosmosSamples/SecondaryIndexes/Output/salary_by_dept.tsv"
+    USING DefaultTextOutputter();
+
+OUTPUT b 
+    TO "/my/CosmosSamples/SecondaryIndexes/Output/salary_by_emp.tsv"
+    USING DefaultTextOutputter();
+
+

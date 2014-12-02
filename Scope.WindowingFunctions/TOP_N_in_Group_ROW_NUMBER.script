@@ -1,0 +1,14 @@
+MODULE @"../SampleData/SampleData.module";
+
+querylog = SampleData.QueryLog();
+
+
+data =
+   SELECT 
+       *,
+       ROW_NUMBER() OVER (PARTITION BY Vertical ORDER BY Latency) AS RowNumber
+   FROM querylog
+   HAVING RowNumber <= 3;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/TOP_N_ROW_NUMBER.ss"; 

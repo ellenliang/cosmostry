@@ -1,0 +1,18 @@
+﻿#DECLARE TargetYear int = 2008;
+#DECLARE a string = @"Hello World";
+#DECLARE b int = 10;
+#DECLARE c bool = true;
+#DECLARE d double = 1.0;
+#DECLARE date0 DateTime = DateTime.Parse("2010/03/31"); 
+
+
+athletes = VIEW @"OlympicAthletes.view";
+
+data = 
+    SELECT Athlete, Year, TotalMedals
+    FROM athletes
+    WHERE Year==@TargetYear;
+
+OUTPUT data
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter( );

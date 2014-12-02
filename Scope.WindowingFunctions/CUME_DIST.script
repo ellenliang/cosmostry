@@ -1,0 +1,14 @@
+MODULE @"../SampleData/SampleData.module";
+
+querylog = SampleData.QueryLog();
+
+
+
+data =
+   SELECT 
+       *,
+       CUME_DIST() OVER(PARTITION BY Vertical ORDER BY Latency) AS CumeDist
+   FROM querylog;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/CUME_DIST.ss";

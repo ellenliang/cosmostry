@@ -1,0 +1,3 @@
+Yellow	#FCE883	"(252, 232, 131)"	1903		
+Yellow Green	#C5E384	"(197, 227, 132)"	1949		
+Yellow Orange	#FFAE42	"(255, 174, 66)"	1949		

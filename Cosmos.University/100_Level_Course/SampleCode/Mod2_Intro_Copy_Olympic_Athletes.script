@@ -1,0 +1,20 @@
+﻿// Ex3_Transform_State_and_Population.script
+
+athletes =
+    EXTRACT
+        Athlete:              string,
+        Age:                  string,
+        Country:              string,
+        Year:                 string,
+        ClosingCeremonyDate:  string,
+        Sport:                string,
+        GoldMedals:           string,
+        SilverMedals:         string,
+        BronzeMedals:         string,
+        TotalMedals:          string
+    FROM @"/my/CosmosSamples/CosmosUniversity/Input/OlympicAthletes.tsv"
+    USING DefaultTextExtractor();
+
+OUTPUT athletes
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();

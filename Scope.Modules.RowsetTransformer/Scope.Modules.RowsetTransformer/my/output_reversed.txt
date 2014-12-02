@@ -1,0 +1,9 @@
+Image	300	Banana
+Image	300	Cherry
+Image	500	Durian
+Web	100	Apple
+Web	200	Fig
+Web	200	Papaya
+Web	300	Fig
+Web	400	Cherry
+Web	500	Durian

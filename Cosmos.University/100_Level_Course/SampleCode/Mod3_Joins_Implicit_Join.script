@@ -1,0 +1,13 @@
+﻿departments = VIEW @"Departments.view";
+employees = VIEW @"Employees.view";
+
+implicit_join = 
+    SELECT 
+        employees.*, 
+        departments.* 
+    FROM employees , departments
+    WHERE employees.EmpDepartmentID == departments.DepDepartmentID;
+
+OUTPUT implicit_join
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/implicit_join.tsv"
+    USING DefaultTextOutputter();

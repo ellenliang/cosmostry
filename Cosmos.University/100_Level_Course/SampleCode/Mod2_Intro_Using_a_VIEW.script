@@ -1,0 +1,5 @@
+﻿athletes = VIEW @"OlympicAthletes.view";
+
+OUTPUT athletes
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();

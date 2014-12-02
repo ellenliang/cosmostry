@@ -1,0 +1,22 @@
+﻿wiki = SSTREAM @"/shares/cosmosAdmin/iScopeCosting/WikipediaWordCount.ss"; 
+
+rs0 = 
+    SELECT keyword AS keyword, 
+           SUM(count) AS count
+    FROM wiki;
+
+rs1 = 
+    SELECT TOP 1000 *
+    FROM rs0;
+
+rs2 = 
+    PROCESS rs1 
+    PRODUCE keyword, 
+            count 
+    USING MyProcessor(); 
+
+OUTPUT rs2 TO SSTREAM @"/my/testouput.ss" CLUSTERED BY keyword SORTED BY count DESC; 
+
+#CS
+
+#ENDCS

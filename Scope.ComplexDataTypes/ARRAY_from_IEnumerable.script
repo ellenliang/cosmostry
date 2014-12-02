@@ -1,0 +1,15 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+data = SampleData.CitiesRaw();
+
+data1 =
+    SELECT State
+         , Cities.Split( new [] { ';' } ) AS Cities
+    FROM data;
+
+data2 =
+    SELECT State
+         , new ARRAY<string>( Cities ) AS Cities
+    FROM data1;
+
+OUTPUT data TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";

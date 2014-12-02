@@ -1,0 +1,16 @@
+﻿// Ex2_Transform_Population.script
+
+data1 =
+    EXTRACT
+        State:string,
+        Population:int
+    FROM @"/my/CosmosSamples/CosmosUniversity/Input/states.tsv"
+    USING DefaultTextExtractor();
+
+data2 =
+    SELECT State, (Population/1000000.0) AS PopInMil
+    FROM data1;
+
+OUTPUT data2
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();

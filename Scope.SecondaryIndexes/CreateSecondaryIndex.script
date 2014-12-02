@@ -1,0 +1,5 @@
+CREATE INDEX @"/my/CosmosSamples/SecondaryIndexes/Output/employees_indexed.ss"
+  ON (SELECT EmpID, EmpName, DeptName, DeptID, Salary
+    FROM (SSTREAM @"/my/CosmosSamples/SecondaryIndexes/Output/employees_base.ss")
+  )
+HASH CLUSTERED BY DeptName SORTED BY DeptName;

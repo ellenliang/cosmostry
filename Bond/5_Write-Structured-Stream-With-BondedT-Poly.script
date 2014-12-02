@@ -1,0 +1,71 @@
+REFERENCE @"BondBinaries/Microsoft.Bond.dll";
+REFERENCE @"BondBinaries/Microsoft.Bond.Interfaces.dll";
+REFERENCE @"Geometry/bin/Debug/Geometry.dll";
+
+data =  EXTRACT Kind:string, NumbersString:string
+        FROM @"Input/AllShapes.txt"
+        USING DefaultTextExtractor();
+
+data2 =  SELECT Kind,MyHelper.ParseNumbers(data.NumbersString) AS Numbers
+         FROM data;
+
+data_with_bond = SELECT Kind, MyHelper.NewShapeBondedT(Kind, data2.Numbers) AS Coordinate
+        FROM data2;
+
+
+OUTPUT data_with_bond
+TO SSTREAM @"Output/AllShapes_BondedT.ss";
+
+
+#CS
+public class MyHelper
+{
+    public static int[] ParseNumbers(string numbers)
+    {
+	char delimiter = ',';
+	var tokens =numbers.Split(delimiter);
+        var ints = tokens.Select( t=>int.Parse(t) ).ToArray();
+	return ints;
+    }
+
+
+    public static Microsoft.Bond.Bonded<Geometry.Shape> NewShapeBondedT(string kind, int [] ints)
+    {
+	if (kind=="Shape")
+	{
+	        var p = new Geometry.Shape();
+	        p.x = ints[0];
+	        p.y = ints[1];
+
+	        var o = new Microsoft.Bond.Bonded<Geometry.Shape>(p);
+	        return o;
+	}
+	else if (kind=="Rect")
+	{
+	        var p = new Geometry.Rectangle();
+	        p.x = ints[0];
+	        p.y = ints[1];
+		p.width = ints[2];
+		p.height = ints[3];
+
+	        var o = new Microsoft.Bond.Bonded<Geometry.Shape>(p);
+	        return o;
+	}	
+	else if (kind=="Circle")
+	{
+	        var p = new Geometry.Circle();
+	        p.x = ints[0];
+	        p.y = ints[1];
+		p.radius = ints[2];
+
+	        var o = new Microsoft.Bond.Bonded<Geometry.Shape>(p);
+	        return o;
+	}	
+	else 
+	{
+		throw new System.ArgumentException();
+	}
+    }
+
+}
+#ENDCS

@@ -1,0 +1,14 @@
+MODULE @"../SampleData/SampleData.module";
+
+querylog = SampleData.QueryLog();
+
+
+
+data =
+   SELECT 
+       *,
+       ROW_NUMBER() OVER () AS RowNumber
+   FROM querylog;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/Globally_unique_id.ss"; 

@@ -1,0 +1,11 @@
+﻿// Ex1_Copy_States.script
+
+data1 = VIEW @"Cities.view";
+
+data2 = SELECT State, City
+       FROM data1
+       CROSS APPLY Cities.Split(';') AS City;
+
+OUTPUT data2
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();

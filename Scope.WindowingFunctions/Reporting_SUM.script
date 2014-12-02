@@ -1,0 +1,28 @@
+MODULE @"../SampleData/SampleData.module";
+
+employees = SampleData.Employees();
+
+data1 =
+   SELECT SUM(Salary) OVER( ) AS TotalYearlySalary
+   FROM employees;
+
+data2 =
+   SELECT 
+      *,
+      SUM(Salary) OVER( PARTITION BY DeptName ) AS TotalByDept
+   FROM employees;
+
+data3 =
+   SELECT 
+      *,
+      SUM(DISTINCT Salary) OVER( PARTITION BY DeptName ) AS TotalDistinct
+   FROM employees;
+
+OUTPUT data1
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/Reporting_SUM1.ss";
+
+OUTPUT data2
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/Reporting_SUM2.ss";
+
+OUTPUT data3
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/Reporting_SUM3.ss";

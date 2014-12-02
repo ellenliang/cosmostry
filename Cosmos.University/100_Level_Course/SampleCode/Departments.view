@@ -1,0 +1,21 @@
+CREATE VIEW Departments
+SCHEMA ( 
+    DepDepartmentID:string,
+    DepartmentName:string 
+  )
+AS BEGIN
+
+   departments= 
+       EXTRACT 
+           DepDepartmentID:string,
+           DepartmentName:string 
+       FROM @"/my/CosmosSamples/CosmosUniversity/Input/Departments.tsv"
+       USING DefaultTextExtractor();
+
+   departments_with_nulls = 
+       SELECT 
+           (DepDepartmentID == "NULL") ? null : DepDepartmentID AS DepDepartmentID,
+           DepartmentName 
+       FROM departments;
+
+END;

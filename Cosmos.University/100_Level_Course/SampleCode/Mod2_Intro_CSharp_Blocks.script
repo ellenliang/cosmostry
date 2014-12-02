@@ -1,0 +1,19 @@
+﻿athletes = VIEW @"OlympicAthletes.view";
+
+data = 
+    SELECT MyHelper.Normalize(Athlete) AS Athlete, Year, TotalMedals
+    FROM athletes;
+
+OUTPUT data
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();
+
+#CS
+public static class MyHelper
+{
+    public static string Normalize(string s)
+    {
+	return s.ToUpper();
+    }
+}
+#ENDCS

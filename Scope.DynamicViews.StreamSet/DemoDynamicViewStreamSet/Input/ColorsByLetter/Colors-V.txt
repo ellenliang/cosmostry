@@ -1,0 +1,5 @@
+Violet (Purple)	#926EAE	"(146, 110, 174)"	1903		
+Violet Blue	#324AB2	"(50, 74, 178)"	1949	1990	
+Violet Red	#F75394	"(247, 83, 148)"	1949		
+Vivid Tangerine	#FFA089	"(255, 160, 137)"	1990		
+Vivid Violet	#8F509D	"(143, 80, 157)"	1998		

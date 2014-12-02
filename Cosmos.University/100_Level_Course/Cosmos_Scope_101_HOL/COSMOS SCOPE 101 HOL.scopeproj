@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1b878d30-995d-461c-b579-2029a9838993}</ProjectGuid>
+    <OutputType>File</OutputType>
+    <AssemblyName>Algebra.xml</AssemblyName>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <Name>COSMOS SCOPE 101 HOL</Name>
+    <RootNamespace>COSMOS SCOPE 101 HOL</RootNamespace>
+    <VCSelectionInProjectProperty>&lt;Use Current VC in VC Selector&gt;</VCSelectionInProjectProperty>
+    <CosmosRuntimeVersion>Default</CosmosRuntimeVersion>
+    <ScopePath>%24(SCRIPT_DIR);%24(CLUSTER_ROOT);%24(SCOPE_DIR)</ScopePath>
+    <VertexDebugSolution>false</VertexDebugSolution>
+    <InputStreamSearchPath>%24(PROJECT_DIR);%24(SCRIPT_DIR);%24(CLUSTER_ROOT)</InputStreamSearchPath>
+    <OutputStreamPath>%24(PROJECT_DIR)</OutputStreamPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Script Include="HOL 4-1 Final.script" />
+    <Script Include="HOL 2-1 Final.script" />
+    <Script Include="HOL 1-1.script" />
+    <Script Include="HOL 2-1 Begin.script" />
+    <Script Include="HOL 3-1 Begin.script" />
+    <Script Include="HOL 3-1 Final.script" />
+    <Script Include="HOL 3-2 Begin.script" />
+    <Script Include="HOL 3-2 Final.script" />
+    <Script Include="HOL 4-1 Begin.script" />
+    <Script Include="HOL 5-1 Begin.script" />
+    <Script Include="HOL 5-1 Final.script" />
+    <ScriptCode Include="HOL 4-1 Final.script.cs">
+      <DependentUpon>HOL 4-1 Final.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HOL 2-1 Final.script.cs">
+      <DependentUpon>HOL 2-1 Final.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HOL 1-1.script.cs">
+      <DependentUpon>HOL 1-1.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HOL 2-1 Begin.script.cs">
+      <DependentUpon>HOL 2-1 Begin.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HOL 3-1 Begin.script.cs">
+      <DependentUpon>HOL 3-1 Begin.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HOL 3-1 Final.script.cs">
+      <DependentUpon>HOL 3-1 Final.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HOL 3-2 Begin.script.cs">
+      <DependentUpon>HOL 3-2 Begin.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HOL 3-2 Final.script.cs">
+      <DependentUpon>HOL 3-2 Final.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HOL 4-1 Begin.script.cs">
+      <DependentUpon>HOL 4-1 Begin.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HOL 5-1 Begin.script.cs">
+      <DependentUpon>HOL 5-1 Begin.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HOL 5-1 Final.script.cs">
+      <DependentUpon>HOL 5-1 Final.script</DependentUpon>
+    </ScriptCode>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views" />
+    <Folder Include="SampleInputs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SampleInputs\AdInventory.schema">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SampleInputs\AdsLog.schema">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SampleInputs\AdsLog.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SampleInputs\AdInventory.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SampleInputs\SearchLog.schema">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SampleInputs\SearchLog.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Views\SearchLog.view">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(AppData)\Microsoft\ScopeStudio\MsBuild\1.0\Scope.targets" />
+</Project>

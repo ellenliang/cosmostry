@@ -1,0 +1,29 @@
+﻿MODULE @"../my/CosmosSampleData/CosmosSampleData.module";
+data = CosmosSampleData.BitsRaw();
+
+data1 = 
+    SELECT Category, new ARRAY<int> ( Value.Select(c => c == '0' ? 0 : 1).ToArray() ) AS Values
+    FROM data;
+
+data2 = SELECT Category, Accumulate(Values) AS Sum
+    FROM data1
+    GROUP BY Category;
+
+data3 = SELECT Category, myHelper.IntArrayToString( Sum ) AS Values
+    FROM data2;
+
+OUTPUT data2 TO SSTREAM
+  @"/my/Output/Output.ss";
+
+
+OUTPUT data3 TO 
+  @"/my/Output/Output.tsv"
+  USING DefaultTextOutputter();
+
+
+
+
+
+
+
+

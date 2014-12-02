@@ -1,0 +1,18 @@
+﻿data1 = VIEW @"Cities.view";
+
+data2 = SELECT State, City
+        FROM data1
+        CROSS APPLY Cities.Split(';') AS City;
+
+data3 = SELECT State, 
+               ARRAY_AGG(City) AS Cities
+        FROM data2
+        GROUP BY State;
+
+data4 = SELECT State, 
+               string.Join(";" , Cities) AS Cities
+        FROM data3;
+
+OUTPUT data4
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();

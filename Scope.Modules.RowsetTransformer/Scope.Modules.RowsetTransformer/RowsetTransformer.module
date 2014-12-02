@@ -1,0 +1,15 @@
+﻿DEFINE MODULE RowsetTransformer
+BEGIN
+    FUNC Delete;   
+    FUNC Rename;   
+    FUNC Keep;   
+    FUNC Replace;   
+    FUNC UnionAllSparse;   
+END MODULE
+                  
+FUNC Delete USING RowsetLib.Delete();
+FUNC Rename USING RowsetLib.Rename();
+FUNC Keep USING RowsetLib.Keep();
+FUNC Replace USING RowsetLib.Replace();
+FUNC UnionAllSparse USING RowsetLib.UnionAllSparse();
+

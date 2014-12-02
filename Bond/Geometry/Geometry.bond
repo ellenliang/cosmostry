@@ -1,0 +1,25 @@
+namespace Geometry;
+
+struct Point
+{
+    10: double X;
+    20: double Y;
+    30: double Z;
+}
+
+struct Shape
+{
+   0: int32 x;
+   1: int32 y;
+};
+
+struct Rectangle: Shape
+{
+    0: int32 width;
+    1: int32 height;
+};
+
+struct Circle : Shape
+{
+    0: int32 radius;
+};

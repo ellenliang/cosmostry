@@ -1,0 +1,6 @@
+﻿1	Smith
+1	Smith
+1	Smith
+2	Brown
+4	Dey
+4	Dey

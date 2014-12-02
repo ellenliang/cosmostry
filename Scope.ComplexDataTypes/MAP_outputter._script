@@ -1,0 +1,8 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+REFERENCE @"C:\Users\saveenr\Documents\Visual Studio 2013\Projects\AnalyzeJobs\Helpers\bin\Debug\Helpers.dll";
+
+
+OUTPUT projectmembers TO @"/my/Demo/ComplexDataTypes/Output/Output_projectmembers.txt" USING Helpers.MyOutputter();

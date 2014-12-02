@@ -1,0 +1,24 @@
+DEFINE MODULE Demo
+BEGIN
+
+VIEW Employees
+    RETURN ROWSET (EmpID:string, EmpName:string, DeptName:string, DeptID:string, Salary:double)
+    PARAMS () ;
+
+END MODULE
+
+
+VIEW Employees
+    RETURN ROWSET (EmpID:string, EmpName:string, DeptName:string, DeptID:string, Salary:double)
+    PARAMS () 
+BEGIN
+    rawdata = 
+        EXTRACT 
+            EmpID:string, 
+            EmpName:string, 
+            DeptName:string, 
+            DeptID:string, 
+            Salary:double
+        FROM @"/my/CosmosSamples/SecondaryIndexes/Input/Employees.tsv"
+        USING DefaultTextExtractor();
+END VIEW

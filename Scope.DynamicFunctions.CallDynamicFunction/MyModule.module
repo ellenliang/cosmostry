@@ -1,0 +1,10 @@
+﻿DEFINE MODULE Module
+BEGIN
+    FUNC DoNothingFunc1;  
+    FUNC DoNothingFunc2;  
+  
+END MODULE
+                  
+FUNC DoNothingFunc1 USING DoNothingFunction1Resolver();
+FUNC DoNothingFunc2 USING DoNothingFunction2Resolver();
+

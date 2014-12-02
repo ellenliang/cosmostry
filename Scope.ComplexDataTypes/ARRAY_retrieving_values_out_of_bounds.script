@@ -1,0 +1,8 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+data = SampleData.Cities();
+
+data1= SELECT State, Cities[121212] AS FirstCity
+       FROM data;
+
+OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";

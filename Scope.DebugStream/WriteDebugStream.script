@@ -1,0 +1,11 @@
+﻿//Script GUID:f686ceaa-6a93-4e68-8434-a4c3c7fbaf4c
+//Used for tracking history
+
+// Set debug stream to my/Demo/DebugStream/Outputs/debug.txt
+searchlog = 
+    EXTRACT IId:int, UId:int, Start:DateTime, Market:string, Query:string, DwellTime:int, Results:string, ClickedUrls:string
+    FROM @"/my/Demo/DebugStream/Inputs/SearchLog.txt"
+    USING MyTsvExtractor();
+
+
+OUTPUT searchlog TO @"/my/Demo/DebugStream/Outputs/SearchLog.txt";

@@ -1,0 +1,7 @@
+Olive Green	#BAB86C	"(186, 184, 108)"	1949		
+Orange	#FF7538	"(255, 117, 56)"	1903		
+Orange Red	#FF2B2B	"(255, 43, 43)"	1949	1990	
+Orange Yellow	#F8D568	"(248, 213, 104)"	1949	1990	
+Orchid	#E6A8D7	"(230, 168, 215)"	1949		
+Outer Space	#414A4C	"(65, 74, 76)"	1998		
+Outrageous Orange	#FF6E4A	"(255, 110, 74)"	1972		"Renamed from ""Ultra Orange"" in 1990."

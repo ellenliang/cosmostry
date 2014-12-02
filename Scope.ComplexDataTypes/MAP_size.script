@@ -1,0 +1,12 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+
+data1 =
+    SELECT *
+    FROM projectmembers 
+    WHERE Employees.Count > 4;
+
+OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";
+

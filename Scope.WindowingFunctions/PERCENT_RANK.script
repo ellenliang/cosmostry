@@ -1,0 +1,15 @@
+MODULE @"../SampleData/SampleData.module";
+
+querylog = SampleData.QueryLog();
+
+
+
+
+data =
+   SELECT 
+       *,
+       PERCENT_RANK() OVER(PARTITION BY Vertical ORDER BY Latency) AS PercentRank
+   FROM querylog;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/PERCENT_RANK.ss";

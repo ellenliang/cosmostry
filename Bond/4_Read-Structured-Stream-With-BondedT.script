@@ -1,0 +1,26 @@
+REFERENCE @"BondBinaries/Microsoft.Bond.dll";
+REFERENCE @"BondBinaries/Microsoft.Bond.Interfaces.dll";
+REFERENCE @"Geometry/bin/Debug/Geometry.dll";
+
+data =  SSTREAM @"Output/PointCloud_BondedT.ss";
+
+data2 = SELECT data.Label , MyHelper.NewPointFromBondedT(data.Coordinate) AS Coordinate
+        FROM data;
+
+data3 = 
+    SELECT data2.Label, data2.Coordinate.X AS X, data2.Coordinate.Y AS Y, data2.Coordinate.Z AS Z 
+    FROM data2;
+
+OUTPUT data3 TO @"Output/PointCloud_BondedToText.txt" USING DefaultTextOutputter();
+
+
+#CS
+public class MyHelper
+{
+    public static Geometry.Point NewPointFromBondedT(Microsoft.Bond.Bonded<Geometry.Point> o)
+    {
+        var p = o.Value;
+        return p;
+    }
+}
+#ENDCS

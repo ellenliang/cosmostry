@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{202899A3-C531-4771-9089-0213D66978AE}") = "DemoVertexCodeDebugging", "DemoVertexCodeDebugging\DemoVertexCodeDebugging.scopeproj", "{99999999-9999-9999-9999-999999999999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHelper", "MyHelper\MyHelper.csproj", "{7362E63E-5589-43ED-87DE-91942085B720}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99999999-9999-9999-9999-999999999999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99999999-9999-9999-9999-999999999999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99999999-9999-9999-9999-999999999999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99999999-9999-9999-9999-999999999999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7362E63E-5589-43ED-87DE-91942085B720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7362E63E-5589-43ED-87DE-91942085B720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7362E63E-5589-43ED-87DE-91942085B720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7362E63E-5589-43ED-87DE-91942085B720}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

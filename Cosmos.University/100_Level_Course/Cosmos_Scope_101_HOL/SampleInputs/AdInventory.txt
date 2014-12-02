@@ -1,0 +1,8 @@
+9766632	Ford	0.01
+5467813	ABC	0.02
+1818186	Amazon	0.04
+1651671	World Mark	0.01
+5923020	Bank of America	0.03
+7727871	WalMart	0.12
+8112063	Mortgage Pro	0.07
+1109989	Universal Studios	0.10

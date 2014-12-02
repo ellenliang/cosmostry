@@ -1,0 +1,3 @@
+Dandelion	#FDDB6D	"(253, 219, 109)"	1990		
+Denim	#2B6CC4	"(43, 108, 196)"	1993		
+Desert Sand	#EFCDB8	"(239, 205, 184)"	1998		

@@ -1,0 +1,19 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+data1=
+    SELECT Project , EMP.Key AS Employee, EMP.Value AS Role
+    FROM projectmembers CROSS APPLY Employees AS EMP;
+
+data2= 
+    SELECT * FROM data1 WHERE Employee!="Mallory";
+
+data3= 
+    SELECT 
+        Project, 
+         MAP_AGG( Employee, Role ) AS Employees
+    FROM data2 GROUP BY Project ;
+
+OUTPUT data3 TO SSTREAM
+    @"/my/Demo/ComplexDataTypes/Output/Output.ss";

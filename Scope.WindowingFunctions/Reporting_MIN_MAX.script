@@ -1,0 +1,22 @@
+MODULE @"../SampleData/SampleData.module";
+
+employees = SampleData.Employees();
+
+data1 =
+   SELECT 
+      *,
+      MIN(Salary) OVER( PARTITION BY DeptName ) AS MinSalary
+   FROM employees;
+
+data2 =
+   SELECT 
+      *,
+      MAX(Salary) OVER( PARTITION BY DeptName ) AS MaxSalary
+   FROM employees;
+
+OUTPUT data1
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/Reporting_MIN.ss";
+
+OUTPUT data2
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/Reporting_MAX.ss";
+

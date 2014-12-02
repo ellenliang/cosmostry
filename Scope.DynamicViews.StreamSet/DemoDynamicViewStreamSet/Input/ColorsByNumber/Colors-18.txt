@@ -1,0 +1,11 @@
+Pacific Blue	#1CA9C9	"(28, 169, 201)"	1993		
+Peach	#FFCFAB	"(255, 207, 171)"	1949		"Renamed from ""Flesh"" in 1962."
+Periwinkle	#C5D0E6	"(197, 208, 230)"	1949		
+Piggy Pink	#FDDDE6	"(253, 221, 230)"	1998		
+Pine Green	#158078	"(21, 128, 120)"	1949		
+Pink Flamingo	#FC74FD	"(252, 116, 253)"	1998		
+Pink Sherbert	#F78FA7	"(247, 143, 167)"	1998		"Renamed from ""Brink Pink"" in 2000."
+Plum	#8E4585	"(142, 69, 133)"	1958		
+Purple Heart	#7442C8	"(116, 66, 200)"	1998		
+Purple Mountain's Majesty	#9D81BA	"(157, 129, 186)"	1993		
+Purple Pizzazz	#FF1DCE	"(255, 29, 206)"	1990		

@@ -1,0 +1,15 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+data1 = 
+    SELECT Project, 
+      new Dictionary<string,string>() AS Employees
+    FROM projectmembers;
+
+data2 = 
+    SELECT Project, 
+      new MAP<string,string>( Employees ) AS Employees
+    FROM data1;
+
+OUTPUT data2 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";

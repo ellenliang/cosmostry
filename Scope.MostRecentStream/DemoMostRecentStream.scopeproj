@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99999999-9999-9999-9999-999999999999}</ProjectGuid>
+    <OutputType>File</OutputType>
+    <AssemblyName>Algebra.xml</AssemblyName>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <Name>DemoMostRecentStream</Name>
+    <RootNamespace>DemoMostRecentStream</RootNamespace>
+    <VCSelectionInProjectProperty>&lt;Use Current VC in VC Selector&gt;</VCSelectionInProjectProperty>
+    <CosmosRuntimeVersion>Default</CosmosRuntimeVersion>
+    <ScopePath>%24(SCRIPT_DIR);%24(CLUSTER_ROOT);%24(SCOPE_DIR)</ScopePath>
+    <InputStreamSearchPath>%24(SCRIPT_DIR);%24(CLUSTER_ROOT);%24(PROJECT_DIR)</InputStreamSearchPath>
+    <OutputStreamPath>%24(PROJECT_DIR)</OutputStreamPath>
+    <VertexDebugSolution>false</VertexDebugSolution>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Script Include="ThreeStreams.script" />
+    <Script Include="SingleStream.script" />
+    <ScriptCode Include="ThreeStreams.script.cs">
+      <DependentUpon>ThreeStreams.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="SingleStream.script.cs">
+      <DependentUpon>SingleStream.script</DependentUpon>
+    </ScriptCode>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="my" />
+    <Folder Include="my\DemoMostRecentStream" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="my\DemoMostRecentStream\Input3x.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\DemoMostRecentStream\Input2.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\DemoMostRecentStream\Input1.txt">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(AppData)\Microsoft\ScopeStudio\MsBuild\1.0\Scope.targets" />
+</Project>

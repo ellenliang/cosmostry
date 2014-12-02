@@ -1,0 +1,15 @@
+Banana Mania	#FAE7B5	"(250, 231, 181)"	1998		
+Beaver	#9F8170	"(159, 129, 112)"	1998		
+Bittersweet	#FD7C6E	"(253, 124, 110)"	1949		
+Black	#000000	"(0,0,0)"	1903		
+Blizzard Blue	#ACE5EE	"(172, 229, 238)"	1972	2003	"Renamed from ""Ultra Blue"" in 1990."
+Blue	#1F75FE	"(31, 117, 254)"	1903		
+Blue Bell	#A2A2D0	"(162, 162, 208)"	1998		
+Blue Gray	#6699CC	"(102, 153, 204)"	1958	1990	
+Blue Green	#0D98BA	"(13, 152, 186)"	1949		
+Blue Violet	#7366BD	"(115, 102, 189)"	1949		
+Blush	#DE5D83	"(222, 93, 131)"	1998		"Renamed from ""Cranberry"" in 2000."
+Brick Red	#CB4154	"(203, 65, 84)"	1949		
+Brown	#B4674D	"(180, 103, 77)"	1903		
+Burnt Orange	#FF7F49	"(255, 127, 73)"	1958		
+Burnt Sienna	#EA7E5D	"(234, 126, 93)"	1949		

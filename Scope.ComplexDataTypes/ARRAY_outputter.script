@@ -1,0 +1,8 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+cities = SampleData.Cities();
+
+REFERENCE @"C:\Users\saveenr\Documents\Visual Studio 2013\Projects\AnalyzeJobs\Helpers\bin\Debug\Helpers.dll";
+
+
+OUTPUT cities TO @"/my/Demo/ComplexDataTypes/Output/Output_cities.txt" USING Helpers.MyOutputter();

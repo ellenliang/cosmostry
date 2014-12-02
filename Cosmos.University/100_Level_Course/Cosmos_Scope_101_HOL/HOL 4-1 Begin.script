@@ -1,0 +1,22 @@
+﻿// COSMOS SCOPE 101 HOL :: HOL 4-1 Begin.script
+
+
+searchlog = 
+    VIEW @"Views/SearchLog.view" 
+        PARAMS (start="02-01-2012", end="02-29-2012");
+
+searchlog = 
+    SELECT iid, uid, timestamp, market, query, dwelltime, results, clickedurls
+    FROM searchlog;
+
+/*
+//This section is for Part 2 of the lab
+
+searchlog = 
+    SELECT query, new PageViewActivityData(results, clickedurls) AS Activity
+    FROM searchlog;
+*/
+
+OUTPUT searchlog
+    TO @"outputs/searchlogout.txt"
+    USING DefaultTextOutputter();

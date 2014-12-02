@@ -1,0 +1,15 @@
+﻿
+MODULE @"../my/CosmosSampleData/CosmosSampleData.module";
+data = CosmosSampleData.TaxRecords();
+
+reducedTaxes =
+    REDUCE data
+    ON State
+    PRODUCE State : string,
+            TotalTax : int
+    USING MyTaxReducer
+    PRESORT State;
+
+OUTPUT reducedTaxes
+TO @"/my/ScopeTutorial/SampleInputs/StateTaxOut.txt"
+USING DefaultTextOutputter();

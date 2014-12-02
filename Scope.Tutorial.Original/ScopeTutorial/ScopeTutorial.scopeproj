@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3d79dd7c-25f8-4319-9e68-2bfa813cf034}</ProjectGuid>
+    <OutputType>File</OutputType>
+    <AssemblyName>Algebra.xml</AssemblyName>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <Name>ScopeTutorial</Name>
+    <RootNamespace>CosmosDocumentationSamples</RootNamespace>
+    <VCSelectionInProjectProperty>&lt;Use Current VC in VC Selector&gt;</VCSelectionInProjectProperty>
+    <CosmosRuntimeVersion>Default</CosmosRuntimeVersion>
+    <ScopePath>%24(SCRIPT_DIR);%24(CLUSTER_ROOT);%24(SCOPE_DIR)</ScopePath>
+    <VertexDebugSolution>false</VertexDebugSolution>
+    <InputStreamSearchPath>%24(SCRIPT_DIR);%24(CLUSTER_ROOT);%24(PROJECT_DIR)</InputStreamSearchPath>
+    <OutputStreamPath>%24(PROJECT_DIR)</OutputStreamPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Script Include="01_Read_Write_SearchLog.script" />
+    <Script Include="02_Set_Operations.script" />
+    <Script Include="03_Join_examples_from_Wikipedia.script" />
+    <Script Include="04_Consume_Views.script" />
+    <Script Include="05_Consume_SearchModule.script" />
+    <ScriptCode Include="01_Read_Write_SearchLog.script.cs">
+      <DependentUpon>01_Read_Write_SearchLog.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="02_Set_Operations.script.cs">
+      <DependentUpon>02_Set_Operations.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="03_Join_examples_from_Wikipedia.script.cs">
+      <DependentUpon>03_Join_examples_from_Wikipedia.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="04_Consume_Views.script.cs">
+      <DependentUpon>04_Consume_Views.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="05_Consume_SearchModule.script.cs">
+      <DependentUpon>05_Consume_SearchModule.script</DependentUpon>
+    </ScriptCode>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modules\Search.module">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\AdsLog.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\ClassroomTestScores.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\Colors.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\Departments.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\Employees.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\Joins_DataSet_1_Departments.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\Joins_DataSet_1_Employees.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\Joins_DataSet_2_Departments.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\Joins_DataSet_2_Employees.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\Joins_DataSet_3_Departments.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\Joins_DataSet_3_Employees.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\RevenueDataset.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\SearchLog.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\SetOps_A.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\SetOps_B.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\StreamSets\log5.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\StreamSets\log3.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\StreamSets\log2.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\StreamSets\log1.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\StreamSets\sales-2013-03-30.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\StreamSets\sales-2013-03-31.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\StreamSets\sales-2013-04-01.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="my\ScopeTutorial\SampleInputs\StreamSets\sales-2013-04-03.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="PowerShellScripts\upload-samples-to-sandbox.ps1">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Readme.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Tools\CodePackage.psm1">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Tools\createzip.ps1">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Views\SearchLogParameterized.view">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Views\SearchLog.view">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="my" />
+    <Folder Include="my\ScopeTutorial" />
+    <Folder Include="my\ScopeTutorial\SampleInputs\StreamSets" />
+    <Folder Include="my\ScopeTutorial\SampleOutputs" />
+    <Folder Include="my\ScopeTutorial\SampleInputs\" />
+    <Folder Include="Modules" />
+    <Folder Include="PowerShellScripts" />
+    <Folder Include="Views" />
+    <Folder Include="Tools" />
+  </ItemGroup>
+  <Import Project="$(AppData)\Microsoft\ScopeStudio\MsBuild\1.0\Scope.targets" />
+</Project>

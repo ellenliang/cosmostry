@@ -1,0 +1,20 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+
+data1 = 
+    SELECT 
+      Project, 
+      Employees.Count AS NumEmployees
+    FROM projectmembers ;
+
+data2 = 
+    SELECT 
+      Project, 
+      COUNT( Employees ) AS NumEmployees
+      GROUP BY Project
+    FROM projectmembers ;
+
+OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output1.ss";
+OUTPUT data2 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output2.ss";

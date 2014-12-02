@@ -1,0 +1,16 @@
+MODULE @"../SampleData/SampleData.module";
+
+querylog = SampleData.QueryLog();
+
+
+
+data =
+   SELECT 
+       *,
+       RANK() OVER (PARTITION BY Vertical ORDER BY Latency) AS Rank,
+       DENSE_RANK() OVER (PARTITION BY Vertical ORDER BY Latency) AS DenseRank,
+       ROW_NUMBER() OVER (PARTITION BY Vertical ORDER BY Latency) AS RowNumber
+   FROM querylog;
+
+OUTPUT data
+    TO SSTREAM @"/my/CosmosSamples/WindowingFunctions/Output/TOP_N_in_Group_Context_RANK_DENSE_RANK_ROW_NUMBER.ss"; 

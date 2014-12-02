@@ -1,0 +1,46 @@
+﻿Neon Carrot	#FFA343	"(255, 163, 67)"	1990		
+Olive Green	#BAB86C	"(186, 184, 108)"	1949		
+Orange	#FF7538	"(255, 117, 56)"	1903		
+Orange Red	#FF2B2B	"(255, 43, 43)"	1949	1990	
+Orange Yellow	#F8D568	"(248, 213, 104)"	1949	1990	
+Orchid	#E6A8D7	"(230, 168, 215)"	1949		
+Outer Space	#414A4C	"(65, 74, 76)"	1998		
+Outrageous Orange	#FF6E4A	"(255, 110, 74)"	1972		"Renamed from ""Ultra Orange"" in 1990."
+Pacific Blue	#1CA9C9	"(28, 169, 201)"	1993		
+Peach	#FFCFAB	"(255, 207, 171)"	1949		"Renamed from ""Flesh"" in 1962."
+Periwinkle	#C5D0E6	"(197, 208, 230)"	1949		
+Piggy Pink	#FDDDE6	"(253, 221, 230)"	1998		
+Pine Green	#158078	"(21, 128, 120)"	1949		
+Pink Flamingo	#FC74FD	"(252, 116, 253)"	1998		
+Pink Sherbert	#F78FA7	"(247, 143, 167)"	1998		"Renamed from ""Brink Pink"" in 2000."
+Plum	#8E4585	"(142, 69, 133)"	1958		
+Purple Heart	#7442C8	"(116, 66, 200)"	1998		
+Purple Mountain's Majesty	#9D81BA	"(157, 129, 186)"	1993		
+Purple Pizzazz	#FF1DCE	"(255, 29, 206)"	1990		
+Radical Red	#FF496C	"(255, 73, 108)"	1990		
+Raw Sienna	#D68A59	"(214, 138, 89)"	1958		
+Raw Umber	#714B23	"(113, 75, 35)"	1958	1990	
+Razzle Dazzle Rose	#FF48D0	"(255, 72, 208)"	1990		
+Razzmatazz	#E3256B	"(227, 37, 107)"	1993		
+Red	#EE204D	"(238, 32, 77)"	1903		
+Red Orange	#FF5349	"(255, 83, 73)"	1949		
+Red Violet	#C0448F	"(192, 68, 143)"	1949		
+Robin Egg Blue	#1FCECB	"(31, 206, 203)"	1993		
+Royal Purple	#7851A9	"(120, 81, 169)"	1990		
+Salmon	#FF9BAA	"(255, 155, 170)"	1949		
+Scarlet	#FC2847	"(252, 40, 71)"	1998		"Renamed from ""Torch Red"" in 2000."
+Screamin' Green	#76FF7A	"(118, 255, 122)"	1972		"Renamed from ""Ultra Green"" in 1990."
+Sea Green	#9FE2BF	"(159, 226, 191)"	1949		
+Sepia	#A5694F	"(165, 105, 79)"	1958		
+Shadow	#8A795D	"(138, 121, 93)"	1998		
+Shamrock	#45CEA2	"(69, 206, 162)"	1993		
+Shocking Pink	#FB7EFD	"(251, 126, 253)"	1972		"Renamed from ""Ultra Pink"" in 1990."
+Silver	#CDC5C2	"(205, 197, 194)"	1949		
+Sky Blue	#80DAEB	"(128, 218, 235)"	1958		
+Spring Green	#ECEABE	"(236, 234, 190)"	1949		
+Sunglow	#FFCF48	"(255, 207, 72)"	1990		
+Sunset Orange	#FD5E53	"(253, 94, 83)"	1998		
+Tan	#FAA76C	"(250, 167, 108)"	1949		
+Teal Blue	#18A7B5	"(24, 167, 181)"	1990	2003	
+Thistle	#EBC7DF	"(235, 199, 223)"	1949	2000	
+Tickle Me Pink	#FC89AC	"(252, 137, 172)"	1993		

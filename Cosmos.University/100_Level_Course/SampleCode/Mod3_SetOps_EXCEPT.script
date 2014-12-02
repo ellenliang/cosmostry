@@ -1,0 +1,39 @@
+﻿a = VIEW @"SetOps_DataSetA.view";
+b = VIEW @"SetOps_DataSetB.view";
+
+except_distinct_ab =
+    SELECT * FROM a
+    EXCEPT DISTINCT
+    SELECT * FROM b;  
+
+except_all_ab =
+    SELECT * FROM a
+    EXCEPT ALL
+    SELECT * FROM b;  
+
+except_distinct_ba =
+    SELECT * FROM b
+    EXCEPT DISTINCT
+    SELECT * FROM a;  
+
+except_all_ba =
+    SELECT * FROM b
+    EXCEPT ALL
+    SELECT * FROM a;  
+
+
+OUTPUT except_distinct_ab
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output_except_distinct_ab.tsv"
+    USING DefaultTextOutputter();
+
+OUTPUT except_all_ab
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output_except_all_ab.tsv"
+    USING DefaultTextOutputter();
+
+OUTPUT except_distinct_ba
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output_except_distinct_ba.tsv"
+    USING DefaultTextOutputter();
+
+OUTPUT except_all_ba
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output_except_all_ba.tsv"
+    USING DefaultTextOutputter();

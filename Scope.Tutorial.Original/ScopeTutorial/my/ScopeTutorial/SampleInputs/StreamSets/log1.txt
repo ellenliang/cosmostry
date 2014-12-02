@@ -1,0 +1,17 @@
+﻿Almond	#EFDECD	"(239, 222, 205)"	1998		
+Antique Brass	#CD9575	"(205, 149, 117)"	1998		
+Apricot	#FDD9B5	"(253, 217, 181)"	1949		
+Aquamarine	#78DBE2	"(120, 219, 226)"	1958		
+Asparagus	#87A96B	"(135, 169, 107)"	1993		
+Atomic Tangerine	#FFA474	"(255, 164, 116)"	1972		"Renamed from ""Ultra Yellow"" in 1990."
+Banana Mania	#FAE7B5	"(250, 231, 181)"	1998		
+Beaver	#9F8170	"(159, 129, 112)"	1998		
+Bittersweet	#FD7C6E	"(253, 124, 110)"	1949		
+Black	#000000	"(0,0,0)"	1903		
+Blizzard Blue	#ACE5EE	"(172, 229, 238)"	1972	2003	"Renamed from ""Ultra Blue"" in 1990."
+Blue	#1F75FE	"(31, 117, 254)"	1903		
+Blue Bell	#A2A2D0	"(162, 162, 208)"	1998		
+Blue Gray	#6699CC	"(102, 153, 204)"	1958	1990	
+Blue Green	#0D98BA	"(13, 152, 186)"	1949		
+Blue Violet	#7366BD	"(115, 102, 189)"	1949		
+Blush	#DE5D83	"(222, 93, 131)"	1998		"Renamed from ""Cranberry"" in 2000."

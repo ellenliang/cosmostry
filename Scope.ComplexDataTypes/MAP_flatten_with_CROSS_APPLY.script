@@ -1,0 +1,12 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+data1=
+    SELECT Project,
+           EMP.Key AS Employee,
+           EMP.Value AS Role
+    FROM projectmembers 
+         CROSS APPLY Employees AS EMP;
+
+OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";

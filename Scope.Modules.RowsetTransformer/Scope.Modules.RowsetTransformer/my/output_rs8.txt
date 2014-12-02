@@ -1,0 +1,15 @@
+Banana	300	Image	
+Banana	200	Image	en-us
+Cherry	300	Image	
+Blackberry	300	Image	en-gb
+Durian	500	Image	
+Currant	800	Image	en-gb
+Apple	100	Web	
+Apple	200	Web	en-us
+Fig	200	Web	
+Date	100	Web	en-gb
+Papaya	200	Web	
+Coconut	400	Web	en-us
+Fig	300	Web	
+Cherry	400	Web	
+Durian	500	Web	

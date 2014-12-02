@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99999999-9999-9999-9999-999999999999}</ProjectGuid>
+    <OutputType>File</OutputType>
+    <AssemblyName>Algebra.xml</AssemblyName>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <Name>DemoDebugStream</Name>
+    <RootNamespace>DemoDebugStream</RootNamespace>
+    <VCSelectionInProjectProperty>&lt;Use Current VC in VC Selector&gt;</VCSelectionInProjectProperty>
+    <CosmosRuntimeVersion>Default</CosmosRuntimeVersion>
+    <ScopePath>%24(SCRIPT_DIR);%24(CLUSTER_ROOT);%24(SCOPE_DIR)</ScopePath>
+    <VertexDebugSolution>false</VertexDebugSolution>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <InputStreamSearchPath>%24(SCRIPT_DIR);%24(CLUSTER_ROOT);%24(PROJECT_DIR)</InputStreamSearchPath>
+    <OutputStreamPath>%24(PROJECT_DIR)</OutputStreamPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Script Include="WriteDebugStream.script" />
+    <Script Include="ReadDebugStream.script" />
+    <ScriptCode Include="WriteDebugStream.script.cs">
+      <DependentUpon>WriteDebugStream.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="ReadDebugStream.script.cs">
+      <DependentUpon>ReadDebugStream.script</DependentUpon>
+    </ScriptCode>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="my" />
+    <Folder Include="my\Demo" />
+    <Folder Include="my\Demo\DebugStream" />
+    <Folder Include="my\Demo\DebugStream\Inputs" />
+    <Folder Include="my\Demo\DebugStream\Outputs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="my\Demo\DebugStream\Inputs\SearchLog.txt">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(AppData)\Microsoft\ScopeStudio\MsBuild\1.0\Scope.targets" />
+</Project>

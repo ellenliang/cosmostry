@@ -1,0 +1,24 @@
+REFERENCE @"BondBinaries/Microsoft.Bond.dll";
+REFERENCE @"BondBinaries/Microsoft.Bond.Interfaces.dll";
+REFERENCE @"Geometry/bin/Debug/Geometry.dll";
+
+data =  SSTREAM @"Output/AllShapes_BondedT.ss";
+
+data2 = SELECT data.Kind , MyHelper.BondedShapeToString(data.Coordinate) AS Shape 
+FROM data;
+
+OUTPUT data2 TO @"Output/AllShapes_BondedT_Output.txt";
+
+
+#CS
+
+public class MyHelper
+{
+    public static string BondedShapeToString(Microsoft.Bond.Bonded<Geometry.Shape> shape)
+    {
+	var v = shape.Value;
+	return string.Format( "{0},{1}", v.x, v.y );
+    }
+}
+
+#ENDCS

@@ -1,0 +1,10 @@
+﻿rs0 = 
+    EXTRACT id:int, 
+            name:string
+    FROM @"/my/Demo/SimplestScript/InputData.txt"
+    USING DefaultTextExtractor();
+
+OUTPUT rs0 
+TO @"/my/Demo/SimplestScript/InputData.txt"
+USING DefaultTextOutputter();
+

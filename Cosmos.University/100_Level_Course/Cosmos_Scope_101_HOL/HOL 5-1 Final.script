@@ -1,0 +1,33 @@
+﻿// COSMOS SCOPE 101 HOL :: HOL 5-1 Final.script
+
+
+searchlog = 
+    VIEW @"Views/SearchLog.view" 
+        PARAMS (start="02-01-2012", end="02-29-2012");
+
+searchlog = 
+    SELECT query, market, new PageViewActivityData(results, clickedurls) AS Activity
+    FROM searchlog;
+
+searchlog = 
+    SELECT query, market, result.Domain AS Domain
+    FROM searchlog 
+        CROSS APPLY Activity.Results  AS result;
+
+/*
+searchlog = 
+    SELECT Domain, LIST(market) AS markets
+    FROM searchlog
+    GROUP BY Domain;
+*/
+
+searchlog = 
+    SELECT Domain, Helpers.NonEnUsMarketProbability(LIST(market)) AS probability
+    FROM searchlog
+    GROUP BY Domain;
+
+
+
+OUTPUT searchlog
+    TO @"outputs/searchlogout.txt"
+    USING DefaultTextOutputter();

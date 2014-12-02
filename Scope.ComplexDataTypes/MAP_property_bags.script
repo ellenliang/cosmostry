@@ -1,0 +1,14 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+
+data1 = 
+  SELECT 1 AS id
+       , new MAP<string,string>() AS StringProps
+       , new MAP<string,int?>() AS IntProps
+       , new MAP<string,ARRAY<int>>() AS IntArrProps
+  FROM projectmembers ;
+
+OUTPUT data1 TO SSTREAM
+  @"/my/Demo/ComplexDataTypes/Output/Output.ss";

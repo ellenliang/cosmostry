@@ -1,0 +1,13 @@
+﻿departments = VIEW @"Departments.view";
+employees = VIEW @"Employees.view";
+
+right_semi_join = 
+    SELECT 
+        departments.*
+    FROM employees 
+         RIGHT SEMIJOIN departments 
+             ON employees.EmpDepartmentID == departments.DepDepartmentID;
+
+OUTPUT right_semi_join
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/right_semi_join.tsv"
+    USING DefaultTextOutputter();

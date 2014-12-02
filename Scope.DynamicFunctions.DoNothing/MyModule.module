@@ -1,0 +1,8 @@
+﻿DEFINE MODULE Module
+BEGIN
+    FUNC DoNothingFunc;  
+  
+END MODULE
+                  
+FUNC DoNothingFunc USING DoNothingFunctionResolver();
+

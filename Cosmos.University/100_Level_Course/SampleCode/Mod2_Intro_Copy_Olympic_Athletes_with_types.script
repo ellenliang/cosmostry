@@ -1,0 +1,18 @@
+﻿athletes =
+    EXTRACT
+        Athlete:              string,
+        Age:                  int,
+        Country:              string,
+        Year:                 int,
+        ClosingCeremonyDate:  DateTime,
+        Sport:                string,
+        GoldMedals:           int,
+        SilverMedals:         int,
+        BronzeMedals:         int,
+        TotalMedals:          int
+    FROM @"/my/CosmosSamples/CosmosUniversity/Input/OlympicAthletes.tsv"
+    USING DefaultTextExtractor();
+
+OUTPUT athletes
+    TO @"/my/CosmosSamples/CosmosUniversity/Output/output.tsv"
+    USING DefaultTextOutputter();

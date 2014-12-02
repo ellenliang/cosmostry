@@ -1,0 +1,11 @@
+﻿
+VersionTable =
+    EXTRACT Name : string,
+            _Version : MyVersion,
+            ReleaseDate : string
+    FROM @"/my/CosmosSampleData/Versions.txt"
+    USING VersionExtractor();
+
+OUTPUT VersionTable
+TO @"/my/ScopeTutorial/SampleOutputs/VersionOut.tsv"
+USING VersionOutputter();

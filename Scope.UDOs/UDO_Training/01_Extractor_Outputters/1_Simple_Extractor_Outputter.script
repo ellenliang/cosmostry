@@ -1,0 +1,17 @@
+﻿
+searchlog = 
+    EXTRACT IId:int, 
+            UId:int, 
+            Start:DateTime, 
+            Market:string, 
+            Query:string, 
+            DwellTime:int, 
+            Results:string, 
+            ClickedUrls:string
+    FROM @"/my/CosmosSampleData/SearchLog.txt"
+    USING MyTsvExtractor();
+
+
+OUTPUT searchlog
+TO @"/my/ScopeTutorial/SampleOutputs/SearchLogOut.tsv" 
+USING MyTsvOutputter();

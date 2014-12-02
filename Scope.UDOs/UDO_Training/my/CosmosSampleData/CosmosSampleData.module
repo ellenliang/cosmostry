@@ -1,0 +1,124 @@
+DEFINE MODULE CosmosSampleData
+BEGIN
+
+VIEW SearchLogRaw
+     RETURN ROWSET (
+            IId : int,
+            UId : int,
+            Start : DateTime,
+            Market : string,
+            Query : string,
+            Duration : int,
+            Results : string,
+            ClickedUrls : string)
+    PARAMS () ;  
+
+VIEW BitsRaw
+    RETURN
+        ROWSET
+        (
+            Category : string,
+            Value : string
+        )
+    PARAMS (); 
+
+VIEW TaxRecords
+    RETURN ROWSET(
+            State : string,
+            Amount : int)
+    PARAMS();
+
+VIEW DepartmentsRaw
+    RETURN ROWSET(
+            DepID : string,
+            DepName : string)
+    PARAMS();
+
+VIEW EmployeesRaw
+    RETURN ROWSET(
+            EmpName : string,
+            DepID : string)
+    PARAMS();
+
+END MODULE
+
+VIEW SearchLogRaw
+     RETURN ROWSET (
+            IId : int,
+            UId : int,
+            Start : DateTime,
+            Market : string,
+            Query : string,
+            Duration : int,
+            Results : string,
+            ClickedUrls : string)
+    PARAMS ()
+BEGIN
+searchlog =
+    EXTRACT IId : int,
+            UId : int,
+            Start : DateTime,
+            Market : string,
+            Query : string,
+            Duration : int,
+            Results : string,
+            ClickedUrls : string
+    FROM @"SearchLog.txt"
+        USING DefaultTextExtractor();
+END VIEW
+
+VIEW BitsRaw
+RETURN
+    ROWSET
+    (
+        Category : string,
+        Value : string
+    )
+    PARAMS ()
+BEGIN
+    rawdata =
+        EXTRACT Category : string,
+                Value : string
+        FROM @"Bits.txt"
+        USING DefaultTextExtractor();
+END VIEW
+
+VIEW TaxRecords
+    RETURN ROWSET(
+            State : string,
+            Amount : int)
+    PARAMS()
+BEGIN
+    rawdata =
+        EXTRACT State : string,
+                Amount : int
+        FROM @"StateTax.txt"
+        USING DefaultTextExtractor();
+END VIEW
+
+VIEW EmployeesRaw
+    RETURN ROWSET(
+            EmpName : string,
+            DepID : string)
+    PARAMS()
+BEGIN
+    rawData =
+        EXTRACT EmpName : string,
+                 DepID : string
+        FROM @"Employees.txt"
+        USING DefaultTextExtractor();
+END VIEW
+
+VIEW DepartmentsRaw
+    RETURN ROWSET(
+            DepID : string,
+            DepName : string)
+    PARAMS()
+BEGIN
+    rawData =
+        EXTRACT DepID : string,
+                DepName:string
+        FROM @"Departments.txt"
+        USING DefaultTextExtractor();
+END VIEW
+

@@ -1,0 +1,15 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+
+
+data1=
+    SELECT *
+    FROM projectmembers 
+    WHERE Project=="Website";
+
+data2 = SELECT Project, Employees["Mallory"] AS MalloryRole
+    FROM data1;
+   
+OUTPUT data2 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";
+

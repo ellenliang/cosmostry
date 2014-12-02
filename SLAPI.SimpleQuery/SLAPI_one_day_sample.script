@@ -1,0 +1,58 @@
+//REFERENCE @"/shares/searchDM/distrib/released/SLAPI/SearchLogApi.dll"; 
+//REFERENCE @"/shares/searchDM/distrib/released/SLAPI/Microsoft.Live.Json.dll"; 
+//REFERENCE @"/shares/searchDM/distrib/released/SLAPI/Serializer.exe"; 
+//USING MS.Internal.Bing.DataMining.SearchLogApi; 
+
+SlapiPageView =
+
+    VIEW "/shares/searchDM/distrib/released/SLAPI/SearchLogPageView.view"
+    PARAMS
+    (
+        Start = @"2014-08-01",
+        End = @"2014-08-01",
+        UseSample = true,
+        Dataset = @"Bing.com"
+    );
+
+rs0 =
+    SELECT     SessionId,
+               Market,
+               Vertical,
+               Query_RawQuery,
+               Request_Browser,
+               Request_Referrer,
+               Session_Duration,
+               User_Locale
+    WHERE 
+        Query_IsAdult == false
+    FROM SlapiPageView;
+
+OUTPUT rs0
+TO SSTREAM @"/my/bing_one_day_sample.ss" CLUSTERED BY Vertical, Market, Request_Browser, User_Locale;
+
+#CS
+
+public static class MyHelpers
+{
+    public static bool ContainsCI(string source, string target)
+    {
+          return source.IndexOf(target, StringComparison.OrdinalIgnoreCase)>=0;
+    }
+
+    public static bool ContainsAnyCI(string source, params string [] targets)
+    {
+        foreach (string target in targets)
+        {
+            if (ContainsCI(source,target))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+}
+#ENDCS
+
+

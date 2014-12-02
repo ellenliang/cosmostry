@@ -1,0 +1,91 @@
+﻿DEFINE MODULE Search
+BEGIN
+
+    VIEW LogView
+        RETURN 
+            ROWSET( 
+                IId:int, 
+                UId:int, 
+                TimeStamp:DateTime, 
+                Market:string, 
+                Query:string, 
+                DwellTime:int, 
+                Results:string, 
+                ClickedUrls:string 
+            )
+        PARAMS();
+
+    VIEW LogViewParameterized
+        RETURN 
+            ROWSET( 
+                IId:int, 
+                UId:int, 
+                TimeStamp:DateTime, 
+                Market:string, 
+                Query:string, 
+                DwellTime:int, 
+                Results:string, 
+                ClickedUrls:string 
+            )
+        PARAMS(
+            start string,
+            end string
+        );
+END MODULE
+
+
+
+VIEW LogView
+    RETURN 
+        ROWSET( 
+            IId:int, 
+            UId:int, 
+            TimeStamp:DateTime, 
+            Market:string, 
+            Query:string, 
+            DwellTime:int, 
+            Results:string, 
+            ClickedUrls:string 
+        )
+    PARAMS()
+
+BEGIN
+//    searchlog = VIEW @"../Views/SearchLog.view";
+
+    #IF (LOCAL)
+        #DECLARE SearchLogPath string = @"../my/ScopeTutorial/SampleInputs/SearchLog.txt";
+    #ELSE
+        #DECLARE SearchLogPath string = @"/my/ScopeTutorial/SampleInputs/SearchLog.txt";
+    #ENDIF
+
+    EXTRACT IId:int, UId:int, TimeStamp:DateTime, Market:string, Query:string, DwellTime:int, Results:string, ClickedUrls:string
+    FROM @SearchLogPath
+    USING DefaultTextExtractor();
+
+END VIEW
+
+
+VIEW LogViewParameterized
+    RETURN 
+        ROWSET( 
+            IId:int, 
+            UId:int, 
+            TimeStamp:DateTime, 
+            Market:string, 
+            Query:string, 
+            DwellTime:int, 
+            Results:string, 
+            ClickedUrls:string 
+        )
+        PARAMS(
+	        start string,
+	        end string
+        )
+
+BEGIN
+    searchlog = LogView();
+
+    filtered_searchlog = SELECT * 
+                FROM searchlog
+                WHERE TimeStamp >= DateTime.Parse(@start) AND TimeStamp < DateTime.Parse(@end).AddDays(1);
+END VIEW

@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99999999-9999-9999-9999-999999999999}</ProjectGuid>
+    <OutputType>File</OutputType>
+    <AssemblyName>Algebra.xml</AssemblyName>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <Name>DemoDynamicView</Name>
+    <RootNamespace>DemoDynamicView</RootNamespace>
+    <VCSelectionInProjectProperty>&lt;Use Current VC in VC Selector&gt;</VCSelectionInProjectProperty>
+    <CosmosRuntimeVersion>Default</CosmosRuntimeVersion>
+    <ScopePath>%24(SCRIPT_DIR);%24(CLUSTER_ROOT);%24(SCOPE_DIR)</ScopePath>
+    <VertexDebugSolution>false</VertexDebugSolution>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Script Include="Scope.script" />
+    <ScriptCode Include="Scope.script.cs">
+      <DependentUpon>Scope.script</DependentUpon>
+    </ScriptCode>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Input" />
+    <Folder Include="Input\ColorsByLetter" />
+    <Folder Include="Input\ColorsByLetterAndNumber\" />
+    <Folder Include="Input\ColorsByNumber" />
+    <Folder Include="Input\ColorsByDate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DynamicStreamSet.view">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-10.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-11.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-12.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-13.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-14.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-15.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-16.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-17.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-18.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-19.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-20.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-21.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-22.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-23.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-24.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-25.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-26.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-27.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-28.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-29.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-30.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByDate\Colors-2013-03-31.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetterAndNumber\Colors-A-0.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetterAndNumber\Colors-B-0.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetterAndNumber\Colors-C-0.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetterAndNumber\Colors-A-1.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetterAndNumber\Colors-B-1.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetterAndNumber\Colors-C-1.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetterAndNumber\Colors-A-2.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetterAndNumber\Colors-B-2.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetterAndNumber\Colors-C-2.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-A.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-B.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-C.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-D.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-E.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-F.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-G.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-H.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-I.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-J.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-L.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-M.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-N.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-O.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-P.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-R.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-S.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-T.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-U.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-V.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-W.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByLetter\Colors-Y.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-0.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-1.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-10.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-11.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-12.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-13.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-14.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-15.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-16.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-17.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-18.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-19.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-2.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-20.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-21.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-3.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-4.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-5.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-6.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-7.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-8.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Input\ColorsByNumber\Colors-9.txt">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StreamSetDynamicViewBuilder\StreamSetDynamicViewBuilder.csproj">
+      <Name>StreamSetDynamicViewBuilder</Name>
+      <Project>{ba5aeea2-01ea-4751-b1fe-e6ccf1c23d00}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(AppData)\Microsoft\ScopeStudio\MsBuild\1.0\Scope.targets" />
+</Project>

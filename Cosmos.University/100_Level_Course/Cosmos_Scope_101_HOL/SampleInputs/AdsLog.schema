@@ -1,0 +1,5 @@
+﻿//Schema of Ads Logs
+AdImpressionID
+AdID
+SearchImpressionID
+WasClicked

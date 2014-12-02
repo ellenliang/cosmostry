@@ -1,0 +1,12 @@
+﻿MODULE @"../SampleData/SampleData.module";
+
+projectmembers = SampleData.ProjectMembers();
+data = 
+    SELECT Project, 
+      new MAP<string,string> { 
+        {"Bob", "PM" }, 
+        {"Mallory", "Dev"}
+      } AS Employees
+    FROM projectmembers;
+
+OUTPUT data TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";

@@ -1,0 +1,12 @@
+REFERENCE @"BondBinaries/Microsoft.Bond.dll";
+REFERENCE @"BondBinaries/Microsoft.Bond.Interfaces.dll";
+REFERENCE @"Geometry/bin/Debug/Geometry.dll";
+
+data =  SSTREAM @"Output/PointCloud_Bond.ss";
+
+data_without_bond = SELECT data.Label , data.Coordinate.X AS X, data.Coordinate.X AS Y, data.Coordinate.Z AS Z
+        FROM data;
+
+OUTPUT data_without_bond
+TO SSTREAM @"Output/PointCloud_Without_Bond2.ss";
+

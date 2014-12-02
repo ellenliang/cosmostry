@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0BAB517E-DDE1-417D-9DBA-7A08D65E663B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CosmosSamples.Export.GetRowCount</RootNamespace>
+    <AssemblyName>CosmosSamples.Export.GetRowCount</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Cosmos.Client">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\Microsoft.Cosmos.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Cosmos.Client.Interfaces">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\Microsoft.Cosmos.Client.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Cosmos.ExportClient">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\Microsoft.Cosmos.ExportClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Cosmos.FrontEnd.Common">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\Microsoft.Cosmos.FrontEnd.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Cosmos.FrontEnd.Contract">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\Microsoft.Cosmos.FrontEnd.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Cosmos.FrontEnd.InteractiveQuery.Contract">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\Microsoft.Cosmos.FrontEnd.InteractiveQuery.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Cosmos.FrontEnd.InteractiveQuery.Internal.Contract">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\Microsoft.Cosmos.FrontEnd.InteractiveQuery.Internal.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Cosmos.FrontEnd.WebService.Client">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\Microsoft.Cosmos.FrontEnd.WebService.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scope.Dependencies.Cosmos">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\Microsoft.Scope.Dependencies.Cosmos.dll</HintPath>
+    </Reference>
+    <Reference Include="ScopeCompiler">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\ScopeCompiler.dll</HintPath>
+    </Reference>
+    <Reference Include="ScopeRuntime">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.6.1\lib\net45\ScopeRuntime.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Microsoft.Cosmos.Client.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Microsoft.Cosmos.ExportClient.Dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\Microsoft.Cosmos.Client.1.6.1\lib\CosmosClientOptics.dll">
+      <Link>CosmosClientOptics.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Microsoft.Cosmos.Client.1.6.1\lib\Cqo.dll">
+      <Link>Cqo.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

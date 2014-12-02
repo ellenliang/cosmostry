@@ -1,0 +1,139 @@
+DEFINE MODULE SampleData
+BEGIN
+
+VIEW BitsRaw
+    RETURN ROWSET (Category:string, Value:string)
+    PARAMS () ;
+
+VIEW CitiesRaw
+    RETURN ROWSET (State:string, Cities:string)
+    PARAMS () ;
+
+VIEW Cities
+    RETURN ROWSET (State:string, Cities:ARRAY<string>)
+    PARAMS () ;
+
+VIEW ProjectMembersRaw 
+    RETURN ROWSET( 
+	    Project:string, 
+            Employee:string,
+            Role:string)
+    PARAMS () ;
+
+VIEW ProjectMembers
+    RETURN ROWSET( 
+	    Project:string, 
+            Employees:MAP<string,string>)
+    PARAMS () ;
+
+VIEW QueryLog
+    RETURN ROWSET (Query:string, Latency:int, Vertical:string)
+    PARAMS () ;
+
+VIEW Employees
+    RETURN ROWSET (EmpID:string, EmpName:string, DeptName:string, DeptID:string, Salary:double)
+    PARAMS () ;
+
+END MODULE
+
+VIEW BitsRaw 
+    RETURN ROWSET ( 
+	    Category:string, Value:string )
+    PARAMS () 
+BEGIN
+    rawdata = 
+        EXTRACT Category:string, Value:string
+        FROM @"Bits.txt"
+        USING DefaultTextExtractor();
+END VIEW
+
+
+VIEW CitiesRaw 
+    RETURN ROWSET ( 
+	    State:string, 
+            Cities:string)
+    PARAMS () 
+BEGIN
+    rawdata = 
+        EXTRACT State:string, 
+                Cities:string
+        FROM @"Cities.txt"
+        USING DefaultTextExtractor();
+END VIEW
+
+VIEW Cities 
+    RETURN ROWSET ( 
+	    State:string, 
+            Cities:ARRAY<string>)
+    PARAMS () 
+BEGIN
+    data = CitiesRaw(); 
+    
+    data1 =
+        SELECT State, 
+               Cities.Split( new [] { ';' } ) AS Cities
+        FROM data;
+
+    data2 =
+        SELECT State, 
+               new ARRAY<string>( Cities ) AS Cities
+        FROM data1;
+END VIEW
+
+
+VIEW ProjectMembersRaw 
+    RETURN ROWSET ( 
+	    Project:string, 
+            Employee:string,
+            Role:string)
+    PARAMS () 
+BEGIN
+    rawdata = 
+        EXTRACT Project:string, 
+                Employee:string,
+                Role:string
+        FROM @"ProjectMembers.txt"
+        USING DefaultTextExtractor();
+END VIEW
+
+
+
+VIEW ProjectMembers 
+    RETURN ROWSET ( 
+	    Project:string, 
+            Employees:MAP<string,string>)
+    PARAMS () 
+BEGIN
+    projectmembers =  ProjectMembersRaw();
+    data = 
+        SELECT Project, MAP_AGG( Employee, Role ) AS Employees
+        FROM projectmembers;
+END VIEW
+
+
+VIEW QueryLog
+    RETURN ROWSET (Query:string, Latency:int, Vertical:string)
+    PARAMS () 
+BEGIN
+    rawdata = 
+        EXTRACT Query:string,
+                Latency:int,
+                Vertical:string
+        FROM @"QueryLog.tsv"
+        USING DefaultTextExtractor();
+END VIEW
+
+VIEW Employees
+    RETURN ROWSET (EmpID:string, EmpName:string, DeptName:string, DeptID:string, Salary:double)
+    PARAMS () 
+BEGIN
+    rawdata = 
+        EXTRACT 
+            EmpID:string, 
+            EmpName:string, 
+            DeptName:string, 
+            DeptID:string, 
+            Salary:double
+        FROM @"Employees.tsv"
+        USING DefaultTextExtractor();
+END VIEW

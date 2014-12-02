@@ -1,0 +1,19 @@
+CREATE VIEW Employees
+SCHEMA ( 
+    LastName:string, 
+    EmpDepartmentID:string
+  )
+AS BEGIN
+   employees= 
+       EXTRACT LastName:string, 
+               EmpDepartmentID:string
+       FROM @"/my/CosmosSamples/CosmosUniversity/Input/Employees.tsv"
+       USING DefaultTextExtractor();
+
+   employees_with_nulls= 
+       SELECT 
+	   LastName,
+           (EmpDepartmentID == "NULL") ? null : EmpDepartmentID AS EmpDepartmentID
+       FROM employees;
+
+END;

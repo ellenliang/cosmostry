@@ -1,0 +1,2 @@
+Eggplant	#6E5160	"(110, 81, 96)"	1998		
+Electric Lime	#CEFF1D	"(206, 255, 29)"	1990		

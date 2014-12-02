@@ -1,0 +1,7 @@
+MODULE "Demo.module";
+
+employees = Demo.Employees();
+
+OUTPUT employees 
+    TO @"/my/CosmosSamples/SecondaryIndexes/Output/employees.tsv"
+    USING DefaultTextOutputter(); 
