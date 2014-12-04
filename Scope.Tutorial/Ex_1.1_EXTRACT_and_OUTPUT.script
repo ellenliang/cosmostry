@@ -1,0 +1,13 @@
+// Ex_1.1_Basic_EXTRACT_and_OUTPUT
+
+rs0 = EXTRACT 
+        FirstName : string,
+        LastName : string,
+        Age : int
+      FROM
+        @"/test_input.tsv"
+      USING DefaultTextExtractor();
+
+OUTPUT rs0
+    TO @"/test_output.tsv"
+      USING DefaultTextOutputter();

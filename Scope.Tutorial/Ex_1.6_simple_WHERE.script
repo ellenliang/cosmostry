@@ -1,0 +1,12 @@
+searchlog = VIEW @"Views/SearchLog.view";
+
+// Find all the session that in the en-gb Region
+rs1 = 
+    SELECT Start, Region, Duration
+    FROM searchlog
+    WHERE Region == "en-gb";
+ 
+OUTPUT rs1
+TO @"/my/Scope.Tutorial/Outputs/output.txt";
+
+

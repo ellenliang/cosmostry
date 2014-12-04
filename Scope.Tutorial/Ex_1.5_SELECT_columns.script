@@ -1,0 +1,12 @@
+searchlog = VIEW @"Views/SearchLog.view";
+
+searchlog = VIEW @"Views/SearchLog.view";
+
+// Find all the session dates, Durations
+rs1 = 
+    SELECT Start, Region, Duration
+    FROM searchlog;
+ 
+OUTPUT rs1
+TO @"/my/Scope.Tutorial/Outputs/output.txt";
+

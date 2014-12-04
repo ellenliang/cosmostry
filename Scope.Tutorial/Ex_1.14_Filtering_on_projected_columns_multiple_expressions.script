@@ -1,0 +1,13 @@
+searchlog = VIEW @"Views/SearchLog.view";
+
+rs1 = 
+    SELECT Start, Region, Duration, Duration /60.0 AS DurationInMinutes
+    FROM searchlog;
+
+rs2 = 
+    SELECT *
+    FROM rs1
+    WHERE DurationInMinutes >= 20;
+ 
+OUTPUT rs2
+TO @"/my/Scope.Tutorial/Outputs/output.txt";

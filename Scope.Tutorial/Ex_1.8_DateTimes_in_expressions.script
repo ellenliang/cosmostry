@@ -1,0 +1,13 @@
+searchlog = VIEW @"Views/SearchLog.view";
+
+// Find all the sessions occurring between two dates
+rs1 = 
+    SELECT Start, Region, Duration
+    FROM searchlog
+    WHERE  Start >= DateTime.Parse("2012/02/16") AND Start <= DateTime.Parse("2012/02/17");
+ 
+OUTPUT rs1
+TO @"/my/Scope.Tutorial/Outputs/output.txt";
+
+
+

@@ -1,0 +1,13 @@
+searchlog = VIEW @"Views/SearchLog.view";
+
+// Find all the sessions lasting between 2 and 5 minutes OR that are in the en-gb Region
+
+rs1 = 
+    SELECT Start, Region, Duration
+    FROM searchlog
+    WHERE (Duration >= 2*60 AND Duration <= 5*60) OR (Region == "en-gb");
+
+OUTPUT rs1
+TO @"/my/Scope.Tutorial/Outputs/output.txt";
+
+

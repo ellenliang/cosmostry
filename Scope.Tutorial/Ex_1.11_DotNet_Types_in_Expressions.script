@@ -1,0 +1,9 @@
+searchlog = VIEW @"Views/SearchLog.view";
+
+// Find what day of year each session took place 
+rs1 = 
+    SELECT Start, Region, Start.DayOfYear AS StartDayOfYear
+    FROM searchlog;
+ 
+OUTPUT rs1
+TO @"/my/Scope.Tutorial/Outputs/output.txt";
