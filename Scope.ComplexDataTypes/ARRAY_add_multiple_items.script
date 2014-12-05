@@ -1,4 +1,4 @@
-﻿MODULE @"../SampleData/SampleData.module";
+﻿MODULE @"/my/SampleData/SampleData.module";
 
 data = SampleData.Cities();
 
@@ -8,4 +8,4 @@ data1 =
                     {"Foo", "Bar"} AS Cities
     FROM data ;
 
-OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";
+OUTPUT data1 TO SSTREAM @"/my/SampleData/Output.ss";
