@@ -207,6 +207,7 @@ pip-log.txt
 !*.targets
 
 
-SampleOutputs/
-Outputs/
-Output/
+[Ss]ample[Oo]utputs/
+[Oo]utputs/
+[Oo]utput/
+[Ss]cope[Ww]orking[Dd]ir
