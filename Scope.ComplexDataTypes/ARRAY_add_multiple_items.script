@@ -8,4 +8,4 @@ data1 =
                     {"Foo", "Bar"} AS Cities
     FROM data ;
 
-OUTPUT data1 TO SSTREAM @"/my/SampleData/Output.ss";
+OUTPUT data1 TO SSTREAM @"/my/Output.ss";
