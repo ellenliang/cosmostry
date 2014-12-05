@@ -1,0 +1,8 @@
+searchlog = VIEW @"Views/SearchLog.view";
+
+rs1 = 
+    SELECT Start, Region, ((double) Duration) AS DurationDouble
+    FROM searchlog;
+ 
+OUTPUT rs1
+TO @"/my/Scope.Tutorial/Outputs/output.txt";

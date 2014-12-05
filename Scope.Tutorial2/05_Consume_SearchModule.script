@@ -1,0 +1,19 @@
+﻿MODULE @"Modules/Search.module" AS SM;
+
+searchlog = SM.LogView( );
+
+searchlog_for_en_us = SELECT *
+                      FROM searchlog
+                      WHERE Market=="en-us";
+
+searchlog_filtered  = SM.LogViewParameterized( start = "2012-02-15", end = "2012-02-15");
+
+OUTPUT searchlog 
+TO @"my/ScopeTutorial/SampleOutputs/output_searchlog_all.txt";
+ 
+OUTPUT searchlog_for_en_us 
+TO @"my/ScopeTutorial/SampleOutputs/output_searchlog_en-us.txt";
+ 
+OUTPUT searchlog_filtered
+TO @"my/ScopeTutorial/SampleOutputs/output_searchlog_filtered.txt";
+

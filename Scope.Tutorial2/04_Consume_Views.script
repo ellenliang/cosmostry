@@ -1,0 +1,20 @@
+﻿searchlog = VIEW "Views/SearchLog.view";
+
+rs1 = SELECT *
+      FROM searchlog
+      WHERE Market=="en-us";
+ 
+OUTPUT rs1
+TO @"my/ScopeTutorial/SampleOutputs/output_searchlog.txt";
+
+
+
+searchlog_filtered = VIEW "Views/SearchLogParameterized.view" PARAMS( start = "2012-02-15", end = "2012-02-15") ;
+
+rs2 = SELECT *
+      FROM searchlog_filtered;
+ 
+OUTPUT rs2
+TO @"my/ScopeTutorial/SampleOutputs/output_searchlog_filtered.txt";
+
+

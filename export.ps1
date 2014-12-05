@@ -3,11 +3,11 @@ $ErrorActionPreference = "Stop"
 
 # -------------------------------------------------
 
-$REPO="http://vstfcodebox:8080/tfs/Eta/_git/CosmosSamples"
-$filshare_location = "\\fsu\shares\cosmosfiles\CosmosSamples"
+$REPO="https://mscosmos.visualstudio.com/DefaultCollection/_git/CosmosSamples"
+$filshare_location = "c:\temp"
 $GITEXE = "c:\Program Files (x86)\Git\bin\git.exe"
-$DESTDIR = "d:\CosmosSamplesExport"
-$zipfile = "d:\CosmosSamples.zip"
+$DESTDIR = "c:\temp\CosmosSamplesExport"
+$zipfile = "c:\temp\CosmosSamples.zip"
 
 Resolve-Path $GITEXE
 Resolve-Path $filshare_location
@@ -57,7 +57,11 @@ function zip-folder( $p , $z)
 remove-folder $DESTDIR
 
 # CLONE FROM REPO INTO FOLDER
+Write-Host $GITEXE clone --depth 1 $REPO $DESTDIR
 &$GITEXE clone --depth 1 $REPO $DESTDIR
+
+Resolve-Path $DESTDIR
+
 
 # REMOVE GIT STUFF FROM THE DESTINATION FOLDER
 clean-gitstuff $DESTDIR 

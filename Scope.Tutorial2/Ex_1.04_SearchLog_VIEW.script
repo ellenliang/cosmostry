@@ -1,5 +1,4 @@
-
 searchlog = VIEW @"Views/SearchLog.view";
 
 OUTPUT searchlog 
-TO @"/my/CosmosSamples/Outputs/SearchLog_output.tsv";
+TO @"/my/SampleData/Outputs/SearchLog_output.tsv";

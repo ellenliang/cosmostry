@@ -1,9 +1,0 @@
-﻿//schema of searchlogs
-SearchImpressionID
-UserID
-TimeStamp
-Market
-Query
-DwellTime
-Results
-Clicks
