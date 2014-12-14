@@ -4,10 +4,11 @@ $ErrorActionPreference = "Stop"
 # -------------------------------------------------
 
 $REPO="https://mscosmos.visualstudio.com/DefaultCollection/_git/CosmosSamples"
-$filshare_location = "c:\temp"
+$filshare_location = "\\fsu\Shares\cosmosfiles\CosmosSamples"
 $GITEXE = "c:\Program Files (x86)\Git\bin\git.exe"
-$DESTDIR = "c:\temp\CosmosSamplesExport"
-$zipfile = "c:\temp\CosmosSamples.zip"
+$TEMP = $env:TEMP
+$DESTDIR = Join-Path $TEMP "CosmosSamplesGitExport"
+$zipfile = Join-Path $TEMP "CosmosSamples.zip"
 
 Resolve-Path $GITEXE
 Resolve-Path $filshare_location
