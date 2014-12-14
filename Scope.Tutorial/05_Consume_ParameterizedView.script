@@ -1,0 +1,10 @@
+﻿
+searchlog_filtered =
+   VIEW "Views/SearchLogParameterized.view"
+       PARAMS( start = "2012-02-15", end = "2012-02-15") ;
+
+rs1 = SELECT *
+       FROM searchlog_filtered;
+
+OUTPUT rs1
+TO @"/my/Outputs/output_searchlog_filtered.txt";

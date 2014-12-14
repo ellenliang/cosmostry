@@ -1,0 +1,9 @@
+﻿searchlog = VIEW "Views/SearchLog.view";
+
+rs1 = SELECT *
+      FROM searchlog
+      WHERE Region=="en-us";
+
+OUTPUT rs1
+TO @"/my/Outputs/output_searchlog.txt";
+

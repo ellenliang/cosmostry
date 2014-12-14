@@ -1,12 +1,11 @@
 ﻿CREATE VIEW SearchLog SCHEMA ( 
-	IId:int, 
-	UId:int, 
-	TimeStamp:DateTime, 
-	Market:string, 
-	Query:string, 
-	DwellTime:int, 
-	Results:string, 
-	ClickedUrls:string 
+            UserId:int, 
+            Start:DateTime, 
+            Region:string, 
+            Query:string, 
+            Duration:int, 
+            Urls:string, 
+            ClickedUrls:string
 )
 PARAMS (
 	start string,
@@ -18,5 +17,5 @@ AS BEGIN
 
     filtered_searchlog = SELECT * 
                 FROM searchlog
-                WHERE TimeStamp >= DateTime.Parse(@start) AND TimeStamp < DateTime.Parse(@end).AddDays(1);
+                WHERE Start >= DateTime.Parse(@start) AND Start < DateTime.Parse(@end).AddDays(1);
 END;

@@ -1,56 +1,54 @@
-﻿employees = EXTRACT 
+﻿employees = EXTRACT
     EmpName:string, DepID:string
-    FROM @"my/ScopeTutorial/SampleInputs/Employees.txt"
-    USING DefaultTextExtractor;
+    FROM @"/my/SampleData/WikipediaJoins/Employees.txt"
+    USING DefaultTextExtractor();
 
-departments = EXTRACT 
-    DepID:string, DepName:string 
-    FROM @"my/ScopeTutorial/SampleInputs/Departments.txt"
-    USING DefaultTextExtractor;
+departments = EXTRACT
+    DepID:string, DepName:string
+    FROM @"/my/SampleData/WikipediaJoins/Departments.txt"
+    USING DefaultTextExtractor();
 
 // INNER JOIN
-rs_inner = 
+rs_inner =
 SELECT employees.DepID AS EmpDepId, departments.DepID , employees.EmpName, departments.DepName
-FROM employees 
+FROM employees
          INNER JOIN departments ON employees.DepID == departments.DepID;
 
 // LEFT OUTER JOIN
-rs_left_outer = 
+rs_left_outer =
     SELECT employees.DepID AS EmpDepId, departments.DepID , employees.EmpName, departments.DepName
-    FROM employees 
+    FROM employees
         LEFT OUTER JOIN departments ON employees.DepID == departments.DepID;
 
 //RIGHT OUTER JOIN
-rs_right_outer = 
+rs_right_outer =
     SELECT employees.DepID AS EmpDepId, departments.DepID , employees.EmpName, departments.DepName
-    FROM employees 
+    FROM employees
         RIGHT OUTER JOIN departments ON employees.DepID == departments.DepID;
 
 //FULL OUTER JOIN
-rs_full_outer = 
+rs_full_outer =
     SELECT employees.DepID AS EmpDepId, departments.DepID , employees.EmpName, departments.DepName
-    FROM employees 
+    FROM employees
         FULL OUTER JOIN departments ON employees.DepID == departments.DepID;
 
 // LEFT SEMIJOIN
-rs_left_semijoin = 
+rs_left_semijoin =
     SELECT employees.DepID AS EmpDepId, employees.EmpName
-    FROM employees 
+    FROM employees
         LEFT SEMIJOIN departments ON employees.DepID == departments.DepID;
 
 // RIGHT SEMIJOIN
-rs_right_semijoin = 
+rs_right_semijoin =
     SELECT departments.DepID , departments.DepName
-    FROM employees 
+    FROM employees
         RIGHT SEMIJOIN departments ON employees.DepID == departments.DepID;
 
 // CROSS JOIN
-rs_cross_join = 
+rs_cross_join =
     SELECT employees.DepID AS EmpDepId, departments.DepID , employees.EmpName, departments.DepName
-    FROM employees 
+    FROM employees
         CROSS JOIN departments;
 
-OUTPUT rs_cross_join 
-TO @"my/ScopeTutorial/SampleOutputs/cross_join.txt";
-
-
+OUTPUT rs_cross_join
+TO @"/my/Outputs/cross_joins.txt";

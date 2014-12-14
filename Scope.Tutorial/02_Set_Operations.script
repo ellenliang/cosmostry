@@ -1,56 +1,57 @@
-﻿ 
-a = EXTRACT 
+﻿
+a = EXTRACT
     id:int, name:string
-    FROM @"my/ScopeTutorial/SampleInputs/SetOps_A.txt"
-    USING DefaultTextExtractor;
+    FROM @"my/SampleData/SetOps/A.txt"
+    USING DefaultTextExtractor();
 
-b = EXTRACT 
+b = EXTRACT
     id:int, name:string
-    FROM @"my/ScopeTutorial/SampleInputs/SetOps_B.txt"
-    USING DefaultTextExtractor;
+    FROM @"my/SampleData/SetOps/B.txt"
+    USING DefaultTextExtractor();
 
 union_distinct =    SELECT * FROM a
                         UNION DISTINCT
-                    SELECT * FROM b;  
+                    SELECT * FROM b;
 
 union_all =         SELECT * FROM a
                         UNION ALL
-                    SELECT * FROM b;  
+                    SELECT * FROM b;
 
 
 intersect_distinct =    SELECT * FROM a
                         INTERSECT DISTINCT
-                    SELECT * FROM b;  
+                    SELECT * FROM b;
 
 intersect_all =         SELECT * FROM a
                         INTERSECT ALL
-                    SELECT * FROM b;  
+                    SELECT * FROM b;
 
 
 except_distinct_a_b =    SELECT * FROM a
                         EXCEPT DISTINCT
-                    SELECT * FROM b;  
+                    SELECT * FROM b;
 
 except_all_a_b =         SELECT * FROM a
                         EXCEPT ALL
-                    SELECT * FROM b;  
+                    SELECT * FROM b;
 
 except_distinct_b_a =    SELECT * FROM b
                         EXCEPT DISTINCT
-                    SELECT * FROM a;  
+                    SELECT * FROM a;
 
 except_all_b_a =         SELECT * FROM b
                         EXCEPT ALL
-                    SELECT * FROM a;  
+                    SELECT * FROM a;
 
-OUTPUT union_distinct TO @"my/ScopeTutorial/SampleOutputs/union_distinct.txt";
-OUTPUT union_all TO @"my/ScopeTutorial/SampleOutputs/union_all.txt";
+OUTPUT union_distinct TO @"my/Outputs/union_distinct.txt";
+OUTPUT union_all TO @"my/Outputs/union_all.txt";
 
-OUTPUT intersect_distinct TO @"my/ScopeTutorial/SampleOutputs/intersect_distinct.txt";
-OUTPUT intersect_all TO @"my/ScopeTutorial/SampleOutputs/intersect_all.txt";
+OUTPUT intersect_distinct TO @"my/Outputs/intersect_distinct.txt";
+OUTPUT intersect_all TO @"my/Outputs/intersect_all.txt";
 
-OUTPUT except_distinct_a_b TO @"my/ScopeTutorial/SampleOutputs/except_distinct_a_b.txt";
-OUTPUT except_all_a_b TO @"my/ScopeTutorial/SampleOutputs/except_all_a_b.txt";
+OUTPUT except_distinct_a_b TO @"my/Outputs/except_distinct_a_b.txt";
+OUTPUT except_all_a_b TO @"my/Outputs/except_all_a_b.txt";
 
-OUTPUT except_distinct_b_a TO @"my/ScopeTutorial/SampleOutputs/except_distinct_b_a.txt";
-OUTPUT except_all_b_a TO @"my/ScopeTutorial/SampleOutputs/except_all_b_a.txt";
+OUTPUT except_distinct_b_a TO @"my/Outputs/except_distinct_b_a.txt";
+OUTPUT except_all_b_a TO @"my/Outputs/except_all_b_a.txt";
+s

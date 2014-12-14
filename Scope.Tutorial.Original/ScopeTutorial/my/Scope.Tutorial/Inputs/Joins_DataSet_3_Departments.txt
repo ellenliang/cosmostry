@@ -1,3 +1,0 @@
-﻿D1	Clerical
-D1	Admin
-D2	Engineering

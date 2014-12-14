@@ -1,4 +1,0 @@
-searchlog = VIEW @"Views/SearchLog.view";
-
-OUTPUT searchlog 
-TO @"/my/Scope.Tutorial/Outputs/SearchLog_output.tsv";

@@ -17,6 +17,6 @@ AS BEGIN
                 Duration:int, 
                 Urls:string, 
                 ClickedUrls:string
-        FROM @"/my/SampleData/Inputs/SearchLog.txt"
+        FROM @"/my/SampleData/SearchLog.txt"
         USING DefaultTextExtractor();
 END;
