@@ -1,12 +1,17 @@
-﻿namespace CosmosSamples.API.Compile
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CosmosSamples.API.Compile2
 {
     class Program
     {
         static void Main(string[] args)
         {
-
             // Verify the CPP SDK is there
-            System.Environment.SetEnvironmentVariable("SCOPE_CPP_SDK", "d:\\CppSdk_12"); 
+            System.Environment.SetEnvironmentVariable("SCOPE_CPP_SDK", "d:\\CppSdk_12");
             string cppsdk = System.Environment.GetEnvironmentVariable("SCOPE_CPP_SDK");
 
             if (cppsdk == null)
@@ -18,7 +23,7 @@
 
             if (!System.IO.Directory.Exists(cppsdk))
             {
-                throw new System.ArgumentException("SCOPE_CPP_SDK does not point to a directory that exists");                
+                throw new System.ArgumentException("SCOPE_CPP_SDK does not point to a directory that exists");
             }
 
             ScopeClient.Scope.RunStepsInSeparateProcess = true;
