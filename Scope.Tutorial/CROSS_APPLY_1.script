@@ -1,0 +1,10 @@
+﻿searchlog = VIEW @"Views/SearchLog.view";
+
+rs1 = SELECT Region, Urls
+      FROM searchlog;
+
+rs2 = SELECT Region, SplitUrls AS Url
+      FROM  rs1
+      CROSS APPLY Urls.Split(';') AS SplitUrls;
+
+OUTPUT rs1 TO @"/my/Outputs/Split_Urls.txt";

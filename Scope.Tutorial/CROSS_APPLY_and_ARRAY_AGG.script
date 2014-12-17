@@ -1,0 +1,15 @@
+﻿searchlog = VIEW @"Views/SearchLog.view";
+
+rs1 = SELECT Region, Urls
+      FROM searchlog;
+
+rs2 = SELECT Region, SplitUrls AS Url
+      FROM  rs1
+      CROSS APPLY Urls.Split(';') AS SplitUrls;
+
+rs3 = SELECT Region, string.Join(";" , ARRAY_AGG(Url) ) AS Urls
+      FROM rs2
+      GROUP BY Region;
+
+OUTPUT rs3 TO @"/my/Outputs/LIST_Joined_Urls.txt" 
+     USING DefaultTextOutputter();
