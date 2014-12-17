@@ -1,0 +1,16 @@
+
+rs0 = EXTRACT
+	Line:string
+    FROM @"D:\careerstats.tsv"
+    USING DefaultTextExtractor( delimiter: '%' );
+
+
+rs1 = SELECT * FROM rs0 WHERE !Line.Contains("NHL Season");
+
+rs2 = SELECT * FROM rs1 WHERE !Line.Contains("results");
+
+rs3 = SELECT Line.Replace("\t","|").Replace(",","").Replace("\"","") AS Line FROM rs2;
+
+OUTPUT rs3
+TO @"d:\careerstats2.txt"
+USING DefaultTextOutputter( escape: true );

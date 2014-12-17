@@ -1,0 +1,51 @@
+rs0 = EXTRACT
+	_Rank:string,
+	Player:string,
+	Team:string,
+        Position:string,
+        NHLSeasonFirst:string,
+ 	NHLSeasonLast:string, 
+	GamesPlayed:string,
+        Goals:string,
+	Assists:string,
+	Points:string,
+	PlusMinus:string,
+	PenaltyMinutes:string,
+	PPGoals:string,
+	SHGoals:string,
+	GWGoals:string,
+        GTGoals:string,
+	Shots :string,
+	Dummy:string
+    FROM @"D:\careerstats2.txt"
+    USING DefaultTextExtractor( delimiter: '|' );
+
+rs1 = SELECT
+	Player,
+	Team ,
+        Position ,
+        NHLSeasonFirst,
+ 	NHLSeasonLast, 
+	GamesPlayed,
+        Goals,
+	Assists,
+	Points,
+	PlusMinus,
+	PenaltyMinutes,
+	PPGoals,
+	SHGoals,
+	GWGoals,
+        GTGoals,
+	Shots
+  FROM rs0;
+
+OUTPUT rs0
+TO @"d:\careerstats3.txt"
+USING DefaultTextOutputter( );
+
+OUTPUT rs1
+TO @"d:\careerstats4.txt"
+USING DefaultTextOutputter( );
+
+OUTPUT rs1 TO SSTREAM @"d:\careerstats.ss";
+
