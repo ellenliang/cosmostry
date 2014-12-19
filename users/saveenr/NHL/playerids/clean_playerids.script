@@ -1,0 +1,16 @@
+
+rs0 = EXTRACT
+	Line:string
+    FROM @"d:\playerids.tsv"
+    USING DefaultTextExtractor( delimiter: '%' );
+
+
+rs1 = SELECT * FROM rs0 WHERE !Line.Contains("fetchKey");
+
+rs2 = SELECT Line.Split('\t') AS Tokens FROM rs1;
+
+rs3 = SELECT Tokens[2] AS Name , Tokens[3].Substring(19) AS Link FROM rs2;
+
+OUTPUT rs3
+TO @"d:\playerids2.txt"
+USING DefaultTextOutputter( delimiter: '|' );
