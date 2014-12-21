@@ -1,4 +1,4 @@
-Wayne Gretzky|8447400
+﻿Wayne Gretzky|8447400
 Gordie Howe|8448000
 Brett Hull|8448091
 Marcel Dionne|8446430

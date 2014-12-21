@@ -2,20 +2,93 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using HAP=HtmlAgilityPack;
+
 namespace ScrapeNHLCareerStats
 {
+
+    public class MyWebClient : System.Net.WebClient
+    {
+        protected override System.Net.WebRequest GetWebRequest(Uri uri)
+        {
+            var w = base.GetWebRequest(uri);
+            w.Timeout = 1500;
+            return w;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
+        {
+
+            Get_PlayerInfo();
+
+        }
+
+        static void Get_PlayerInfo()
+        {
+            var rans = new System.Random();
+
+            var wc = new MyWebClient();
+
+            var lines = System.IO.File.ReadLines(@"D:\github\CosmosSamples\users\saveenr\NHL\playerids\playerids_final.txt").ToList();
+            lines = lines.Select(l => l.Trim()).ToList();
+
+            System.Console.WriteLine("Total = {0}",lines.Count);
+
+            int n = 1;
+            foreach (string line in lines)
+            {
+                //System.Console.WriteLine("Current = {0} Total = {1}", n, lines.Count);
+
+                var tokens = line.Split('|');
+                string name = tokens[0].Trim();
+                string playerid = tokens[1].Trim();
+
+                
+                string filename = @"D:\playerstats\" + playerid + ".htm";
+
+                if (System.IO.File.Exists(filename))
+                {
+                    n++;
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("{0} - {1}", playerid, name);
+                    string url = @"http://www.nhl.com/ice/player.htm?id=" + playerid;
+                    try
+                    {
+                        wc.DownloadFile(url, filename);
+                        n++;
+
+                    }
+                    catch (System.Net.WebException)
+                    {
+                        Console.WriteLine("WEB EXCEPTION");
+                    }
+                    finally
+                    {
+                        double wait = rans.NextDouble() * 30 * 1000.0;
+                        System.Console.WriteLine("Sleeping {0}", wait / 1000.0);
+                        //System.Threading.Thread.Sleep((int)wait);
+
+                    }
+                    
+                }
+
+            }
+        }
+
+        static void Main_ScrapeCareer(string[] args)
         {
             string sep = "\t";
 
             var fp = System.IO.File.CreateText(@"D:\careerstats.tsv");
             int max_page = 216;
-            string start_page = get_career_page(1);
 
             for (int i = 1; i <= max_page; i++)
             {
