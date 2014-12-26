@@ -1,0 +1,24 @@
+
+rs0 = 
+	EXTRACT
+		PlayerID:string,
+		SeasonType:string,
+		NHLSeason:string,
+		Team:string,
+		GamesPlayed:int?,
+		Goals:int?,
+		Assists:string,
+		Points:int?,
+		PlusMinus:int?,
+		PenaltyMinutes:int?,
+		GoalsPP:int?,
+		GoalsSH:int?,
+		GoalsGW:int?,
+		ShotsTaken:int?,
+		ScoringPercentage:double?
+FROM @"playerdata.txt"
+USING DefaultTextExtractor(delimiter: '|' );
+
+OUTPUT rs0
+TO @"d:\output.txt"
+USING DefaultTextOutputter( delimiter: '|'  );

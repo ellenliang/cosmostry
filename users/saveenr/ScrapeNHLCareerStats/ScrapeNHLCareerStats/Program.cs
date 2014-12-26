@@ -2,145 +2,105 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using HAP=HtmlAgilityPack;
 
 namespace ScrapeNHLCareerStats
 {
-
-    public class MyWebClient : System.Net.WebClient
-    {
-        protected override System.Net.WebRequest GetWebRequest(Uri uri)
-        {
-            var w = base.GetWebRequest(uri);
-            w.Timeout = 1500;
-            return w;
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
 
-            Get_PlayerInfo();
 
+            clean();
         }
 
-        static void Get_PlayerInfo()
+        private static void clean()
         {
-            var rans = new System.Random();
+            var lines = System.IO.File.ReadLines(@"d:\playerdata_playoffs.tsv").ToList();
 
-            var wc = new MyWebClient();
-
-            var lines = System.IO.File.ReadLines(@"D:\github\CosmosSamples\users\saveenr\NHL\playerids\playerids_final.txt").ToList();
-            lines = lines.Select(l => l.Trim()).ToList();
-
-            System.Console.WriteLine("Total = {0}",lines.Count);
-
-            int n = 1;
-            foreach (string line in lines)
+            var dp = System.IO.File.CreateText(@"d:\playerdata_playoffs_final.tsv");
+            foreach (var line in lines)
             {
-                //System.Console.WriteLine("Current = {0} Total = {1}", n, lines.Count);
-
-                var tokens = line.Split('|');
-                string name = tokens[0].Trim();
-                string playerid = tokens[1].Trim();
-
-                
-                string filename = @"D:\playerstats\" + playerid + ".htm";
-
-                if (System.IO.File.Exists(filename))
+                if (line.Contains("SEASON") && line.Contains("TEAM"))
                 {
-                    n++;
                     continue;
                 }
-                else
+                if (line.Contains("NHL TOTALS"))
                 {
-                    Console.WriteLine("{0} - {1}", playerid, name);
-                    string url = @"http://www.nhl.com/ice/player.htm?id=" + playerid;
-                    try
-                    {
-                        wc.DownloadFile(url, filename);
-                        n++;
-
-                    }
-                    catch (System.Net.WebException)
-                    {
-                        Console.WriteLine("WEB EXCEPTION");
-                    }
-                    finally
-                    {
-                        double wait = rans.NextDouble() * 30 * 1000.0;
-                        System.Console.WriteLine("Sleeping {0}", wait / 1000.0);
-                        //System.Threading.Thread.Sleep((int)wait);
-
-                    }
-                    
+                    continue;
                 }
 
+
+                string xline = line.Replace("\t", "|");
+
+                dp.WriteLine(xline);
+                dp.Flush();
             }
+            dp.Close();
         }
 
-        static void Main_ScrapeCareer(string[] args)
+        static void CollectPlayerData()
         {
             string sep = "\t";
 
-            var fp = System.IO.File.CreateText(@"D:\careerstats.tsv");
-            int max_page = 216;
+            var fp = System.IO.File.CreateText(@"d:\playerdata_regseason.tsv");
 
-            for (int i = 1; i <= max_page; i++)
+            var files = System.IO.Directory.GetFiles(@"D:\playerpages", "*.htm");
+            int i = 0;
+            foreach (string file in files)
             {
-                Console.WriteLine(i);
-                string url = get_career_page(i);
+                Console.WriteLine("{0} {1}", i, file);
 
-                var wc = new System.Net.WebClient();
+                string playerid = System.IO.Path.GetFileNameWithoutExtension(file);
+                string playerpage = System.IO.File.ReadAllText(file);
+
                 var doc = new HAP.HtmlDocument();
+                doc.Load(file);
 
+                var tables = HAPUTIL.FindAllTables(doc);
 
-                doc.LoadHtml(wc.DownloadString(url));
-
-                var tables = doc.DocumentNode.Descendants("table").ToList();
-
-                var t4 = tables[4];
-
-                var trs = t4.Descendants("tr").ToList();
-
-                bool found_header = false;
-
+                var target_table = tables[tables.Count-2];
+                
+                var row_nodes = HAPUTIL.FindRowsInTable(target_table);
                 var texts = new List<string>();
-                foreach (var tr in trs)
+                
+                var context = new List<string>();
+                foreach (var tr in row_nodes)
                 {
-                    var ths = tr.Descendants("th").ToList();
-
-                    if (!found_header)
+                    context.Clear();
+                    context.Add(playerid);
+                    context.Add("REGSEASON");
+                    
+                    List<HAP.HtmlNode> nodes;
+                    nodes = tr.Descendants("th").ToList();
+                    if (nodes.Count < 1)
                     {
-                        if (ths.Count > 0)
-                        {
-                            HandleRow2(texts, ths, fp, sep);
-                        }
-                        found_header = true;
+                        nodes = tr.Descendants("td").ToList();
                     }
 
-                    var tds = tr.Descendants("td").ToList();
-                    HandleRow2(texts, tds, fp, sep);
+
+                    HandleRow(texts, nodes, fp, sep,context);                       
 
                     fp.WriteLine();
                 }
 
-                if (i > 3)
-                {
-                    //break;
-                }
-
+                i++;
             }
+
             fp.Close();
+
         }
 
-        private static void HandleRow(List<string> texts, List<HAP.HtmlNode> ths, StreamWriter fp, string sep)
+
+        private static void HandleRow(List<string> texts, List<HAP.HtmlNode> ths, StreamWriter fp, string sep, IList<string> context_cells)
         {
             texts.Clear();
+            if (context_cells!= null)
+            {
+                texts.AddRange(context_cells);
+            }
+
             foreach (var th in ths)
             {
                 string text = trim(th);
@@ -215,5 +175,20 @@ namespace ScrapeNHLCareerStats
         }
 
 
+    }
+
+    public static class HAPUTIL
+    {
+        public static List<HAP.HtmlNode> FindAllTables(HAP.HtmlDocument doc)
+        {
+            var tables = doc.DocumentNode.Descendants("table").ToList();
+            return tables;
+        }
+
+        public static List<HAP.HtmlNode> FindRowsInTable(HAP.HtmlNode t4)
+        {
+            var trs = t4.Descendants("tr").ToList();
+            return trs;
+        }
     }
 }

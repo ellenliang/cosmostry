@@ -1,0 +1,23 @@
+
+rs0 = EXTRACT
+PLAYERID:string,
+SEASONTYPE:string,
+SEASON:string,
+TEAM:string,
+GP:string,
+G:string,
+A:string,
+P:string,
+PLUSMINUS:string,
+PIM:string,
+PPG:string,
+SHG:string,
+GWG:string,
+S:string,
+SP:string
+FROM @"D:\playerdata.txt"
+USING DefaultTextExtractor(delimiter: '|' );
+
+OUTPUT rs0
+TO @"d:\output.txt"
+USING DefaultTextOutputter( delimiter: '|'  );

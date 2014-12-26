@@ -1,0 +1,10 @@
+
+rs0 = EXTRACT
+	Player:string,
+	PlayerId:string
+    FROM @"playernames.txt"
+    USING DefaultTextExtractor( delimiter: '|' );
+
+OUTPUT rs0
+TO @"d:\output.txt"
+USING DefaultTextOutputter( delimiter: '|' );
