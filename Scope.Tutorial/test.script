@@ -1,5 +1,11 @@
+rs0 = EXTRACT 
+        FirstName : string,
+        LastName : string,
+        Age : int
+      FROM
+        @"/test_input.tsv"
+      USING DefaultTextExtractor();
 
-searchlog = VIEW @"Views/SearchLog.view";
-
-OUTPUT searchlog 
-TO @"/my/CosmosSamples/Outputs/SearchLog_output.tsv";
+OUTPUT rs0
+    TO @"/test_output.tsv"
+      USING DefaultTextOutputter();
