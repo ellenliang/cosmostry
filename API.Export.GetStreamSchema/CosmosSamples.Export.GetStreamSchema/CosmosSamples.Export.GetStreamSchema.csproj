@@ -33,34 +33,37 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Cosmos.Client">
-      <HintPath>..\packages\Microsoft.Cosmos.Client.1.5.8\lib\net45\Microsoft.Cosmos.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\Microsoft.Cosmos.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Cosmos.Client.Interfaces">
-      <HintPath>..\packages\Microsoft.Cosmos.Client.1.5.8\lib\net45\Microsoft.Cosmos.Client.Interfaces.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\Microsoft.Cosmos.Client.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Cosmos.ExportClient">
-      <HintPath>..\packages\Microsoft.Cosmos.Client.1.5.8\lib\net45\Microsoft.Cosmos.ExportClient.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\Microsoft.Cosmos.ExportClient.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Cosmos.FrontEnd.Common">
-      <HintPath>..\packages\Microsoft.Cosmos.Client.1.5.8\lib\net45\Microsoft.Cosmos.FrontEnd.Common.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\Microsoft.Cosmos.FrontEnd.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Cosmos.FrontEnd.Contract">
-      <HintPath>..\packages\Microsoft.Cosmos.Client.1.5.8\lib\net45\Microsoft.Cosmos.FrontEnd.Contract.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\Microsoft.Cosmos.FrontEnd.Contract.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Cosmos.FrontEnd.InteractiveQuery.Contract">
-      <HintPath>..\packages\Microsoft.Cosmos.Client.1.5.8\lib\net45\Microsoft.Cosmos.FrontEnd.InteractiveQuery.Contract.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\Microsoft.Cosmos.FrontEnd.InteractiveQuery.Contract.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Cosmos.FrontEnd.InteractiveQuery.Internal.Contract">
-      <HintPath>..\packages\Microsoft.Cosmos.Client.1.5.8\lib\net45\Microsoft.Cosmos.FrontEnd.InteractiveQuery.Internal.Contract.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\Microsoft.Cosmos.FrontEnd.InteractiveQuery.Internal.Contract.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Cosmos.FrontEnd.WebService.Client">
-      <HintPath>..\packages\Microsoft.Cosmos.Client.1.5.8\lib\net45\Microsoft.Cosmos.FrontEnd.WebService.Client.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\Microsoft.Cosmos.FrontEnd.WebService.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scope.Dependencies.Cosmos">
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\Microsoft.Scope.Dependencies.Cosmos.dll</HintPath>
     </Reference>
     <Reference Include="ScopeCompiler">
-      <HintPath>..\packages\Microsoft.Cosmos.Client.1.5.8\lib\net45\ScopeCompiler.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\ScopeCompiler.dll</HintPath>
     </Reference>
     <Reference Include="ScopeRuntime">
-      <HintPath>..\packages\Microsoft.Cosmos.Client.1.5.8\lib\net45\ScopeRuntime.exe</HintPath>
+      <HintPath>..\packages\Microsoft.Cosmos.Client.1.8.0\lib\net45\ScopeRuntime.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -88,11 +91,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\Microsoft.Cosmos.Client.1.5.8\lib\CosmosClientOptics.dll">
+    <Content Include="..\packages\Microsoft.Cosmos.Client.1.8.0\lib\CosmosClientOptics.dll">
       <Link>CosmosClientOptics.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\packages\Microsoft.Cosmos.Client.1.5.8\lib\Cqo.dll">
+    <Content Include="..\packages\Microsoft.Cosmos.Client.1.8.0\lib\Cqo.dll">
       <Link>Cqo.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
