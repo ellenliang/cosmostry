@@ -7,7 +7,7 @@ namespace CosmosSamples.ExportToCSV
         static void Main(string[] args)
         {
             var exporter = new Exporter();
-            string stream = "http://cosmos08.osdinfra.net:88/cosmos/sandbox/users/saveenr/Nullable.ss";
+            string stream = "https://cosmos08.osdinfra.net/cosmos/sandbox/my/katyperry.ss";
             string filename = @"d:\output.txt";
 
             exporter.Export(stream,filename);
