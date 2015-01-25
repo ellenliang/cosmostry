@@ -2,6 +2,7 @@
 DEFINE MODULE Colors
 BEGIN 
 
+
     // The AllColors view extracts Color Data from a known input stream
     VIEW AllColors
         RETURN ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string) 

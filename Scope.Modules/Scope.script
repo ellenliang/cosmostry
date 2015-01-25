@@ -11,8 +11,8 @@ filtered_colors = Colors.FilterColors( inputcolors = all_colors , startswith = "
 q = Colors.SplitByRetired( inputcolors = all_colors );
 
 // Output Data using a Module.Procedure
-Colors.WriteColors( inputcolors = all_colors, path="/my/allcolors") ;
-Colors.WriteColors( inputcolors = filtered_colors, path="/my/filtered_colors") ;
-Colors.WriteColors( inputcolors = q.Retired , path="/my/retired_colors") ;
-Colors.WriteColors( inputcolors = q.NotRetired , path="/my/notretired_colors") ;
+Colors.WriteColors( inputcolors = all_colors, path="/my/outputs/allcolors") ;
+Colors.WriteColors( inputcolors = filtered_colors, path="/my/outputs/filtered_colors") ;
+Colors.WriteColors( inputcolors = q.Retired , path="/my/outputs/retired_colors") ;
+Colors.WriteColors( inputcolors = q.NotRetired , path="/my/outputs/notretired_colors") ;
 
