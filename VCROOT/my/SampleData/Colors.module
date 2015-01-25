@@ -29,7 +29,7 @@ END MODULE
 
 VIEW AllColors
     RETURN ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string) 
-    PARAMS (count int) 
+    PARAMS (count  int) 
 BEGIN 
     colors = EXTRACT Color:string, 
         HexCode:string, 

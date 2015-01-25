@@ -1,0 +1,77 @@
+﻿
+DEFINE MODULE Colors
+BEGIN 
+
+    // The AllColors view extracts Color Data from a known input stream
+    VIEW AllColors
+        RETURN ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string) 
+        PARAMS (count int); 
+
+    // The FilterColors will include only those rows where the Color's name starts with some string
+    // use "*" for the name to get all the rows
+    FUNC FilterColors
+        RETURN ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string) 
+        PARAMS (inputcolors ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string), startswith string); 
+
+    // The SplitByRetired will return two rowsets. The first called NotRetired are only those non-retired colors
+    // the second called Retired are just the retired colors
+    FUNC SplitByRetired
+        RETURN ( NotRetired ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string) , 
+                 Retired ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string) )
+        PARAMS (inputcolors ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string));
+
+    // The WriteColors procedures write records as a structured stream and tsv file to some specified path (don't set the extension)
+    
+    PROC WriteColors
+        PARAMS (inputcolors ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string), path string); 
+
+END MODULE
+
+VIEW AllColors
+    RETURN ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string) 
+    PARAMS (count  int) 
+BEGIN 
+    colors = EXTRACT Color:string, 
+        HexCode:string, 
+        RGB:string, 
+        Issued:String, 
+        Retired:string, 
+        Notes:string
+    FROM @"/my/SampleData/Colors.txt" USING DefaultTextExtractor();
+
+    top = SELECT TOP @count * FROM colors;
+END VIEW
+
+FUNC FilterColors
+    RETURN ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string) 
+    PARAMS (inputcolors ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string), startswith string) 
+BEGIN
+    #IF (@startswith=="*")
+        colors = SELECT * 
+            FROM inputcolors;
+    #ELSE
+        colors = SELECT * 
+            FROM inputcolors
+            WHERE Color.StartsWith(@startswith);
+    #ENDIF
+
+END FUNC
+
+FUNC SplitByRetired
+    RETURN ( NotRetired ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string) , 
+             Retired ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string) )
+    PARAMS (inputcolors ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string)) 
+BEGIN
+    NotRetired = SELECT * FROM inputcolors WHERE inputcolors.Retired=="";
+    Retired = SELECT * FROM inputcolors WHERE inputcolors.Retired!="";
+END FUNC
+
+
+PROC WriteColors
+    PARAMS (inputcolors ROWSET(Color:string,HexCode:string,RGB:string,Issued:String,Retired:string,Notes:string), path string) 
+BEGIN
+    #DECLARE ss_name string = @path + ".ss";
+    #DECLARE tsv_name string = @path + ".tsv";
+    OUTPUT inputcolors TO SSTREAM @ss_name;
+    OUTPUT inputcolors TO @tsv_name USING DefaultTextOutputter();
+END PROC

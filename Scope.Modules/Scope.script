@@ -1,5 +1,5 @@
 ﻿
-MODULE @"my/Demo/ScopeModules/Colors/Colors.module" AS Colors;
+MODULE @"Colors.module" AS Colors;
 
 // Get Data Using a Module.View
 all_colors = Colors.AllColors( count = 10000 );
@@ -11,8 +11,8 @@ filtered_colors = Colors.FilterColors( inputcolors = all_colors , startswith = "
 q = Colors.SplitByRetired( inputcolors = all_colors );
 
 // Output Data using a Module.Procedure
-Colors.WriteColors( inputcolors = all_colors, path="allcolors") ;
-Colors.WriteColors( inputcolors = filtered_colors, path="filtered_colors") ;
-Colors.WriteColors( inputcolors = q.Retired , path="retired_colors") ;
-Colors.WriteColors( inputcolors = q.NotRetired , path="notretired_colors") ;
+Colors.WriteColors( inputcolors = all_colors, path="/my/allcolors") ;
+Colors.WriteColors( inputcolors = filtered_colors, path="/my/filtered_colors") ;
+Colors.WriteColors( inputcolors = q.Retired , path="/my/retired_colors") ;
+Colors.WriteColors( inputcolors = q.NotRetired , path="/my/notretired_colors") ;
 
