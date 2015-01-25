@@ -1,17 +1,18 @@
-﻿//Script GUID:59ede78d-cbec-4a6d-9335-89cb8acc1dc9
-//Used for tracking history
+﻿
+
+REFERENCE "DemoResolvers.dll";
 
 colors1 = 
     VIEW @"/my/Demo/DynamicViews/ColorsUntyped.view" 
     PARAMS (
-        Input = @"/my/Demo/DynamicViews/Colors.txt"
+        Input = @"Colors.txt"
     );
 
 colors2 = 
     VIEW @"/my/Demo/DynamicViews/ColorsTyped.view" 
     PARAMS 
     ( 
-        Input = @"/my/Demo/DynamicViews/Colors.txt"
+        Input = @"Colors.txt"
     );
 
 OUTPUT colors1 

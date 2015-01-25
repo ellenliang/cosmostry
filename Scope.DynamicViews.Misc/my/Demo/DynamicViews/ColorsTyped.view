@@ -1,1 +1,1 @@
-﻿CREATE VIEW ColorsTyped USING ColorsViewResolver("typed");
+﻿CREATE VIEW ColorsTyped USING DemoResolvers.ColorsViewResolver("typed"); //

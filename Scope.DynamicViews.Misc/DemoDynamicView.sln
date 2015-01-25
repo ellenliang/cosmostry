@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{202899A3-C531-4771-9089-0213D66978AE}") = "DemoDynamicView", "DemoDynamicView.scopeproj", "{7EE93248-D07F-43B4-8119-D2A5633B268E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoResolvers", "DemoResolvers\DemoResolvers.csproj", "{FA6949A7-9BAB-4D42-A430-C4F065BA6C01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EE93248-D07F-43B4-8119-D2A5633B268E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE93248-D07F-43B4-8119-D2A5633B268E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE93248-D07F-43B4-8119-D2A5633B268E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EE93248-D07F-43B4-8119-D2A5633B268E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA6949A7-9BAB-4D42-A430-C4F065BA6C01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA6949A7-9BAB-4D42-A430-C4F065BA6C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA6949A7-9BAB-4D42-A430-C4F065BA6C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA6949A7-9BAB-4D42-A430-C4F065BA6C01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

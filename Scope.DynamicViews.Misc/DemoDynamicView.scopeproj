@@ -49,5 +49,12 @@
     <Folder Include="my\Demo" />
     <Folder Include="my\Demo\DynamicViews" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="DemoResolvers\DemoResolvers.csproj">
+      <Name>DemoResolvers</Name>
+      <Project>{fa6949a7-9bab-4d42-a430-c4f065ba6c01}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(AppData)\Microsoft\ScopeStudio\MsBuild\1.0\Scope.targets" />
 </Project>
