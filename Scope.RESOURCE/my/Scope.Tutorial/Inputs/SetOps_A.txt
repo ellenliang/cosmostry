@@ -1,4 +1,0 @@
-﻿1	Smith
-1	Smith
-2	Brown
-3	Case

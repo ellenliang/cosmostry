@@ -4,5 +4,5 @@ SCHEMA (EmpID:string, EmpName:string, DeptName:string, DeptID:string, Salary:dou
 AS
 BEGIN
     MODULE "EmployeesIndexes.module";
-    employees = SSTREAM @"/my/CosmosSamples/SecondaryIndexes/Output/employees_base.ss";
+    employees = SSTREAM @"/my/Output/employees_base.ss";
 END;

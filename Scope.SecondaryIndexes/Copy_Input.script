@@ -3,5 +3,5 @@ MODULE "Demo.module";
 employees = Demo.Employees();
 
 OUTPUT employees 
-    TO @"/my/CosmosSamples/SecondaryIndexes/Output/employees.tsv"
+    TO @"/my/Output/employees.tsv"
     USING DefaultTextOutputter(); 

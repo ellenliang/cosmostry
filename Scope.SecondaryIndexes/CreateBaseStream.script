@@ -3,5 +3,5 @@ MODULE "Demo.module";
 employees = Demo.Employees();
 
 OUTPUT employees 
-    TO SSTREAM @"/my/CosmosSamples/SecondaryIndexes/Output/employees_base.ss"
+    TO SSTREAM @"/my/Output/employees_base.ss"
     HASH CLUSTERED BY EmpName SORTED BY EmpName; 

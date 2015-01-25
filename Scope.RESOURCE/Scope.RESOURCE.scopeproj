@@ -31,56 +31,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="my" />
-    <Folder Include="my\Scope.Tutorial" />
-    <Folder Include="my\Scope.Tutorial\Inputs" />
+    <Folder Include="my\SampleData" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="langmap.txt">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\AdsLog.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\ClassroomTestScores.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\Colors.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\Departments.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\Employees.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\Joins_DataSet_1_Departments.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\Joins_DataSet_1_Employees.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\Joins_DataSet_2_Departments.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\Joins_DataSet_2_Employees.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\Joins_DataSet_3_Departments.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\Joins_DataSet_3_Employees.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\RevenueDataset.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\SearchLog.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\SetOps_A.txt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="my\Scope.Tutorial\Inputs\SetOps_B.txt">
+    <Content Include="my\SampleData\SearchLog.txt">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

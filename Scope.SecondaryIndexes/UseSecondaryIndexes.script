@@ -9,11 +9,11 @@ b = SELECT EmpName, SUM( Salary ) AS TotalSalary
     GROUP BY EmpName;
 
 OUTPUT a 
-    TO "/my/CosmosSamples/SecondaryIndexes/Output/salary_by_dept.tsv"
+    TO "/my/Output/salary_by_dept.tsv"
     USING DefaultTextOutputter();
 
 OUTPUT b 
-    TO "/my/CosmosSamples/SecondaryIndexes/Output/salary_by_emp.tsv"
+    TO "/my/Output/salary_by_emp.tsv"
     USING DefaultTextOutputter();
 
 

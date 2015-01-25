@@ -1,10 +1,11 @@
 ﻿rs0 = 
-    EXTRACT id:int, 
-            name:string
-    FROM @"/my/Demo/SimplestScript/InputData.txt"
+    EXTRACT Department:string, 
+            Employee:string,
+            Role:string
+    FROM @"/my/SampleData/ProjectMembers.txt"
     USING DefaultTextExtractor();
 
 OUTPUT rs0 
-TO @"/my/Demo/SimplestScript/InputData.txt"
-USING DefaultTextOutputter();
+    TO @"/my/Output/ProjectMembers_Copy.txt"
+    USING DefaultTextOutputter();
 

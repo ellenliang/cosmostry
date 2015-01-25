@@ -9,7 +9,7 @@ searchlog =
             DwellTime:int, 
             Results:string, 
             ClickedUrls:string
-    FROM  @"my/Scope.Tutorial/Inputs/SearchLog.txt"
+    FROM  @"my/SampleData/SearchLog.txt"
     USING DefaultTextExtractor();
 
 result = PROCESS searchlog 
@@ -25,4 +25,4 @@ result = PROCESS searchlog
                   
           USING MyProcessor( source: "Market", dest: "MarketLanguage");
 
-OUTPUT result TO @"/my/Scope.Tutorial/Outputs/SearchLog.txt";
+OUTPUT result TO @"/my/Outputs/SearchLog.txt";
