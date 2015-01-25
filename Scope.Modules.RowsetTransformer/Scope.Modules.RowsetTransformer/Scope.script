@@ -1,40 +1,42 @@
-﻿MODULE @"RowsetTransformer.module";
+﻿REFERENCE "../RowsetLib/bin/debug/RowSetLib.dll";
+
+MODULE @"RowsetTransformer.module";
 
 querylog1 = EXTRACT Query : string,
               Latency : int,
               Vertical : string
-    FROM @"/my/QueryLog1.tsv"
+    FROM @"/my/SampleData/QueryLog1.tsv"
     USING DefaultTextExtractor();
 
 querylog2 = EXTRACT Query : string,
               Latency : int,
               Vertical : string,
               Market: string
-    FROM @"/my/QueryLog2.tsv"
+    FROM @"/my/SampleData/QueryLog2.tsv"
     USING DefaultTextExtractor();
 
 
 rs1 = RowsetTransformer.Delete(input = querylog1 , columns="Query");
-OUTPUT rs1 TO @"/my/output_rs1.txt";
+OUTPUT rs1 TO @"/my/Outputs/output_rs1.txt";
 
 rs2 = RowsetTransformer.Delete(input = querylog1 , columns="Query,Vertical");
-OUTPUT rs2 TO @"/my/output_rs2.txt";
+OUTPUT rs2 TO @"/my/Outputs/output_rs2.txt";
 
 rs3 = RowsetTransformer.Rename(input = querylog1 , columns="Vertical>Horizontal");
-OUTPUT rs3 TO @"/my/output_rs3.txt";
+OUTPUT rs3 TO @"/my/Outputs/output_rs3.txt";
 
 rs4 = RowsetTransformer.Delete(input = querylog1 , columns="Q*,*cal");
-OUTPUT rs4 TO @"/my/output_rs4.txt";
+OUTPUT rs4 TO @"/my/Outputs/output_rs4.txt";
 
 rs5 = RowsetTransformer.Keep(input = querylog1 , columns="*cal");
-OUTPUT rs5 TO @"/my/output_rs5.txt";
+OUTPUT rs5 TO @"/my/Outputs/output_rs5.txt";
 
 rs6 = RowsetTransformer.Replace(input = querylog1 , columns="*", replace="e>E,y>YYY");
-OUTPUT rs6 TO @"/my/output_rs6.txt";
+OUTPUT rs6 TO @"/my/Outputs/output_rs6.txt";
 
 rs7 = RowsetTransformer.Replace(input = querylog1 , columns="L*", replace="e>E,y>YYY");
-OUTPUT rs7 TO @"/my/output_rs7.txt";
+OUTPUT rs7 TO @"/my/Outputs/output_rs7.txt";
 
 rs8 = RowsetTransformer.UnionAllSparse(a = querylog1 , b = querylog2);
-OUTPUT rs8 TO @"/my/output_rs8.txt";
+OUTPUT rs8 TO @"/my/Outputs/output_rs8.txt";
 

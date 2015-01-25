@@ -30,9 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ScopeRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bf257442a062f16a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\libs\ScopeRuntime.exe</HintPath>
+    <Reference Include="ScopeRuntime">
+      <HintPath>packages\Microsoft.Cosmos.ScopeSDK.ScopeRuntime.1.3567385.1\lib\ScopeRuntime.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,6 +53,9 @@
     <Compile Include="Delete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
