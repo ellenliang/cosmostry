@@ -1,0 +1,10 @@
+﻿MODULE @"/my/SampleData/SampleData.module";
+
+#DECLARE myarray1 ARRAY<string> = new ARRAY<string>();
+#DECLARE myarray2 ARRAY<string> = new ARRAY<string> { "a", "b", "c" } ;
+
+
+data = SampleData.Cities();
+data1 = SELECT State, Cities.Count AS NumCities
+       FROM data;
+OUTPUT data1 TO SSTREAM @"/my/Output.ss";

@@ -1,0 +1,15 @@
+﻿MODULE @"/my/SampleData/SampleData.module";
+
+#DECLARE mymap1 MAP<string,string> = new MAP<string,string>();
+#DECLARE mymap2 MAP<string,string> = new MAP<string,string>
+    { 
+      {"Bob", "PM" }, 
+      {"Mallory", "Dev"} 
+    };
+
+
+
+
+projectmembers = SampleData.ProjectMembers();
+
+OUTPUT projectmembers TO SSTREAM @"/my/Output.ss";
