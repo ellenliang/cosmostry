@@ -24,40 +24,48 @@ rs0 =
                Session_Duration,
                User_Locale
     WHERE 
-	(Query_RawQuery!=null) AND
-	(Query_RawQuery!="") AND
-        (Query_IsAdult == false) AND 
-        (Vertical=="web") AND 
-        (Market == "en-US") AND
-	(MyHelpers.ContainsAnyCaseInsensitive( Query_RawQuery, "HDInsight", "Hadoop", "Big Data", "BigData" )) 
+        MyHelpers.ContainsAnyCI(Query_RawQuery, 
+		"hdinsight", 
+		"bigdata", 
+		"big data", 
+		"hadoop",
+		"Microsoft Office",
+		"Microsoft Word",
+		"Microsoft Visio",
+		"Microsoft PowerPoint",
+		"Microsoft OneNote",
+		"Microsoft Excel",
+		"Microsoft Outlook",
+		"SharePoint",
+		"Visual Studio" ,
+		"Astronomy",
+		"Weather",
+		"Cooking",
+		"Pizza",
+		"Zoo",
+		"Vacation"		
+	) AND 
+        Query_IsAdult == false
     FROM SlapiPageView;
 
 OUTPUT rs0
-    TO @"/local/bing_searches_2015_03_01_en_US_web_hadoop.tsv"
+    TO @"/my/bing_searches_x.tsv"
     USING DefaultTextOutputter();
 
 #CS
 
 public static class MyHelpers
 {
-    public static bool ContainsCaseInsensitive(string source, string target)
+    public static bool ContainsCI(string source, string target)
     {
-	if (source==null)
-        {
-             return false;
-	}
           return source.IndexOf(target, StringComparison.OrdinalIgnoreCase)>=0;
     }
 
-    public static bool ContainsAnyCaseInsensitive(string source, params string [] targets)
+    public static bool ContainsAnyCI(string source, params string [] targets)
     {
-	if (source==null)
-        {
-             return false;
-	}
         foreach (string target in targets)
         {
-            if (ContainsCaseInsensitive(source,target))
+            if (ContainsCI(source,target))
             {
                 return true;
             }
