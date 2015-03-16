@@ -1,11 +1,11 @@
 ﻿employees = EXTRACT 
     EmpName:string, DepID:string
-    FROM @"my/Demo/ImplicitJoin/Employees.txt"
+    FROM "/my/SampleData/WikipediaJoins/Employees.txt"
     USING DefaultTextExtractor;
 
 departments = EXTRACT 
     DepID:string, DepName:string 
-    FROM @"my/Demo/ImplicitJoin/Departments.txt"
+    FROM "/my/SampleData/WikipediaJoins/Departments.txt"
     USING DefaultTextExtractor;
 
 // CROSS JOIN
@@ -33,10 +33,12 @@ rs_implicit_join =
         FROM employees,departments;
 
 OUTPUT rs_cross_join 
-TO @"my/My/Demo/ImplicitJoin/Output/cross_join.txt";
+TO "/my/Outputs/cross_join.txt";
 
 OUTPUT rs_inner
-TO @"my/My/Demo/ImplicitJoin/Output/inner_join.txt";
+TO "/my/Outputs/inner_join.txt";
 
+OUTPUT rs_implicit_join
+TO "/my/Outputs/implicit_join.txt";
 
 
