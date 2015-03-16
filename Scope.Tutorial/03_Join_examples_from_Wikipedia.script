@@ -1,11 +1,11 @@
 ﻿employees = EXTRACT
     EmpName:string, DepID:string
-    FROM @"/my/SampleData/WikipediaJoins/Employees.txt"
+    FROM "/my/SampleData/WikipediaJoins/Employees.txt"
     USING DefaultTextExtractor();
 
 departments = EXTRACT
     DepID:string, DepName:string
-    FROM @"/my/SampleData/WikipediaJoins/Departments.txt"
+    FROM "/my/SampleData/WikipediaJoins/Departments.txt"
     USING DefaultTextExtractor();
 
 // INNER JOIN
@@ -50,5 +50,23 @@ rs_cross_join =
     FROM employees
         CROSS JOIN departments;
 
+OUTPUT rs_inner 
+TO "/my/Outputs/inner_join.txt" USING DefaultTextOutputter();
+
+OUTPUT rs_left_outer 
+TO "/my/Outputs/left_outer_join.txt" USING DefaultTextOutputter();
+
+OUTPUT rs_right_outer 
+TO "/my/Outputs/right_outer_join.txt" USING DefaultTextOutputter();
+
+OUTPUT rs_full_outer 
+TO "/my/Outputs/full_outer_join.txt" USING DefaultTextOutputter();
+
+OUTPUT rs_left_semijoin 
+TO "/my/Outputs/left_semijoin.txt" USING DefaultTextOutputter();
+
+OUTPUT rs_right_semijoin 
+TO "/my/Outputs/right_semijoin.txt" USING DefaultTextOutputter();
+
 OUTPUT rs_cross_join
-TO @"/my/Outputs/cross_joins.txt";
+TO "/my/Outputs/cross_join.txt" USING DefaultTextOutputter();

@@ -1,4 +1,4 @@
-﻿searchlog = VIEW @"Views/SearchLog.view";
+﻿searchlog = VIEW "Views/SearchLog.view";
 
 rs1 = SELECT Region, Urls
       FROM searchlog;
@@ -11,5 +11,5 @@ rs3 = SELECT Region, string.Join(";" , ARRAY_AGG(Url) ) AS Urls
       FROM rs2
       GROUP BY Region;
 
-OUTPUT rs3 TO @"/my/Outputs/LIST_Joined_Urls.txt" 
+OUTPUT rs3 TO "/my/Outputs/LIST_Joined_Urls.txt" 
      USING DefaultTextOutputter();

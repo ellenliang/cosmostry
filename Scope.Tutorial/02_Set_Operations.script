@@ -1,12 +1,12 @@
 ﻿
 a = EXTRACT
     id:int, name:string
-    FROM @"my/SampleData/SetOps/A.txt"
+    FROM "/my/SampleData/SetOps/A.txt"
     USING DefaultTextExtractor();
 
 b = EXTRACT
     id:int, name:string
-    FROM @"my/SampleData/SetOps/B.txt"
+    FROM "/my/SampleData/SetOps/B.txt"
     USING DefaultTextExtractor();
 
 union_distinct =    SELECT * FROM a
@@ -43,15 +43,15 @@ except_all_b_a =         SELECT * FROM b
                         EXCEPT ALL
                     SELECT * FROM a;
 
-OUTPUT union_distinct TO @"my/Outputs/union_distinct.txt";
-OUTPUT union_all TO @"my/Outputs/union_all.txt";
+OUTPUT union_distinct TO "/my/Outputs/union_distinct.txt";
+OUTPUT union_all TO "/my/Outputs/union_all.txt" USING DefaultTextOutputter();
 
-OUTPUT intersect_distinct TO @"my/Outputs/intersect_distinct.txt";
-OUTPUT intersect_all TO @"my/Outputs/intersect_all.txt";
+OUTPUT intersect_distinct TO "/my/Outputs/intersect_distinct.txt";
+OUTPUT intersect_all TO "/my/Outputs/intersect_all.txt" USING DefaultTextOutputter();
 
-OUTPUT except_distinct_a_b TO @"my/Outputs/except_distinct_a_b.txt";
-OUTPUT except_all_a_b TO @"my/Outputs/except_all_a_b.txt";
+OUTPUT except_distinct_a_b TO "/my/Outputs/except_distinct_a_b.txt";
+OUTPUT except_all_a_b TO "/my/Outputs/except_all_a_b.txt" USING DefaultTextOutputter();
 
-OUTPUT except_distinct_b_a TO @"my/Outputs/except_distinct_b_a.txt";
-OUTPUT except_all_b_a TO @"my/Outputs/except_all_b_a.txt";
-s
+OUTPUT except_distinct_b_a TO "/my/Outputs/except_distinct_b_a.txt";
+OUTPUT except_all_b_a TO "/my/Outputs/except_all_b_a.txt" USING DefaultTextOutputter();
+

@@ -5,5 +5,5 @@ rs1 = SELECT *
       WHERE Region=="en-us";
 
 OUTPUT rs1
-TO @"/my/Outputs/output_searchlog.txt";
+TO "/my/Outputs/output_searchlog.txt";
 

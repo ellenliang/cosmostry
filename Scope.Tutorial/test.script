@@ -3,9 +3,9 @@ rs0 = EXTRACT
         LastName : string,
         Age : int
       FROM
-        @"/test_input.tsv"
+        "test_input.tsv"
       USING DefaultTextExtractor();
 
 OUTPUT rs0
-    TO @"/test_output.tsv"
+    TO "test_output.tsv"
       USING DefaultTextOutputter();
