@@ -68,12 +68,12 @@ namespace RowsetLib
                 if (renames_dic.ContainsKey(old_name))
                 {
                     string new_name = renames_dic[old_name];
-                    output_cols.Add(new ScopeRuntime.ColumnInfo(new_name, input_col.Type));
+                    output_cols.Add(new ScopeRuntime.ColumnInfo(new_name, input_col.ColumnCLRType));
                     sb_select_columns.AppendFormat(" {0} AS {1} ", old_name, new_name);
                 }
                 else
                 {
-                    output_cols.Add(new ScopeRuntime.ColumnInfo(old_name, input_col.Type));
+                    output_cols.Add(new ScopeRuntime.ColumnInfo(old_name, input_col.ColumnCLRType));
                     sb_select_columns.AppendFormat(" {0} ", old_name);
                 }
 
