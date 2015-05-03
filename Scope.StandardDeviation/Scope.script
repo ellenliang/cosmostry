@@ -1,0 +1,98 @@
+﻿// http://en.wikipedia.org/wiki/Bessel%27s_correction
+// Excel STDV.S = 2
+// Excel STDV.P = 1.788854382
+
+a =
+    EXTRACT value : double
+    FROM "/my/SampleData/standard_deviation_input.txt"
+    USING DefaultTextExtractor();
+
+b =
+    SELECT STDEV(a.value) AS ScopeSTDEV,  StdDevSample( a.value ) AS CustomSTDEVSample, StdDevPopulation( a.value ) AS CustomSTDEVPopulation
+    FROM a;
+
+OUTPUT b
+TO "/my/Outputs/standard_deviation_output.txt"
+USING DefaultTextOutputter();
+
+#CS
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using ScopeRuntime;
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+public class StdDevSample_Double : ScopeRuntime.Aggregate1<double, double>
+{
+    // This is Standard Deviation - Sample version with Bessel's correction
+
+    private List<double> values;
+
+
+    public override void Initialize()
+    {
+        this.values = new List<double>();
+    }
+
+    public override void Add(double y)
+    {
+        this.values.Add(y);
+
+    }
+
+    public override double Finalize()
+    {
+        if (this.values.Count < 1)
+        {
+            return 0;
+        }
+
+        double average = values.Average();
+        double sumOfSquaredDifferences = values.Sum(v => Math.Pow(v - average, 2));
+        double result = Math.Sqrt(sumOfSquaredDifferences / (this.values.Count - 1));
+        return result;
+    }
+}
+
+
+public class StdDevPopulation_Double : ScopeRuntime.Aggregate1<double, double>
+{
+
+    // This is Standard Deviation - Population
+
+    private List<double> values;
+
+
+    public override void Initialize()
+    {
+        this.values = new List<double>();
+    }
+
+    public override void Add(double y)
+    {
+        this.values.Add(y);
+
+    }
+
+    public override double Finalize()
+    {
+        if (this.values.Count < 1)
+        {
+            return 0;
+        }
+  
+        double average = values.Average();
+        double result = Math.Sqrt(values.Average(v => Math.Pow(v - average, 2)));
+        return result;
+    }
+}
+
+
+#ENDCS
