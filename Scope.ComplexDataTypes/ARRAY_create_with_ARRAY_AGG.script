@@ -3,8 +3,8 @@
 data = SampleData.Cities();
 
 
-data1= SELECT State, City
+data1= SELECT State, ARRAY_AGG(City) AS Cities
        FROM data
-            CROSS APPLY Cities AS City;
+            GROUP BY State;
 
 OUTPUT data1 TO SSTREAM @"/my/Demo/ComplexDataTypes/Output/Output.ss";
